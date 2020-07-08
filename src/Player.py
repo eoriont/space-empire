@@ -9,6 +9,8 @@ from Unit.Cruiser import Cruiser
 from Unit.BattleCruiser import BattleCruiser
 from Unit.Dreadnaught import Dreadnaught
 from Unit.Battleship import Battleship
+from Unit.Decoy import Decoy
+from Unit.Base import Base
 
 
 class Player:
@@ -44,6 +46,8 @@ class Player:
     # Pay the maitenance cost of each unit
     def pay_maitenance_costs(self):
         for unit in self.units:
+            if unit.no_maitenance:
+                continue
             cost = unit.maitenance_cost
             if self.construction_points >= cost:
                 self.pay(-cost)
@@ -70,11 +74,11 @@ class Player:
     # Builds a fleet of random units within the player's budget
     def build_fleet(self):
         unit_list = [Scout, Destroyer, Cruiser,
-                     BattleCruiser, Battleship, Dreadnaught, Colonyship]
+                     BattleCruiser, Battleship, Dreadnaught, Colonyship, Decoy, ShipYard, Base]
         unit_list = [
             unit for unit in unit_list if unit.req_size_tech <= self.tech['ss']]
 
-        planet_positions = [planet.pos for planet in self.game.planets]
+        planet_positions = [planet.pos for planet in self.game.grid.planets]
         shipyard_available = [shipyard for shipyard in self.units
                               if type(shipyard) == ShipYard
                               and shipyard.pos in planet_positions]
@@ -86,7 +90,7 @@ class Player:
             if shipyard.pos not in positions:
                 positions[shipyard.pos] = 0
             positions[shipyard.pos] += shipyard.tech['syc']
-        # The cheapest unit is a scout at 6 CP
+        # The cheapest unit is a decoy at 1 cp
         while self.construction_points >= 6:
             pos = random.choice(list(positions))
             capacity = positions[pos]

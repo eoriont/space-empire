@@ -6,6 +6,9 @@ class Unit:
     default_tech = {}
     hull_size = 0
     no_maitenance = False
+    no_attack = False
+    attack_class = None
+    immovable = False
 
     # Initialize the unit
     def __init__(self, player, name, starting_pos, game, tech):
@@ -36,7 +39,7 @@ class Unit:
 
     # Returns if unit is able to move to position and moves there if so
     def move(self, new_pos):
-        self.game.log(f"    {self.name}: {self.pos} -> {new_pos}")
+        # self.game.log(f"    {self.name}: {self.pos} -> {new_pos}")
         self.pos = new_pos
 
     # Return a list of the possible spots a unit could move to
@@ -48,4 +51,4 @@ class Unit:
 
     def get_possible_spots(self):
         x1, y1 = self.pos
-        return [(x+x1, y+y1) for x, y in self.possible_translations if self.game.is_in_bounds(x+x1, y+y1)]
+        return [(x+x1, y+y1) for x, y in self.possible_translations if self.game.grid.is_in_bounds(x+x1, y+y1)]

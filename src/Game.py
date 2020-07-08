@@ -1,63 +1,27 @@
 import random
-import matplotlib.pyplot as plt
-from matplotlib.ticker import MultipleLocator
 from Player import Player
-from Planet import Planet
 from Unit.Colony import Colony
+from Grid import Grid
+from Unit.Decoy import Decoy
 
 
 class Game:
     # Initialize with 2 players and turn starts at 0
     def __init__(self, grid_size, logging=False, rendering=False):
         self.current_turn = 0
-        self.grid_size = grid_size
         self.logging = logging
         self.rendering = rendering
         self.players = [Player("Player 1", (3, 6), self, "blue"),
                         Player("Player 2", (3, 0), self, "red")]
         self.player_count = len(self.players)
-        self.init_planets([Planet((3, 6)), Planet((3, 0))])
-        self.unit_grid = self.create_unit_grid()
-
-    # Create 8 additional randomly placed planets in addition to defaults
-    def init_planets(self, planets):
-        while len(planets) < 8:
-            planet = random.randint(
-                0, self.grid_size[0]-1), random.randint(0, self.grid_size[1]-1)
-            planet = Planet(planet)
-            if planet not in planets:
-                planets.append(planet)
-        self.planets = planets
-
-    # Create a dictionary of all the positions with multiple units on them
-    def create_unit_grid(self):
-        grid = {}
-        units = [unit for player in self.players for unit in player.units]
-        for unit in units:
-            if unit.pos in grid.keys():
-                grid[unit.pos].append(unit)
-            else:
-                grid[unit.pos] = [unit]
-        return grid
-
-    # Return if all the units in the given list belong to the same player
-    def units_on_same_team(self, units):
-        players = [unit.player for unit in units if unit.alive]
-        return players.count(players[0]) == len(players)
-
-    def sort_units_by_player(self, units):
-        new_units = {}
-        for unit in units:
-            if unit.player.name in new_units.keys():
-                new_units[unit.player.name].append(unit)
-            else:
-                new_units[unit.player.name] = [unit]
-        return new_units
+        self.grid = Grid(self, grid_size)
+        self.grid.init_planets((3, 6), (3, 0))
+        self.grid.create()
 
     # If units collide, fight it out
     def unit_battle(self, units):
-        units = sorted(units, key=lambda x: ord(x.attack_class))
-        player_units = self.sort_units_by_player(units)
+        units = sorted(units, key=lambda x: ord(x.attack_class or 'Z'))
+        player_units = Grid.sort_units_by_player(units)
         player_units_len = {player: len(us)
                             for player, us in player_units.items()}
         # If a player has more units than the other, screen
@@ -71,9 +35,15 @@ class Game:
                 player_units[player_with_more_units], num_units_to_screen)
             for u in units_to_screen:
                 units.remove(u)
+        for u in units:
+            if type(u) == Decoy:
+                u.destroy()
+                units.remove(u)
         # Loop through units in the correct attack order and battle
-        while not self.units_on_same_team(units):
+        while not Grid.units_on_same_team(units):
             for unit in units:
+                if unit.no_attack:
+                    continue
                 attack_options = [u for u in units if u.player !=
                                   unit.player and u.alive]
                 if len(attack_options) == 0 or not unit.alive:
@@ -95,7 +65,7 @@ class Game:
             self.complete_combat_phase()
             self.complete_economic_phase()
             if self.rendering:
-                self.render_game()
+                self.grid.render()
             if self.winning_player() is not None:
                 break
         winner = self.winning_player()
@@ -107,18 +77,22 @@ class Game:
             print("Turns taken:", self.current_turn)
             print(winner)
 
+    # Move all units from all players
     def complete_movement_phase(self):
         for player in self.players:
-            self.log(player.name)
+            self.log(player)
             for unit in player.units:
-                unit.move(random.choice(unit.get_possible_spots()))
-        self.unit_grid = self.create_unit_grid()
+                if not unit.immovable:
+                    unit.move(random.choice(unit.get_possible_spots()))
+        self.grid.create()
 
+    # Resolve combat between all units
     def complete_combat_phase(self):
-        for _, units in self.unit_grid.items():
-            if not self.units_on_same_team(units):
+        for _, units in self.grid.items():
+            if not Grid.units_on_same_team(units):
                 self.unit_battle(units)
 
+    # Upgrade technology and buy new ships
     def complete_economic_phase(self):
         for player in self.players:
             income_list = [
@@ -128,6 +102,7 @@ class Game:
             player.upgrade_tech()
             player.build_fleet()
 
+    # Print to console if logging is enabled
     def log(self, *args):
         if self.logging:
             print(*args)
@@ -144,39 +119,9 @@ class Game:
         else:
             return None
 
-    # Check if a position is within the game grid
-    def is_in_bounds(self, x, y):
-        return (x >= 0 and x < self.grid_size[0]-1) and (y >= 0 and y < self.grid_size[1]-1)
-
     # Prints all the players
     def __str__(self):
         string = "Game State: \n"
         for p in self.players:
             string += str(p) + "\n"
         return string
-
-    # Make a graph of the game
-    def render_game(self):
-        _, ax = plt.subplots()
-        ax.xaxis.set_minor_locator(MultipleLocator(.5))
-        ax.yaxis.set_minor_locator(MultipleLocator(.5))
-
-        plt.title(''.join(
-            [f"| {player.name}: {player.construction_points}CP |" for player in self.players]))
-
-        for planet in self.planets:
-            plt.gca().add_patch(plt.Circle(planet.pos, radius=.5, fc='g'))
-
-        for pos, units in self.unit_grid.items():
-            x, y = pos
-            for i, unit in enumerate(units):
-                offset = i/len(units)
-                ax.text(x, y+offset, unit.name, fontsize=12, color=unit.player.color,
-                        horizontalalignment='center', verticalalignment='center')
-
-        x_max, y_max = self.grid_size
-        plt.xlim(-0.5, x_max-0.5)
-        plt.ylim(-0.5, y_max-0.5)
-
-        plt.grid(which='minor')
-        plt.show()
