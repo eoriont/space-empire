@@ -64,9 +64,31 @@ class Game:
         players = [unit.player for unit in units if unit.alive]
         return players.count(players[0]) == len(players)
 
-    # If two units collide, fight it out
+    def sort_units_by_player(self, units):
+        new_units = {}
+        for unit in units:
+            if name := unit.player.name in new_units.keys():
+                new_units[name].append(unit)
+            else:
+                new_units[name] = [unit]
+        return new_units
+
+    # If units collide, fight it out
     def unit_battle(self, units):
         units = sorted(units, key=lambda x: ord(x.attack_class))
+        player_units = self.sort_units_by_player(units)
+        player_units = {player: len(us) for player, us in player_units.items()}
+        # If a player has more units than the other, screen
+        if list(player_units.values()).count(player_units[0]) != len(player_units):
+            player_with_more_units = player_units.index(
+                max(list(player_units.values())))
+            num_units_to_screen = random.randint(
+                player_units[0], player_units[1])
+            units_to_screen = random.sample(
+                player_units[player_with_more_units])
+            for u in units_to_screen:
+                units.remove(u)
+        # Loop through units in the correct attack order and battle
         while not self.units_on_same_team(units):
             for unit in units:
                 attack_options = [u for u in units if u.player !=

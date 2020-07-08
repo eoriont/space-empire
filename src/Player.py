@@ -24,6 +24,11 @@ class Player:
         self.build_starting_fleet()
         self.construction_points = 20
 
+    def get_player_by_name(self, name):
+        for player in self.game.players:
+            if player.name == name:
+                return player
+
     # Build all the ships the player starts with
     def build_starting_fleet(self):
         for _ in range(3):
