@@ -12,16 +12,8 @@ class Colonyship(Unit):
     armor = 1
     hull_size = 1
     req_size_tech = 1
-
-    # Speed is always 0 no matter tech level
-    def __init__(self, *args):
-        super().__init__(*args)
-        self.tech.speed = 0
-        self.maitenance_cost = 0
-
-    # Always gets destroyed when enemy is present
-    def hurt(self):
-        self.destroy()
+    default_tech = {'spd': 0}
+    no_maitenance = True
 
     # If moved onto a planet, the ship will be replaced with a colony
     def move(self, new_pos):

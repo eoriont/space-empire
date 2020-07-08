@@ -2,27 +2,27 @@ from Technology import Technology
 
 
 class Unit:
-    buyable = True
     armor = 0
-    default_tech = Technology()
+    default_tech = {}
     hull_size = 0
-    # Initialize the unit
+    no_maitenance = False
 
-    def __init__(self, player, name, starting_pos, game, technology=None):
+    # Initialize the unit
+    def __init__(self, player, name, starting_pos, game, tech):
         self.player = player
         self.name = name
         self.pos = starting_pos
         self.alive = True
         self.game = game
-        technology = Technology() if technology is None else technology
-        self.tech = Technology.combine_tech(self.default_tech, technology)
-        self.maitenance_cost = self.hull_size
+        self.tech = Technology(self.default_tech, tech)
+        self.maitenance_cost = 0 if self.no_maitenance else self.hull_size
         self.possible_translations = self.get_possible_translations()
 
-    # Call destroy on player
+    # Remove unit from player's list and alive = False
     def destroy(self):
         self.alive = False
-        self.player.destroy_unit(self)
+        if self in self.player.units:
+            self.player.units.remove(self)
 
     # Subtract 1 from armor
     def hurt(self):
@@ -36,13 +36,12 @@ class Unit:
 
     # Returns if unit is able to move to position and moves there if so
     def move(self, new_pos):
-        if self.game.logging:
-            print(f"{self.name}: {self.pos} -> {new_pos}")
+        self.game.log(f"    {self.name}: {self.pos} -> {new_pos}")
         self.pos = new_pos
 
     # Return a list of the possible spots a unit could move to
     def get_possible_translations(self):
-        speed = self.tech.speed + 1
+        speed = self.tech['spd'] + 1
         return [(x, y) for x in range(-speed, speed+1)
                 for y in range(-speed, speed+1)
                 if abs(x) + abs(y) <= speed]

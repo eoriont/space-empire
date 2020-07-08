@@ -13,34 +13,29 @@ from Unit.Battleship import Battleship
 
 class Player:
     # Initialize player and build fleet
-    def __init__(self, name, starting_pos, game=None, color="black"):
+    def __init__(self, name, starting_pos, game, color="black"):
         self.starting_pos = starting_pos
         self.name = name
         self.units = []
         self.color = color
         self.game = game
-        self.tech = Technology()
+        self.tech = Technology(
+            {'atk': 0, 'def': 0, 'spd': 0, 'syc': 1, 'ss': 1})
         self.construction_points = 20
         self.build_starting_fleet()
-        self.construction_points = 20
-
-    def get_player_by_name(self, name):
-        for player in self.game.players:
-            if player.name == name:
-                return player
 
     # Build all the ships the player starts with
     def build_starting_fleet(self):
         for _ in range(3):
-            self.build_unit(Scout)
+            self.build_unit(Scout, pay=False)
 
         for _ in range(3):
-            self.build_unit(Colonyship)
+            self.build_unit(Colonyship, pay=False)
 
         for _ in range(4):
-            self.build_unit(ShipYard)
+            self.build_unit(ShipYard, pay=False)
 
-        self.build_unit(Colony)
+        self.build_unit(Colony, pay=False)
 
     # Give the player a specified amount of cp
     def pay(self, construction_points):
@@ -51,7 +46,7 @@ class Player:
         for unit in self.units:
             cost = unit.maitenance_cost
             if self.construction_points >= cost:
-                self.construction_points -= cost
+                self.pay(-cost)
             else:
                 unit.destroy()
 
@@ -63,17 +58,13 @@ class Player:
         choice = random.choice(options)
         self.construction_points -= self.tech.buy_tech(choice)
 
-    # Remove unit from player's unit list
-    def destroy_unit(self, unit):
-        if unit in self.units:
-            self.units.remove(unit)
-
     # Add unit to player's unit list
-    def build_unit(self, unit_type, starting_pos=None):
+    def build_unit(self, unit_type, starting_pos=None, pay=True):
         starting_pos = self.starting_pos if starting_pos is None else starting_pos
-        unit = unit_type(
-            self, f"{unit_type.abbr}{len(self.units)+1}", starting_pos, self.game, self.tech)
-        self.construction_points -= unit.cp_cost
+        unit_name = f"{unit_type.abbr}{len(self.units)+1}"
+        unit = unit_type(self, unit_name, starting_pos, self.game, self.tech)
+        if pay:
+            self.pay(-unit.cp_cost)
         self.units.append(unit)
 
     # Builds a fleet of random units within the player's budget
@@ -81,7 +72,7 @@ class Player:
         unit_list = [Scout, Destroyer, Cruiser,
                      BattleCruiser, Battleship, Dreadnaught, Colonyship]
         unit_list = [
-            unit for unit in unit_list if unit.req_size_tech <= self.tech.ship_size]
+            unit for unit in unit_list if unit.req_size_tech <= self.tech['ss']]
 
         planet_positions = [planet.pos for planet in self.game.planets]
         shipyard_available = [shipyard for shipyard in self.units
@@ -94,7 +85,7 @@ class Player:
         for shipyard in shipyard_available:
             if shipyard.pos not in positions:
                 positions[shipyard.pos] = 0
-            positions[shipyard.pos] += shipyard.tech.shipyard
+            positions[shipyard.pos] += shipyard.tech['syc']
         # The cheapest unit is a scout at 6 CP
         while self.construction_points >= 6:
             pos = random.choice(list(positions))
@@ -105,9 +96,9 @@ class Player:
                                self.construction_points and unit.hull_size <= capacity]
             self.build_unit(random.choice(available_units), pos)
 
-    # Prints the player's name and unit
+    # Prints the player's name and units
     def __str__(self):
         string = f"{self.name}: \n"
         for unit in self.units:
-            string += str(unit)
+            string += '    ' + str(unit)
         return string

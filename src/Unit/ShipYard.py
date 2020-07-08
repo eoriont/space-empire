@@ -11,7 +11,4 @@ class ShipYard(Unit):
     abbr = 'SY'
     hull_size = 1
     req_size_tech = 1
-
-    def __init__(self, *args):
-        super().__init__(*args)
-        self.maitenance_cost = 0
+    no_maitenance = True

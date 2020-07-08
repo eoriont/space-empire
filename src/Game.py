@@ -29,16 +29,6 @@ class Game:
                 planets.append(planet)
         self.planets = planets
 
-    # Moves the player whose turn it is' units
-    def complete_turn(self):
-        current_player = self.players[self.current_turn % self.player_count]
-        if self.logging:
-            print(current_player.name)
-        for unit in current_player.units:
-            unit.move(random.choice(unit.get_possible_spots()))
-        self.current_turn += 1
-        self.unit_grid = self.create_unit_grid()
-
     # Create a dictionary of all the positions with multiple units on them
     def create_unit_grid(self):
         grid = {}
@@ -50,15 +40,6 @@ class Game:
                 grid[unit.pos] = [unit]
         return grid
 
-    # Test for unit collisions
-    def resolve_combat(self):
-        combats = 0
-        for _, units in self.unit_grid.items():
-            if len(units) > 1:
-                if [unit.player for unit in units].count(units[0].player) != len(units):
-                    combats += 1
-                    self.unit_battle(units)
-
     # Return if all the units in the given list belong to the same player
     def units_on_same_team(self, units):
         players = [unit.player for unit in units if unit.alive]
@@ -67,25 +48,27 @@ class Game:
     def sort_units_by_player(self, units):
         new_units = {}
         for unit in units:
-            if name := unit.player.name in new_units.keys():
-                new_units[name].append(unit)
+            if unit.player.name in new_units.keys():
+                new_units[unit.player.name].append(unit)
             else:
-                new_units[name] = [unit]
+                new_units[unit.player.name] = [unit]
         return new_units
 
     # If units collide, fight it out
     def unit_battle(self, units):
         units = sorted(units, key=lambda x: ord(x.attack_class))
         player_units = self.sort_units_by_player(units)
-        player_units = {player: len(us) for player, us in player_units.items()}
+        player_units_len = {player: len(us)
+                            for player, us in player_units.items()}
         # If a player has more units than the other, screen
-        if list(player_units.values()).count(player_units[0]) != len(player_units):
-            player_with_more_units = player_units.index(
-                max(list(player_units.values())))
-            num_units_to_screen = random.randint(
-                player_units[0], player_units[1])
+        unit_nums = list(player_units_len.values())
+        if unit_nums.count(unit_nums[0]) != len(unit_nums):
+            player_with_more_units = max(
+                player_units_len, key=player_units_len.get)
+            nums = unit_nums[:2] if unit_nums[0] < unit_nums[1] else unit_nums[:2][::-1]
+            num_units_to_screen = random.randint(*nums)
             units_to_screen = random.sample(
-                player_units[player_with_more_units])
+                player_units[player_with_more_units], num_units_to_screen)
             for u in units_to_screen:
                 units.remove(u)
         # Loop through units in the correct attack order and battle
@@ -96,21 +79,21 @@ class Game:
                 if len(attack_options) == 0 or not unit.alive:
                     continue
                 unit2 = random.choice(attack_options)
-                u1_atk_str = unit.attack_strength + unit.tech.attack
-                u2_def_str = unit2.defense_strength + unit2.tech.defense
+                u1_atk_str = unit.attack_strength + unit.tech['atk']
+                u2_def_str = unit2.defense_strength + unit2.tech['def']
                 hit_threshold = u1_atk_str - u2_def_str
                 die_roll = random.randint(0, 6)
                 if die_roll <= hit_threshold or die_roll == 1:
                     unit2.hurt()
-                    if self.logging:
-                        print(unit2.name + " has been hurt by " + unit.name)
+                    self.log(unit2.name + " has been hurt by " + unit.name)
 
     # Run for 100 turns or until all of a player's units are dead
-    def run_until_completion(self):
-        for _ in range(self.current_turn, 100):
-            self.player_upgrades()
-            self.complete_turn()
-            self.resolve_combat()
+    def run_until_completion(self, max_turns=100):
+        for _ in range(self.current_turn, max_turns):
+            self.current_turn += 1
+            self.complete_movement_phase()
+            self.complete_combat_phase()
+            self.complete_economic_phase()
             if self.rendering:
                 self.render_game()
             if self.winning_player() is not None:
@@ -124,18 +107,30 @@ class Game:
             print("Turns taken:", self.current_turn)
             print(winner)
 
-    # Make the choice to upgrade a technology or build a ship
-    def player_upgrades(self):
+    def complete_movement_phase(self):
+        for player in self.players:
+            self.log(player.name)
+            for unit in player.units:
+                unit.move(random.choice(unit.get_possible_spots()))
+        self.unit_grid = self.create_unit_grid()
+
+    def complete_combat_phase(self):
+        for _, units in self.unit_grid.items():
+            if not self.units_on_same_team(units):
+                self.unit_battle(units)
+
+    def complete_economic_phase(self):
         for player in self.players:
             income_list = [
                 unit.cp_capacity for unit in player.units if type(unit) == Colony]
             player.pay(sum(income_list))
             player.pay_maitenance_costs()
-            choice = random.randint(0, 1)
-            if choice == 0:
-                player.upgrade_tech()
-            elif choice == 1:
-                player.build_fleet()
+            player.upgrade_tech()
+            player.build_fleet()
+
+    def log(self, *args):
+        if self.logging:
+            print(*args)
 
     # Return the player who has units if someone else doesn't
     def winning_player(self):
