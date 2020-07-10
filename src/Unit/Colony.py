@@ -1,4 +1,6 @@
 from Unit.Unit import Unit
+from Unit.ShipYard import ShipYard
+from Unit.Base import Base
 
 
 class Colony(Unit):
@@ -17,3 +19,11 @@ class Colony(Unit):
         self.cp_capacity -= 1
         if self.cp_capacity <= 0:
             self.destroy()
+
+    # If destroyed, destroy any remaining shipyards and bases
+    def destroy(self):
+        super().destroy()
+        for unit in self.game.grid[self.pos]:
+            if unit.player == self.player:
+                if type(unit) in (ShipYard, Base):
+                    unit.destroy()

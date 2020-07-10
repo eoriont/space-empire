@@ -19,6 +19,7 @@ class Game:
         self.grid.create()
 
     # If units collide, fight it out
+    # TODO: Sort this out into the unit class so it isn't so long
     def unit_battle(self, units):
         units = sorted(units, key=lambda x: ord(x.attack_class or 'Z'))
         player_units = Grid.sort_units_by_player(units)
@@ -55,7 +56,7 @@ class Game:
                 die_roll = random.randint(0, 6)
                 if die_roll <= hit_threshold or die_roll == 1:
                     unit2.hurt()
-                    self.log(unit2.name + " has been hurt by " + unit.name)
+                    self.log(f"{unit2.name} has been hurt by {unit.name}")
 
     # Run for 100 turns or until all of a player's units are dead
     def run_until_completion(self, max_turns=100):
@@ -64,8 +65,6 @@ class Game:
             self.complete_movement_phase()
             self.complete_combat_phase()
             self.complete_economic_phase()
-            if self.rendering:
-                self.grid.render()
             if self.winning_player() is not None:
                 break
         winner = self.winning_player()
@@ -77,20 +76,29 @@ class Game:
             print("Turns taken:", self.current_turn)
             print(winner)
 
-    # Move all units from all players
+    # Move all units from all players in 3 phases
     def complete_movement_phase(self):
-        for player in self.players:
-            self.log(player)
-            for unit in player.units:
-                if not unit.immovable:
-                    unit.move(random.choice(unit.get_possible_spots()))
+        self.log(f"Turn {self.current_turn} - Movement Phase\n")
+        for phase in range(3):
+            for player in self.players:
+                self.log(f"{player.name} - Move {phase+1}")
+                for unit in player.units:
+                    if not unit.immovable:
+                        unit.move(random.choice(
+                            unit.get_possible_spots(phase)))
+                self.log('')
+            self.render()
+        self.log("------------------------")
         self.grid.create()
 
     # Resolve combat between all units
     def complete_combat_phase(self):
+        self.log(f"Turn {self.current_turn} - Combat Phase\n")
         for _, units in self.grid.items():
             if not Grid.units_on_same_team(units):
                 self.unit_battle(units)
+        self.log("------------------------")
+        self.render()
 
     # Upgrade technology and buy new ships
     def complete_economic_phase(self):
@@ -106,6 +114,11 @@ class Game:
     def log(self, *args):
         if self.logging:
             print(*args)
+
+    # Render if rendering is enabled
+    def render(self):
+        if self.rendering:
+            self.grid.render()
 
     # Return the player who has units if someone else doesn't
     def winning_player(self):

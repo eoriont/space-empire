@@ -17,8 +17,9 @@ class Technology:
 
     # Add 1 to tech level and return price
     def buy_tech(self, tech_type):
+        price = self.get_price(tech_type)
         self[tech_type] += 1
-        return self.get_price(tech_type)
+        return price
 
     # Get the price for a certain tech
     def get_price(self, tech_type):
@@ -27,17 +28,28 @@ class Technology:
             return (level + 1) * 10
         elif tech_type == 'def':
             return (level + 1) * 10
-        elif tech_type == 'spd':
+        elif tech_type == 'mov':
             if level == 1:
-                return 90
+                return 20
             elif level == 2:
-                return 120
-            else:
-                return 10000000
+                return 30
+            elif level in [3, 4, 5]:
+                return 40
         elif tech_type == 'syc':
             return level * 10
         elif tech_type == 'ss':
             return 5 + level*5
+
+    def get_spaces(self):
+        spaces_per_phase = [
+            (1, 1, 1),
+            (1, 1, 2),
+            (1, 2, 2),
+            (2, 2, 2),
+            (2, 2, 3),
+            (2, 3, 3),
+        ]
+        return spaces_per_phase[self.tech['mov']]
 
     # Return the upgradeable tech with cp
     def get_available(self, cp):
@@ -46,8 +58,8 @@ class Technology:
             available.append('atk')
         if self['def'] <= 3 and cp >= self.get_price('def'):
             available.append('def')
-        if self['spd'] <= 2 and cp >= self.get_price('spd'):
-            available.append('spd')
+        if self['mov'] <= 5 and cp >= self.get_price('mov'):
+            available.append('mov')
         if self['syc'] <= 3 and cp >= self.get_price('syc'):
             available.append('syc')
         if self['ss'] <= 5 and cp >= self.get_price('ss'):

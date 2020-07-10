@@ -11,7 +11,7 @@ class Colonyship(Unit):
     armor = 1
     hull_size = 1
     req_size_tech = 1
-    default_tech = {'spd': 0}
+    default_tech = {'mov': 1}
     no_maitenance = True
     no_attack = True
 

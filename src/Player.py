@@ -22,7 +22,7 @@ class Player:
         self.color = color
         self.game = game
         self.tech = Technology(
-            {'atk': 0, 'def': 0, 'spd': 0, 'syc': 1, 'ss': 1})
+            {'atk': 0, 'def': 0, 'mov': 1, 'syc': 1, 'ss': 1})
         self.construction_points = 20
         self.build_starting_fleet()
 
