@@ -1,8 +1,8 @@
 import random
-from Player import Player
-from Unit.Colony import Colony
-from Grid import Grid
-from Unit.Decoy import Decoy
+from player import Player
+from unit.colony import Colony
+from grid import Grid
+from unit.decoy import Decoy
 
 
 class Game:

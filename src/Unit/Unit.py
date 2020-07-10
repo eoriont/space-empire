@@ -1,4 +1,4 @@
-from Technology import Technology
+from technology import Technology
 
 
 class Unit:

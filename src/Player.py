@@ -1,16 +1,16 @@
 import random
-from Technology import Technology
-from Unit.Scout import Scout
-from Unit.ColonyShip import Colonyship
-from Unit.ShipYard import ShipYard
-from Unit.Colony import Colony
-from Unit.Destroyer import Destroyer
-from Unit.Cruiser import Cruiser
-from Unit.BattleCruiser import BattleCruiser
-from Unit.Dreadnaught import Dreadnaught
-from Unit.Battleship import Battleship
-from Unit.Decoy import Decoy
-from Unit.Base import Base
+from technology import Technology
+from unit.scout import Scout
+from unit.colony_ship import Colonyship
+from unit.ship_yard import ShipYard
+from unit.colony import Colony
+from unit.destroyer import Destroyer
+from unit.cruiser import Cruiser
+from unit.battle_cruiser import BattleCruiser
+from unit.dreadnaught import Dreadnaught
+from unit.battleship import Battleship
+from unit.decoy import Decoy
+from unit.base import Base
 
 
 class Player:

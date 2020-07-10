@@ -1,5 +1,5 @@
-from Technology import Technology
-from Unit.Unit import Unit
+from technology import Technology
+from unit.unit import Unit
 
 
 class Scout(Unit):

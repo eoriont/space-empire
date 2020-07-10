@@ -1,4 +1,4 @@
-from Unit.Unit import Unit
+from unit.unit import Unit
 
 
 class Destroyer(Unit):

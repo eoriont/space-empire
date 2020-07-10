@@ -1,6 +1,6 @@
-from Unit.Unit import Unit
-from Unit.ShipYard import ShipYard
-from Unit.Base import Base
+from unit.unit import Unit
+from unit.ship_yard import ShipYard
+from unit.base import Base
 
 
 class Colony(Unit):
