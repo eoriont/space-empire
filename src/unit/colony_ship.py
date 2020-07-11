@@ -17,7 +17,7 @@ class Colonyship(Unit):
 
     # If moved onto a planet, the ship will be replaced with a colony
     def move(self, new_pos):
-        if self.game.grid.on_unoccupied_planet(self.pos):
+        if self.game.board.on_unoccupied_planet(self.pos):
             self.player.build_unit(Colony, self.pos)
             self.destroy()
         super().move(new_pos)
