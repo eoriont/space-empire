@@ -1,0 +1,18 @@
+from player.player import Player
+from unit.scout import Scout
+
+
+class DumbPlayer(Player):
+    # Only build scouts
+    def build_fleet(self):
+        while self.construction_points <= Scout.cp_cost:
+            self.build_unit(Scout)
+
+    # Never upgrade any technology
+    def upgrade_tech(self):
+        pass
+
+    def move_units(self, phase):
+        for unit in self.units:
+            if not unit.immovable and (1, 0) in unit.possible_translations[phase]:
+                unit.move((1, 0))

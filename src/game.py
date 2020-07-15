@@ -1,5 +1,5 @@
 import random
-from player import Player
+from player.player import Player
 from unit.colony import Colony
 from board import Board
 from unit.decoy import Decoy
@@ -11,9 +11,8 @@ class Game:
         self.current_turn = 0
         self.logging = logging
         self.rendering = rendering
-        self.players = [Player("Player 1", (3, 6), self, "blue"),
-                        Player("Player 2", (3, 0), self, "red")]
-        self.player_count = len(self.players)
+        self.players = []
+        self.player_count = 0
         self.board = Board(self, board_size)
         self.board.init_planets((3, 6), (3, 0))
         self.board.create()
@@ -58,6 +57,12 @@ class Game:
                     unit2.hurt()
                     self.log(f"{unit2.name} has been hurt by {unit.name}")
 
+    # Add player to the game before running
+    def add_player(self, player):
+        self.players.append(player)
+        self.player_count = len(self.players)
+        self.board.create()
+
     # Run for 100 turns or until all of a player's units are dead
     def run_until_completion(self, max_turns=100):
         for _ in range(self.current_turn, max_turns):
@@ -82,10 +87,7 @@ class Game:
         for phase in range(3):
             for player in self.players:
                 self.log(f"{player.name} - Move {phase+1}")
-                for unit in player.units:
-                    if not unit.immovable:
-                        unit.move(random.choice(
-                            unit.get_possible_spots(phase)))
+                player.move_units(phase)
                 self.log('')
             self.render()
         self.log("------------------------")
