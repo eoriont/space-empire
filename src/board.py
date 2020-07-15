@@ -47,7 +47,7 @@ class Board:
     # Check if a position is within the grid
     def is_in_bounds(self, x, y):
         x1, y1 = self.size
-        return (x >= 0 and x < x1-1) and (y >= 0 and y < y1-1)
+        return (x >= 0 and x < x1) and (y >= 0 and y < y1)
 
     # Make a graph of the game
     def render(self):

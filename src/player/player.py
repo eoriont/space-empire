@@ -54,6 +54,7 @@ class Player:
         if pay:
             self.pay(-unit.cp_cost)
         self.units.append(unit)
+        return unit
 
     # Prints the player's name and units
     def __str__(self):

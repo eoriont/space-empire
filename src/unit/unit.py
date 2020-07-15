@@ -55,3 +55,6 @@ class Unit:
     def get_possible_spots(self, phase):
         x1, y1 = self.pos
         return [(x+x1, y+y1) for x, y in self.possible_translations[phase] if self.game.board.is_in_bounds(x+x1, y+y1)]
+
+    def pos_from_translation(self, pos):
+        return (self.pos[0]+pos[0], self.pos[1]+pos[1])

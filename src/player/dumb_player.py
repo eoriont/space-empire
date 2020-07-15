@@ -14,5 +14,6 @@ class DumbPlayer(Player):
 
     def move_units(self, phase):
         for unit in self.units:
-            if not unit.immovable and (1, 0) in unit.possible_translations[phase]:
-                unit.move((1, 0))
+            pos = unit.pos_from_translation((1, 0))
+            if not unit.immovable and pos in unit.get_possible_spots(phase):
+                unit.move(pos)
