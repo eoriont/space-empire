@@ -111,6 +111,7 @@ class Game:
             player.pay_maitenance_costs()
             player.upgrade_tech()
             player.build_fleet()
+        self.board.create()
 
     # Print to console if logging is enabled
     def log(self, *args):

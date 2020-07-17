@@ -37,9 +37,8 @@ class Player:
 
     # Pay the maitenance cost of each unit
     def pay_maitenance_costs(self):
-        for unit in self.units:
-            if unit.no_maitenance:
-                continue
+        units_to_pay = [u for u in self.units if not u.no_maitenance]
+        for unit in units_to_pay:
             cost = unit.maitenance_cost
             if self.construction_points >= cost:
                 self.pay(-cost)

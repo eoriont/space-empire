@@ -5,7 +5,7 @@ from unit.scout import Scout
 class DumbPlayer(Player):
     # Only build scouts
     def build_fleet(self):
-        while self.construction_points <= Scout.cp_cost:
+        while self.construction_points >= Scout.cp_cost:
             self.build_unit(Scout)
 
     # Never upgrade any technology
