@@ -12,7 +12,7 @@ class Colonyship(Unit):
     hull_size = 1
     req_size_tech = 1
     default_tech = {'mov': 1}
-    no_maitenance = True
+    no_maintenance = True
     no_attack = True
 
     # If moved onto a planet, the ship will be replaced with a colony

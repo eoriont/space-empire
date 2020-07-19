@@ -8,6 +8,6 @@ class Base(Unit):
     defense_strength = 2
     armor = 3
     req_size_tech = 2
-    no_maitenance = True
+    no_maintenance = True
     immovable = True
     abbr = "Ba"

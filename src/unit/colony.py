@@ -10,7 +10,7 @@ class Colony(Unit):
     attack_strength = 0
     defense_strength = 0
     abbr = "CO"
-    no_maitenance = True
+    no_maintenance = True
     no_attack = True
     immovable = True
 

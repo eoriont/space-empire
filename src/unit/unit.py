@@ -5,7 +5,7 @@ class Unit:
     armor = 0
     default_tech = {}
     hull_size = 0
-    no_maitenance = False
+    no_maintenance = False
     no_attack = False
     attack_class = None
     immovable = False
@@ -18,7 +18,7 @@ class Unit:
         self.alive = True
         self.game = game
         self.tech = Technology(self.default_tech, tech)
-        self.maitenance_cost = 0 if self.no_maitenance else self.hull_size
+        self.maintenance_cost = 0 if self.no_maintenance else self.hull_size
         self.possible_translations = [self.get_possible_translations(0),
                                       self.get_possible_translations(1),
                                       self.get_possible_translations(2)]

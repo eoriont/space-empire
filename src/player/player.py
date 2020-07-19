@@ -35,14 +35,16 @@ class Player:
     def pay(self, construction_points):
         self.construction_points += construction_points
 
-    # Pay the maitenance cost of each unit
-    def pay_maitenance_costs(self):
-        units_to_pay = [u for u in self.units if not u.no_maitenance]
+    # Pay the maintenance cost of each unit
+    def pay_maintenance_costs(self):
+        units_to_pay = [u for u in self.units if not u.no_maintenance]
         for unit in units_to_pay:
-            cost = unit.maitenance_cost
+            cost = unit.maintenance_cost
             if self.construction_points >= cost:
                 self.pay(-cost)
             else:
+                self.game.log(
+                    f"Unit {unit.name} was destroyed because of lack of maintenance!")
                 unit.destroy()
 
     # Add unit to player's unit list
@@ -52,8 +54,14 @@ class Player:
         unit = unit_type(self, unit_name, starting_pos, self.game, self.tech)
         if pay:
             self.pay(-unit.cp_cost)
+            self.game.log(
+                f"{self.name} bought a {unit_type.__name__}, leaving them with {self.construction_points} cp!")
         self.units.append(unit)
         return unit
+
+    # For each colony, pay the player their cp_capacity
+    def get_income(self):
+        self.pay(sum(unit.cp_capacity for unit in self.units if type(unit) == Colony))
 
     # Prints the player's name and units
     def __str__(self):

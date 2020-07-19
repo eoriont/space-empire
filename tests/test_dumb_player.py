@@ -71,8 +71,8 @@ assert_player_scouts(2, p2, (4, 4), 5)
 
 # 3 Movement Phase
 game.complete_movement_phase()
-assert_player_scouts(3, p1, (4, 0), 3)
-assert_player_scouts(3, p2, (4, 4), 3)
+assert_player_scouts(3, p1, (4, 0), 5)
+assert_player_scouts(3, p2, (4, 4), 5)
 
 # 3 Combat Phase (nothing happens)
 game.complete_combat_phase()
@@ -100,3 +100,5 @@ assert_player_scouts(4, p2, (4, 4), 3)
 
 assert_player_economic(4, p1, 0)
 assert_player_economic(4, p2, 0)
+
+print("All tests passed!")

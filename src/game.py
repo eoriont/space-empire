@@ -20,6 +20,11 @@ class Game:
     # If units collide, fight it out
     # TODO: Sort this out into the unit class so it isn't so long
     def unit_battle(self, units):
+        # Remove decoys and order units by attack class
+        for u in units:
+            if type(u) == Decoy:
+                u.destroy()
+                units.remove(u)
         units = sorted(units, key=lambda x: ord(x.attack_class or 'Z'))
         player_units = Board.sort_units_by_player(units)
         player_units_len = {player: len(us)
@@ -34,10 +39,6 @@ class Game:
             units_to_screen = random.sample(
                 player_units[player_with_more_units], num_units_to_screen)
             for u in units_to_screen:
-                units.remove(u)
-        for u in units:
-            if type(u) == Decoy:
-                u.destroy()
                 units.remove(u)
         # Loop through units in the correct attack order and battle
         while not Board.units_on_same_team(units):
@@ -104,13 +105,13 @@ class Game:
 
     # Upgrade technology and buy new ships
     def complete_economic_phase(self):
+        self.log(f"Turn {self.current_turn} - Economic Phase\n")
         for player in self.players:
-            income_list = [
-                unit.cp_capacity for unit in player.units if type(unit) == Colony]
-            player.pay(sum(income_list))
+            player.get_income()
             player.pay_maitenance_costs()
             player.upgrade_tech()
             player.build_fleet()
+        self.log("------------------------")
         self.board.create()
 
     # Print to console if logging is enabled
