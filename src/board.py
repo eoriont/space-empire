@@ -9,6 +9,7 @@ class Board:
     def __init__(self, game, size):
         self.grid = {}
         self.size = size
+        self.center = [(x-1)/2 for x in size]
         self.game = game
         self.planets = []
 
@@ -23,26 +24,6 @@ class Board:
             else:
                 grid[unit.pos] = [unit]
         self.grid = grid
-
-    # Return if all the units in the given list belong to the same player
-    @staticmethod
-    def units_on_same_team(units):
-        players = [
-            unit.player for unit in units if unit.alive and not unit.no_attack]
-        if len(players) == 0:
-            return True
-        return players.count(players[0]) == len(players)
-
-    # Return dictionary of players and their units in a unit list
-    @staticmethod
-    def sort_units_by_player(units):
-        new_units = {}
-        for unit in units:
-            if unit.player.name in new_units.keys():
-                new_units[unit.player.name].append(unit)
-            else:
-                new_units[unit.player.name] = [unit]
-        return new_units
 
     # Check if a position is within the grid
     def is_in_bounds(self, x, y):
