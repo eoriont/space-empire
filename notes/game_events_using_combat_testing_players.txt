@@ -1,0 +1,99 @@
+STARTING CONDITIONS
+
+Players 1 and 2
+    are CombatTestingPlayers
+    start with 20 CPs
+    have an initial fleet of 3 scouts and 3 colony ships
+
+---
+
+TURN 1
+
+MOVEMENT PHASE
+
+Player 1, Movement 1
+    Scouts 1,2,3: (2,0) --> (2, 1)
+
+Player 2, Movement 1
+    Scouts 1,2,3: (2,4) --> (2, 3)
+
+Player 1, Movement 2
+    Scout 1,2,3: (2, 1) --> (2, 2)
+
+Player 2, Movement 2
+    Scouts 1,2,3: (2, 3) --> (2, 2)
+
+Players 1/2, Movement 3
+    No player moved!
+
+Player 1, Final Locations:
+    Scout 1: (2, 2)
+    Scout 2: (2, 2)
+    Scout 3: (2, 2)
+
+Player 2, Final Locations:
+    Scout 1: (2, 2)
+    Scout 2: (2, 2)
+    Scout 3: (2, 2)
+
+COMBAT PHASE
+
+Remaining ships: (list in the table below)
+
+ATTACKING ORDER | PLAYER |        SHIP        | HEALTH  |
+---------------------------------------------------------
+       1        |    1   |         Scout 1    |    1    |
+       2        |    1   |         Scout 2    |    1    |
+       3        |    1   |         Scout 3    |    1    |
+       4        |    2   |         Scout 1    |    1    |
+       5        |    2   |         Scout 2    |    1    |
+       6        |    2   |         Scout 3    |    1    |
+
+
+
+
+Attack 1
+Attacker: Player 1 Scout 1
+Defender: Player 2 Scout 1
+Hit Threshold: 3
+Die Roll: 1
+Hit or Miss: Hit
+
+ATTACKING ORDER | PLAYER |          SHIP          | HEALTH  |
+-------------------------------------------------------------
+       1        |    1   |         Scout 1        |    1    |
+       2        |    1   |         Scout 2        |    1    |
+       3        |    1   |         Scout 3        |    1    |
+       4        |    2   |         Scout 2        |    1    |
+       5        |    2   |         Scout 3        |    1    |
+
+Attack 2
+Attacker: Player 1 Scout 2
+Defender: Player 2 Scout 2
+Hit Threshold: 3
+Die Roll: 2
+Hit or Miss: Hit
+
+ATTACKING ORDER | PLAYER |          SHIP          | HEALTH  |
+-------------------------------------------------------------
+       1        |    1   |         Scout 1        |    1    |
+       2        |    1   |         Scout 2        |    1    |
+       3        |    1   |         Scout 3        |    1    |
+       5        |    2   |         Scout 3        |    1    |
+
+Attack 3
+Attacker: Player 1 Scout 3
+Defender: Player 2 Scout 3
+Hit Threshold: 3
+Dice Roll: 3
+Hit or Miss: Hit
+
+ATTACKING ORDER | PLAYER |          SHIP          | HEALTH  |
+-------------------------------------------------------------
+       1        |    1   |         Scout 1        |    1    |
+       2        |    1   |         Scout 2        |    1    |
+       3        |    1   |         Scout 3        |    1    |
+
+Combat phase complete
+
+Player 2 ran out of scouts, so player 1 wins?
