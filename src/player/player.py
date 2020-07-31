@@ -35,6 +35,11 @@ class Player:
     def pay(self, construction_points):
         self.construction_points += construction_points
 
+    def unit_economics(self):
+        colonyships = [u for u in self.units if type(u) == Colonyship]
+        for c in colonyships:
+            c.test_for_planet()
+
     # Pay the maintenance cost of each unit
     def pay_maintenance_costs(self):
         units_to_pay = [u for u in self.units if not u.no_maintenance]
@@ -43,9 +48,7 @@ class Player:
             if self.construction_points >= cost:
                 self.pay(-cost)
             else:
-                self.game.log(
-                    f"Unit {unit.name} was destroyed because of lack of maintenance!")
-                unit.destroy()
+                unit.destroy("lack of maitenence")
 
     # Add unit to player's unit list
     def build_unit(self, unit_type, starting_pos=None, pay=True):

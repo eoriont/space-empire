@@ -8,7 +8,9 @@ from combat_engine import CombatEngine
 
 class Game:
     # Initialize with 2 players and turn starts at 0
-    def __init__(self, board_size, logging=False, rendering=False):
+    def __init__(self, board_size, logging=False, rendering=False, perfect_die=False):
+        self.perfect_die = perfect_die
+        self.last_die = 1
         self.current_turn = 0
         self.logging = logging
         self.rendering = rendering
@@ -45,15 +47,19 @@ class Game:
             print("Turns taken:", self.current_turn)
             print(winner)
 
+    # Move all units from  all players for phase
+    def complete_singular_movement(self, phase):
+        for player in self.players:
+            self.log(f"{player.name} - Move {phase+1}")
+            player.move_units(phase)
+            self.log('')
+
     # Move all units from all players in 3 phases
     def complete_movement_phase(self):
         self.log(f"Turn {self.current_turn} - Movement Phase\n")
         for phase in range(3):
-            for player in self.players:
-                self.log(f"{player.name} - Move {phase+1}")
-                player.move_units(phase)
-                self.log('')
-            self.render()
+            self.complete_singular_movement(phase)
+        self.render()
         self.log("------------------------")
         self.board.create()
 
@@ -74,6 +80,7 @@ class Game:
             player.pay_maintenance_costs()
             player.upgrade_tech()
             player.build_fleet()
+            player.unit_economics()
         self.log("------------------------")
         self.board.create()
 
@@ -98,6 +105,13 @@ class Game:
             return winners[0]
         else:
             return None
+
+    def die_roll(self):
+        if self.perfect_die:
+            self.last_die += 1
+            return self.last_die % 6
+        else:
+            return random.randint(1, 6)
 
     # Prints all the players
     def __str__(self):

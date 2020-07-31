@@ -12,3 +12,4 @@ class ShipYard(Unit):
     hull_size = 1
     req_size_tech = 1
     no_maintenance = True
+    immovable = True

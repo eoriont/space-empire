@@ -24,16 +24,19 @@ class Unit:
                                       self.get_possible_translations(2)]
 
     # Remove unit from player's list and alive = False
-    def destroy(self):
+    def destroy(self, hurter_name):
         self.alive = False
+        self.game.log(f"{self.name} has been destroyed by {hurter_name}")
         if self in self.player.units:
             self.player.units.remove(self)
 
     # Subtract 1 from armor
-    def hurt(self):
+    def hurt(self, hurter_name):
         self.armor -= 1
         if self.armor <= 0:
-            self.destroy()
+            self.destroy(hurter_name)
+        else:
+            self.game.log(f"{self.name} has been hurt by {hurter_name}")
 
     # Print the unit, name, and position
     def __str__(self):
@@ -41,6 +44,8 @@ class Unit:
 
     # Returns if unit is able to move to position and moves there if so
     def move(self, new_pos):
+        if self.immovable:
+            return
         self.game.log(
             f"    {self.__class__.__name__}: {self.pos} -> {new_pos}")
         self.pos = new_pos

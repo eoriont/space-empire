@@ -56,6 +56,5 @@ class RandomPlayer(Player):
     # Move units to random spots
     def move_units(self, phase):
         for unit in self.units:
-            if not unit.immovable:
-                unit.move(random.choice(
-                    unit.get_possible_spots(phase)))
+            unit.move(random.choice(
+                unit.get_possible_spots(phase)))

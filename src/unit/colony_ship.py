@@ -15,11 +15,7 @@ class Colonyship(Unit):
     no_maintenance = True
     no_attack = True
 
-    # If moved onto a planet, the ship will be replaced with a colony
-    def move(self, new_pos):
+    def test_for_planet(self):
         if self.game.board.on_unoccupied_planet(self.pos):
             col = self.player.build_unit(Colony, self.pos)
-            self.destroy()
-            # Inefficient
-            self.game.board.create()
-        super().move(new_pos)
+            self.destroy("turning into a colony")

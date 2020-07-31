@@ -1,6 +1,7 @@
 
 import random
 from unit.decoy import Decoy
+from unit.colony_ship import Colonyship
 
 
 class CombatEngine:
@@ -9,11 +10,11 @@ class CombatEngine:
         self.game = game
 
     def unit_battle(self, units):
-        # Remove decoys
+        # Remove decoys/colonyships
         for u in units:
-            if type(u) == Decoy:
-                u.destroy()
-                units.remove(u)
+            if type(u) in [Decoy, Colonyship]:
+                u.destroy("combat")
+        units = [u for u in units if u.alive]
         # Sort units by attack class, and by player
         units = sorted(units, key=lambda x: ord(x.attack_class or 'Z'))
         player_units = CombatEngine.sort_units_by_player(units)
@@ -23,10 +24,6 @@ class CombatEngine:
         if len(set(player_units_amounts.values())) <= 1:
             player_with_more_units_name = max(
                 player_units_amounts, key=player_units_amounts.get)
-            # nums = unit_nums[:2] if unit_nums[0] < unit_nums[1] else unit_nums[:2][::-1]
-            # num_units_to_screen = random.randint(*nums)
-            # units_to_screen = random.sample(
-            #     player_units[player_with_more_units], num_units_to_screen)
             units_to_screen = self.game.players_by_name[player_with_more_units_name].screen_units(
             )
             for u in units_to_screen:
@@ -44,10 +41,9 @@ class CombatEngine:
                 u1_atk_str = unit.attack_strength + unit.tech['atk']
                 u2_def_str = unit2.defense_strength + unit2.tech['def']
                 hit_threshold = u1_atk_str - u2_def_str
-                die_roll = random.randint(0, 6)
+                die_roll = self.game.die_roll()
                 if die_roll <= hit_threshold or die_roll == 1:
-                    unit2.hurt()
-                    self.game.log(f"{unit2.name} has been hurt by {unit.name}")
+                    unit2.hurt(unit.name)
 
     # Return dictionary of players and their units in a unit list
     @staticmethod

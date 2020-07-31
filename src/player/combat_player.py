@@ -26,8 +26,7 @@ class CombatPlayer(Player):
     # Move all units
     def move_units(self, phase):
         for unit in self.units:
-            if not unit.immovable:
-                self.move_towards_center(unit, phase)
+            self.move_towards_center(unit, phase)
 
     # Move to the square closest to the center
     def move_towards_center(self, unit, phase):
