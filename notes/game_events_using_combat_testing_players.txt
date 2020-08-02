@@ -13,28 +13,29 @@ MOVEMENT PHASE
 
 Player 1, Movement 1
     Scouts 1,2,3: (2,0) --> (2, 1)
+    Colony Ships 4,5,6: (2,0) --> (2,1)
 
 Player 2, Movement 1
     Scouts 1,2,3: (2,4) --> (2, 3)
+    Colony Ships 4,5,6: (2,4) --> (2,3)
 
 Player 1, Movement 2
     Scout 1,2,3: (2, 1) --> (2, 2)
 
 Player 2, Movement 2
     Scouts 1,2,3: (2, 3) --> (2, 2)
+    Colony Ships 4,5,6: (2,1) --> (2,2)
 
 Players 1/2, Movement 3
     No player moved!
 
 Player 1, Final Locations:
-    Scout 1: (2, 2)
-    Scout 2: (2, 2)
-    Scout 3: (2, 2)
+    Scouts 1,2,3: (2, 2)
+    Colony Ships 4,5,6: (2,2)
 
 Player 2, Final Locations:
-    Scout 1: (2, 2)
-    Scout 2: (2, 2)
-    Scout 3: (2, 2)
+    Scouts 1,2,3: (2, 2)
+    Colony Ships 4,5,6: (2,2)
 
 COMBAT PHASE
 
@@ -96,4 +97,72 @@ ATTACKING ORDER | PLAYER |          SHIP          | HEALTH  |
 
 Combat phase complete
 
-Player 2 ran out of scouts, so player 1 wins?
+------------------------
+Turn 1 - Economic Phase
+
+Player1 bought a Destroyer, leaving them with 1 cp!
+Player2 bought a Destroyer, leaving them with 4 cp!
+
+------------------------
+Turn 2 - Movement Phase
+
+Player 1 - Move 1
+    Destroyer 1: (2, 0) -> (2, 1)
+
+Player 2 - Move 1
+    Destroyer 1: (2, 4) -> (2, 3)
+
+Player 1 - Move 2
+    Destroyer 1: (2, 1) -> (2, 2)
+
+Player 2 - Move 2
+    Destroyer 1: (2, 3) -> (2, 2)
+
+Players 1/2, Movement 3
+    No player moved!
+
+------------------------
+Turn 2 - Combat Phase
+
+Attack 4
+Attacker: Player 1 Scout 1
+Defender: Player 2 Destroyer 1
+Hit Threshold: 3
+Dice Roll: 4
+Hit or Miss: Miss
+
+ATTACKING ORDER | PLAYER |          SHIP          | HEALTH  |
+-------------------------------------------------------------
+       1        |    1   |         Scout 1        |    1    |
+       2        |    1   |         Scout 2        |    1    |
+       3        |    1   |         Scout 3        |    1    |
+       4        |    1   |         Destroyer 1    |    1    |
+       5        |    2   |         Destroyer 1    |    1    |
+
+Attack 5
+Attacker: Player 1 Scout 2
+Defender: Player 2 Destroyer 1
+Hit Threshold: 3
+Dice Roll: 5
+Hit or Miss: Miss
+
+Attack 6
+Attacker: Player 1 Scout 3
+Defender: Player 2 Destroyer 1
+Hit Threshold: 3
+Dice Roll: 6
+Hit or Miss: Miss
+
+Attack 7
+Attacker: Player 1 Destroyer 1
+Defender: Player 2 Destroyer 1
+Hit Threshold: 4
+Dice Roll: 1
+Hit or Miss: Hit
+
+ATTACKING ORDER | PLAYER |          SHIP          | HEALTH  |
+-------------------------------------------------------------
+       1        |    1   |         Scout 1        |    1    |
+       2        |    1   |         Scout 2        |    1    |
+       3        |    1   |         Scout 3        |    1    |
+       4        |    1   |         Destroyer 1    |    1    |

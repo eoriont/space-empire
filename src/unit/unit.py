@@ -46,9 +46,10 @@ class Unit:
     def move(self, new_pos):
         if self.immovable:
             return
-        self.game.log(
-            f"    {self.__class__.__name__}: {self.pos} -> {new_pos}")
-        self.pos = new_pos
+        if new_pos != self.pos:
+            self.game.log(
+                f"    {self.__class__.__name__}: {self.pos} -> {new_pos}")
+            self.pos = new_pos
 
     # Return a list of the possible spots a unit could move to
     def get_possible_translations(self, phase):

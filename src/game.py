@@ -70,6 +70,7 @@ class Game:
             if not CombatEngine.units_on_same_team(units):
                 self.combat.unit_battle(units)
         self.log("------------------------")
+        self.board.create()
         self.render()
 
     # Upgrade technology and buy new ships
