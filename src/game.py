@@ -10,6 +10,7 @@ class Game:
     # Initialize with 2 players and turn starts at 0
     def __init__(self, board_size, logging=False, rendering=False, perfect_die=False):
         self.perfect_die = perfect_die
+        self.current_id = 0
         self.last_die = 1
         self.current_turn = 0
         self.logging = logging
@@ -19,15 +20,14 @@ class Game:
         self.board = Board(self, board_size)
         self.board.init_planets((3, 6), (3, 0))
         self.board.create()
-        self.players_by_name = {}
         self.combat = CombatEngine(self)
 
     # Add player to the game before running
     def add_player(self, player):
+        player.set_id(len(self.players))
         self.players.append(player)
         self.player_count = len(self.players)
         self.board.create()
-        self.players_by_name[player.name] = player
 
     # Run for 100 turns or until all of a player's units are dead
     def run_until_completion(self, max_turns=100):
@@ -68,7 +68,7 @@ class Game:
         self.log(f"Turn {self.current_turn} - Combat Phase\n")
         for _, units in self.board.items():
             if not CombatEngine.units_on_same_team(units):
-                self.combat.unit_battle(units)
+                self.combat.battle(units)
         self.log("------------------------")
         self.board.create()
         self.render()
@@ -113,6 +113,10 @@ class Game:
             return self.last_die % 6
         else:
             return random.randint(1, 6)
+
+    def next_id():
+        self.current_id += 1
+        return self.current_id
 
     # Prints all the players
     def __str__(self):

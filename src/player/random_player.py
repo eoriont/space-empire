@@ -36,22 +36,22 @@ class RandomPlayer(Player):
                 positions[shipyard.pos] = 0
             positions[shipyard.pos] += shipyard.tech['syc']
         # The cheapest unit is a decoy at 1 cp
-        while self.construction_points >= 6:
+        while self.cp >= 6:
             pos = random.choice(list(positions))
             capacity = positions[pos]
             capacity += 1
             capacity /= 2
             available_units = [unit for unit in unit_list if unit.cp_cost <=
-                               self.construction_points and unit.hull_size <= capacity]
+                               self.cp and unit.hull_size <= capacity]
             self.build_unit(random.choice(available_units), pos)
 
     # Upgrade a certain technology
     def upgrade_tech(self):
-        options = self.tech.get_available(self.construction_points)
+        options = self.tech.get_available(self.cp)
         if len(options) == 0:
             return
         choice = random.choice(options)
-        self.construction_points -= self.tech.buy_tech(choice)
+        self.buy_tech(choice)
 
     # Move units to random spots
     def move_units(self, phase):

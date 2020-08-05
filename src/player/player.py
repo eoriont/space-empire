@@ -15,8 +15,11 @@ class Player:
         self.game = game
         self.tech = Technology(
             {'atk': 0, 'def': 0, 'mov': 1, 'syc': 1, 'ss': 1})
-        self.construction_points = 20
+        self.cp = 20
         self.build_starting_fleet()
+
+    def set_id(self, id):
+        self.id = id
 
     # Build all the ships the player starts with
     def build_starting_fleet(self):
@@ -32,8 +35,8 @@ class Player:
         self.build_unit(Colony, pay=False)
 
     # Give the player a specified amount of cp
-    def pay(self, construction_points):
-        self.construction_points += construction_points
+    def pay(self, cp):
+        self.cp += cp
 
     def unit_economics(self):
         colonyships = [u for u in self.units if type(u) == Colonyship]
@@ -43,12 +46,15 @@ class Player:
     # Pay the maintenance cost of each unit
     def pay_maintenance_costs(self):
         units_to_pay = [u for u in self.units if not u.no_maintenance]
-        for unit in units_to_pay:
+        before_cp = self.cp
+        for unit in sorted(units_to_pay, key=lambda x: x.cp_cost, reverse=True):
             cost = unit.maintenance_cost
-            if self.construction_points >= cost:
+            if self.cp >= cost:
                 self.pay(-cost)
             else:
                 unit.destroy("lack of maitenence")
+        self.game.log(
+            f"{self.name} payed {before_cp-self.cp} for maintenance, leaving them at {self.cp} CP")
 
     # Add unit to player's unit list
     def build_unit(self, unit_type, starting_pos=None, pay=True):
@@ -58,13 +64,22 @@ class Player:
         if pay:
             self.pay(-unit.cp_cost)
             self.game.log(
-                f"{self.name} bought a {unit_type.__name__}, leaving them with {self.construction_points} cp!")
+                f"{self.name} bought a {unit_type.__name__}, leaving them with {self.cp} cp!")
         self.units.append(unit)
         return unit
 
     # For each colony, pay the player their cp_capacity
     def get_income(self):
+        before_cp = self.cp
         self.pay(sum(unit.cp_capacity for unit in self.units if type(unit) == Colony))
+        self.game.log(
+            f"{self.name} got {self.cp-before_cp} income, leaving them at {self.cp} CP!")
+
+    def buy_tech(self, tech_type):
+        price = self.tech.buy_tech(tech_type)
+        self.cp -= price
+        self.game.log(
+            f"{self.name} bought {tech_type} for {price}, leaving them with {self.cp} CP")
 
     # Prints the player's name and units
     def __str__(self):

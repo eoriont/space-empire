@@ -37,7 +37,7 @@ class Board:
         ax.yaxis.set_minor_locator(MultipleLocator(.5))
 
         plt.title(''.join(
-            [f"| {player.name}: {player.construction_points}CP |" for player in self.game.players]))
+            [f"| {player.name}: {player.cp}CP |" for player in self.game.players]))
 
         for planet in self.planets:
             plt.gca().add_patch(plt.Circle(planet.pos, radius=.5, fc='g'))

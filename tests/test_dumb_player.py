@@ -25,7 +25,7 @@ def assert_player_scouts(turn, player, pos, amt):
 
 
 def assert_player_economic(turn, player, cps):
-    assert player.construction_points == cps, f"Test turn {turn} economic phase failed: player cp is {player.construction_points} but was expected to be {cps}"
+    assert player.cp == cps, f"Test turn {turn} economic phase failed: player cp is {player.cp} but was expected to be {cps}"
     print(f"Test turn {turn} economic phase passed!")
 
 
