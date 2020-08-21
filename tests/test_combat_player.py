@@ -10,7 +10,7 @@ try:
 except ImportError as e:
     print(e)
 
-game = Game((5, 5), logging=False, rendering=False, perfect_die=True)
+game = Game((5, 5), logging=False, rendering=False, die_mode="ascend")
 
 
 def assert_unit_positions(turn, phase, player, pos, units):

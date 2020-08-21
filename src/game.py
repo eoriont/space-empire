@@ -8,8 +8,8 @@ from combat_engine import CombatEngine
 
 class Game:
     # Initialize with 2 players and turn starts at 0
-    def __init__(self, board_size, logging=False, rendering=False, perfect_die=False):
-        self.perfect_die = perfect_die
+    def __init__(self, board_size, logging=False, rendering=False, die_mode="normal"):
+        self.die_mode = die_mode
         self.current_id = 0
         self.last_die = 1
         self.current_turn = 0
@@ -24,7 +24,6 @@ class Game:
 
     # Add player to the game before running
     def add_player(self, player):
-        player.set_id(len(self.players))
         self.players.append(player)
         self.player_count = len(self.players)
         self.board.create()
@@ -108,11 +107,14 @@ class Game:
             return None
 
     def die_roll(self):
-        if self.perfect_die:
+        if self.die_mode == "ascend":
             self.last_die += 1
             return self.last_die % 6
-        else:
+        elif self.die_mode == "normal":
             return random.randint(1, 6)
+        elif self.die_mode == "descend":
+            self.last_die -= 1
+            return self.last_die % 6
 
     def next_id():
         self.current_id += 1

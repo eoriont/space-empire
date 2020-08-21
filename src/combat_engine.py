@@ -13,6 +13,7 @@ class CombatEngine:
         units = self.remove_units(units)
 
         # Sort units by attack class, and by player
+        units = sorted(units, key=lambda x: x.player.id)
         units = sorted(units, key=lambda x: ord(x.attack_class or 'Z'))
 
         for u in self.get_screen_units(units):

@@ -1,0 +1,263 @@
+STARTING CONDITIONS
+
+Players 1 and 2
+    are CombatPlayers
+    start with 20 CPs
+    have an initial fleet of 3 scouts, 3 colony ships, 4 ship yards
+
+---
+
+TURN 1 - MOVEMENT PHASE
+
+Player 1:
+    Scouts 1,2,3: (2,0) --> (2,2)
+    Colony Ships 4,5,6: (2,0) --> (2,2)
+
+Player 2:
+    Scouts 1,2,3: (2,4) --> (2,2)
+    Colony Ships 4,5,6: (2,4) --> (2,2)
+
+COMBAT PHASE
+
+Colony Ships are removed
+
+| PLAYER |        SHIP        | HEALTH  |
+----------------------------------------
+|    1   |         Scout 1    |    1    |
+|    1   |         Scout 2    |    1    |
+|    1   |         Scout 3    |    1    |
+|    2   |         Scout 1    |    1    |
+|    2   |         Scout 2    |    1    |
+|    2   |         Scout 3    |    1    |
+
+Attack 1
+    Attacker: Player 1 Scout 1
+    Defender: Player 2 Scout 1
+    Largest Roll to Hit: 3
+    Die Roll: 6
+    Hit or Miss: Miss
+
+Attack 2
+    Attacker: Player 1 Scout 2
+    Defender: Player 2 Scout 2
+    Largest Roll to Hit: 3
+    Die Roll: 5
+    Hit or Miss: Miss
+
+Attack 3
+    Attacker: Player 1 Scout 3
+    Defender: Player 2 Scout 3
+    Largest Roll to Hit: 3
+    Dice Roll: 4
+    Hit or Miss: Miss
+
+Attack 4
+    Attacker: Player 2 Scout 1
+    Defender: Player 1 Scout 1
+    Largest Roll to Hit: 3
+    Die Roll: 3
+    Hit or Miss: Hit
+
+| PLAYER |          SHIP          | HEALTH  |
+---------------------------------------------
+|    1   |         Scout 2        |    1    |
+|    1   |         Scout 3        |    1    |
+|    2   |         Scout 1        |    1    |
+|    2   |         Scout 2        |    1    |
+|    2   |         Scout 3        |    1    |
+
+Attack 2
+    Attacker: Player 2 Scout 2
+    Defender: Player 1 Scout 2
+    Largest Roll to Hit: 3
+    Die Roll: 2
+    Hit or Miss: Hit
+
+| PLAYER |          SHIP          | HEALTH  |
+---------------------------------------------
+|    1   |         Scout 3        |    1    |
+|    2   |         Scout 1        |    1    |
+|    2   |         Scout 2        |    1    |
+|    2   |         Scout 3        |    1    |
+
+Attack 3
+    Attacker: Player 1 Scout 3
+    Defender: Player 2 Scout 3
+    Largest Roll to Hit: 3
+    Dice Roll: 1
+    Hit or Miss: Hit
+
+| PLAYER |          SHIP          | HEALTH  |
+---------------------------------------------
+|    2   |         Scout 1        |    1    |
+|    2   |         Scout 2        |    1    |
+|    2   |         Scout 3        |    1    |
+
+Combat phase complete
+
+------------------------
+
+TURN 1 - ECONOMIC PHASE
+
+Player 1
+
+    INCOME/MAINTENANCE (starting CP: 20)
+        colony income: +3 CP/Colony x 1 Colony = +3 CP
+        maintenance costs: 0
+
+    PURCHASES (starting CP: 20)
+        ship size technology 2: -10 CP
+        destroyer: -9 CP
+
+    REMAINING CP: 4
+
+Player 2
+
+    INCOME/MAINTENANCE (starting CP: 20)
+        colony income: +3 CP/Colony x 1 Colony = +3 CP
+        maintenance costs: -1 CP/Scout x 3 Scouts = -3 CP
+
+    PURCHASES (starting CP: 23)
+        ship size technology 2: -10 CP
+        destroyer: -9 CP
+
+    REMAINING CP: 1
+
+------------------------
+
+TURN 2 - MOVEMENT PHASE
+
+Player 1:
+    Destroyer 1 : (2,0) --> (2,2)
+
+Player 2:
+    Scouts 1,2,3: stay at (2,2)
+    Destroyer 1: (2,4) --> (2,2)
+
+------------------------
+
+TURN 2 - COMBAT PHASE
+
+| PLAYER |          SHIP          | HEALTH  |
+---------------------------------------------
+|    1   |         Destroyer 1    |    1    |
+|    2   |         Destroyer 1    |    1    |
+|    2   |         Scout 1        |    1    |
+|    2   |         Scout 2        |    1    |
+|    2   |         Scout 3        |    1    |
+
+Attack 1
+    Attacker: Player 1 Destroyer 1
+    Defender: Player 2 Destroyer 1
+    Largest Roll to Hit: 4
+    Dice Roll: 6
+    Hit or Miss: Miss
+
+Attack 2
+    Attacker: Player 2 Destroyer 1
+    Defender: Player 1 Destroyer 1
+    Largest Roll to Hit: 4
+    Dice Roll: 5
+    Hit or Miss: Miss
+
+Attack 3
+    Attacker: Player 2 Scout 1
+    Defender: Player 1 Destroyer 1
+    Largest Roll to Hit: 3
+    Dice Roll: 4
+    Hit or Miss: Miss
+
+Attack 4
+    Attacker: Player 2 Scout 2
+    Defender: Player 1 Destroyer 1
+    Largest Roll to Hit: 3
+    Dice Roll: 3
+    Hit or Miss: Hit
+
+| PLAYER |          SHIP          | HEALTH  |
+---------------------------------------------
+|    2   |         Destroyer 1    |    1    |
+|    2   |         Scout 1        |    1    |
+|    2   |         Scout 2        |    1    |
+|    2   |         Scout 3        |    1    |
+------------------------
+
+TURN 2 - ECONOMIC PHASE
+
+Player 1
+
+    INCOME/MAINTENANCE (starting CP: 4)
+        colony income: +3 CP/Colony x 1 Colony = +3 CP
+        maintenance costs: 0
+
+    PURCHASES (starting CP: 7)
+        scout: -6 CP
+
+    REMAINING CP: 1
+
+Player 2
+
+    INCOME/MAINTENANCE (starting CP: 1)
+        colony income: +3 CP/Colony x 1 Colony = +3 CP
+        maintenance costs: -1 CP/Scout x 3 Scouts -1 CP/Destroyer x 1 Destroyer = -4 CP
+
+    REMAINING CP: 0
+
+------------------------
+
+TURN 3 - MOVEMENT PHASE
+
+Player 1:
+    Scout 1: (2,4) --> (2,2)
+
+Player 2:
+    Scouts 1,2,3: stay at (2,2)
+    Destroyer 1 : stay at (2,2)
+
+------------------------
+
+TURN 3 - COMBAT PHASE
+
+| PLAYER |          SHIP          | HEALTH  |
+---------------------------------------------
+|    2   |         Destroyer 1    |    1    |
+|    2   |         Scout 1        |    1    |
+|    2   |         Scout 2        |    1    |
+|    2   |         Scout 3        |    1    |
+|    1   |         Scout 1        |    1    |
+
+Attack 1
+    Attacker: Player 2 Destroyer 1
+    Defender: Player 1 Scout 1
+    Largest Roll to Hit: 4
+    Dice Roll: 2
+    Hit or Miss: Hit
+
+| PLAYER |          SHIP          | HEALTH  |
+---------------------------------------------
+|    1   |         Destroyer 1    |    1    |
+|    1   |         Scout 1        |    1    |
+|    1   |         Scout 2        |    1    |
+|    1   |         Scout 3        |    1    |
+------------------------
+
+TURN 3 - ECONOMIC PHASE
+
+Player 1
+
+    INCOME/MAINTENANCE (starting CP: 1)
+        colony income: +3 CP/Colony x 1 Colony = +3 CP
+        maintenance costs: 0
+
+    REMAINING CP: 4
+
+Player 2
+
+    INCOME/MAINTENANCE (starting CP: 0)
+        colony income: +3 CP/Colony x 1 Colony = +3 CP
+        maintenance costs: -1 CP/Scout x 3 Scouts -1 CP/Destroyer x 1 Destroyer = -4 CP
+
+    REMOVALS
+        remove scout 3 due to inability to pay maintenance costs
+
+    REMAINING CP: 0

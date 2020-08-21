@@ -7,7 +7,8 @@ from unit.ship_yard import ShipYard
 
 class Player:
     # Initialize player and build fleet
-    def __init__(self, name, starting_pos, game, color="black"):
+    def __init__(self, pid, name, starting_pos, game, color="black"):
+        self.id = pid
         self.starting_pos = starting_pos
         self.name = name
         self.units = []
@@ -17,9 +18,6 @@ class Player:
             {'atk': 0, 'def': 0, 'mov': 1, 'syc': 1, 'ss': 1})
         self.cp = 20
         self.build_starting_fleet()
-
-    def set_id(self, id):
-        self.id = id
 
     # Build all the ships the player starts with
     def build_starting_fleet(self):
@@ -59,7 +57,7 @@ class Player:
     # Add unit to player's unit list
     def build_unit(self, unit_type, starting_pos=None, pay=True):
         starting_pos = self.starting_pos if starting_pos is None else starting_pos
-        unit_name = f"{unit_type.abbr}{len(self.units)+1}"
+        unit_name = f"P{self.id}{unit_type.abbr}{len(self.units)+1}"
         unit = unit_type(self, unit_name, starting_pos, self.game, self.tech)
         if pay:
             self.pay(-unit.cp_cost)
