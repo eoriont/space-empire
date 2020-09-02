@@ -43,5 +43,9 @@ def assert_exception(test_name, func, *args):
         color_string(f"Test {test_name} failed because it didn't throw an exception!", 'Red'))
 
 
+def color_print(s, col):
+    print(color_string(s, col))
+
+
 def color_string(s, col):
     return f"{colors[col]}{s}{colors['Reset']}"

@@ -11,7 +11,7 @@ class Game:
     def __init__(self, board_size, logging=False, rendering=False, die_mode="normal"):
         self.die_mode = die_mode
         self.current_id = 0
-        self.last_die = 1
+        self.last_die = 0
         self.current_turn = 0
         self.logging = logging
         self.rendering = rendering
@@ -59,6 +59,7 @@ class Game:
         for phase in range(3):
             self.complete_singular_movement(phase)
         self.render()
+        self.log(self)
         self.log("------------------------")
         self.board.create()
 
@@ -70,6 +71,7 @@ class Game:
                 self.combat.battle(units)
         self.log("------------------------")
         self.board.create()
+        self.log(self)
         self.render()
 
     # Upgrade technology and buy new ships
@@ -77,10 +79,10 @@ class Game:
         self.log(f"Turn {self.current_turn} - Economic Phase\n")
         for player in self.players:
             player.get_income()
+            player.unit_economics()
             player.pay_maintenance_costs()
             player.upgrade_tech()
             player.build_fleet()
-            player.unit_economics()
         self.log("------------------------")
         self.board.create()
 
@@ -109,12 +111,12 @@ class Game:
     def die_roll(self):
         if self.die_mode == "ascend":
             self.last_die += 1
-            return self.last_die % 6
+            return ((self.last_die-1) % 6) + 1
         elif self.die_mode == "normal":
             return random.randint(1, 6)
         elif self.die_mode == "descend":
             self.last_die -= 1
-            return self.last_die % 6
+            return (self.last_die % 6) + 1
 
     def next_id():
         self.current_id += 1

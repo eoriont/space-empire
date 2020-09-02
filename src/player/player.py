@@ -16,7 +16,7 @@ class Player:
         self.game = game
         self.tech = Technology(
             {'atk': 0, 'def': 0, 'mov': 1, 'syc': 1, 'ss': 1})
-        self.cp = 20
+        self.cp = 0
         self.build_starting_fleet()
 
     # Build all the ships the player starts with
@@ -30,7 +30,7 @@ class Player:
         for _ in range(4):
             self.build_unit(ShipYard, pay=False)
 
-        self.build_unit(Colony, pay=False)
+        self.build_unit(Colony, pay=False, unit_options={"home_colony": True})
 
     # Give the player a specified amount of cp
     def pay(self, cp):
@@ -40,6 +40,10 @@ class Player:
         colonyships = [u for u in self.units if type(u) == Colonyship]
         for c in colonyships:
             c.test_for_planet()
+        for c in [u for u in self.units if type(u) == Colony]:
+            if c.is_home_colony:
+                self.pay(20)  # for home colony earnings
+                self.game.log(f"{self.name} got 20 from their home colony")
 
     # Pay the maintenance cost of each unit
     def pay_maintenance_costs(self):
@@ -55,10 +59,12 @@ class Player:
             f"{self.name} payed {before_cp-self.cp} for maintenance, leaving them at {self.cp} CP")
 
     # Add unit to player's unit list
-    def build_unit(self, unit_type, starting_pos=None, pay=True):
+    def build_unit(self, unit_type, starting_pos=None, pay=True, unit_options=None):
+        unit_options = {} if unit_options is None else unit_options
         starting_pos = self.starting_pos if starting_pos is None else starting_pos
         unit_name = f"P{self.id}{unit_type.abbr}{len(self.units)+1}"
-        unit = unit_type(self, unit_name, starting_pos, self.game, self.tech)
+        unit = unit_type(self, unit_name, starting_pos,
+                         self.game, self.tech, **unit_options)
         if pay:
             self.pay(-unit.cp_cost)
             self.game.log(
@@ -69,7 +75,8 @@ class Player:
     # For each colony, pay the player their cp_capacity
     def get_income(self):
         before_cp = self.cp
-        self.pay(sum(unit.cp_capacity for unit in self.units if type(unit) == Colony))
+        self.pay(sum(unit.cp_capacity for unit in self.units if type(
+            unit) == Colony and unit.is_home_colony == False))
         self.game.log(
             f"{self.name} got {self.cp-before_cp} income, leaving them at {self.cp} CP!")
 

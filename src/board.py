@@ -74,8 +74,6 @@ class Board:
     def on_unoccupied_planet(self, pos):
         on_planet = pos in [p.pos for p in self.planets]
         unoccupied = Colony not in [type(unit) for unit in self[pos]]
-        if on_planet and unoccupied:
-            print("test")
         return on_planet and unoccupied
 
     def __getitem__(self, pos):

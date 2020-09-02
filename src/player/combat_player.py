@@ -5,6 +5,8 @@ from unit.destroyer import Destroyer
 
 class CombatPlayer(Player):
 
+    buy_destroyer = True
+
     # Upgrade ship size tech to 2
     def upgrade_tech(self):
         while True:
@@ -17,12 +19,15 @@ class CombatPlayer(Player):
     def build_fleet(self):
         ships = {"Scout": Scout, "Destroyer": Destroyer}
         can_buy_destroyer = self.cp >= 9 and self.tech['ss'] >= Destroyer.req_size_tech
-        if can_buy_destroyer:
+        if self.buy_destroyer:
+            if not can_buy_destroyer:
+                return
             ship_to_buy = Destroyer
         else:
             ship_to_buy = Scout
         if self.cp >= ship_to_buy.cp_cost:
             self.build_unit(ship_to_buy)
+            self.buy_destroyer = not self.buy_destroyer
 
     # Move all units
     def move_units(self, phase):
