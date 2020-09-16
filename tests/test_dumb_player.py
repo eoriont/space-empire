@@ -29,8 +29,8 @@ def assert_player_economic(turn, player, cps):
     print(f"Test turn {turn} economic phase passed!")
 
 
-p1 = DumbPlayer("DumbPlayer1", (2, 0), game, "red")
-p2 = DumbPlayer("DumbPlayer2", (2, 4), game, "blue")
+p1 = DumbPlayer(1, "DumbPlayer1", (2, 0), game, "red")
+p2 = DumbPlayer(2, "DumbPlayer2", (2, 4), game, "blue")
 game.add_player(p1)
 game.add_player(p2)
 

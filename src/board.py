@@ -76,6 +76,13 @@ class Board:
         unoccupied = Colony not in [type(unit) for unit in self[pos]]
         return on_planet and unoccupied
 
+    def get_possible_spots(self, pos, speed):
+        return [(pos[0]+x, pos[1]+y)
+                for x in range(-speed, speed+1)
+                for y in range(-speed, speed+1)
+                if abs(x)+abs(y) <= speed
+                and self.is_in_bounds(pos[0]+x, pos[1]+y)]
+
     def __getitem__(self, pos):
         if pos in self.grid:
             return self.grid[pos]

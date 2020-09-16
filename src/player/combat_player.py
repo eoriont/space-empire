@@ -38,7 +38,8 @@ class CombatPlayer(Player):
     def move_towards_center(self, unit, phase):
         if unit.pos == self.game.board.center:
             return
-        possible_spaces = unit.get_possible_spots(phase)
+        moves = self.tech.get_spaces()[phase]
+        possible_spaces = self.game.board.get_possible_spots(unit.pos, moves)
         distances = [dist(self.game.board.center, pos)
                      for pos in possible_spaces]
         next_space = possible_spaces[distances.index(min(distances))]

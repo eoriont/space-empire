@@ -16,5 +16,6 @@ class DumbPlayer(Player):
         for unit in self.units:
             if type(unit) == Scout:
                 pos = unit.pos_from_translation((1, 0))
-                if pos in unit.get_possible_spots(phase):
+                moves = self.tech.get_spaces()[phase]
+                if pos in self.game.board.get_possible_spots(pos, moves):
                     unit.move(pos)

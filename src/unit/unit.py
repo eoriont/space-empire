@@ -19,9 +19,6 @@ class Unit:
         self.game = game
         self.tech = Technology(self.default_tech, tech)
         self.maintenance_cost = 0 if self.no_maintenance else self.hull_size
-        self.possible_translations = [self.get_possible_translations(0),
-                                      self.get_possible_translations(1),
-                                      self.get_possible_translations(2)]
 
     # Remove unit from player's list and alive = False
     def destroy(self, hurter_name):
@@ -50,17 +47,6 @@ class Unit:
             self.game.log(
                 f"    {self.__class__.__name__}: {self.pos} -> {new_pos}")
             self.pos = new_pos
-
-    # Return a list of the possible spots a unit could move to
-    def get_possible_translations(self, phase):
-        speed = self.tech.get_spaces()[phase]
-        return [(x, y) for x in range(-speed, speed+1)
-                for y in range(-speed, speed+1)
-                if abs(x) + abs(y) <= speed]
-
-    def get_possible_spots(self, phase):
-        x1, y1 = self.pos
-        return [(x+x1, y+y1) for x, y in self.possible_translations[phase] if self.game.board.is_in_bounds(x+x1, y+y1)]
 
     def pos_from_translation(self, pos):
         return (self.pos[0]+pos[0], self.pos[1]+pos[1])
