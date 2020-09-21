@@ -86,6 +86,10 @@ class Player:
         self.game.log(
             f"{self.name} bought {tech_type} for {price}, leaving them with {self.cp} CP")
 
+    def can_settle(self, colonyship):
+        # By default
+        return False
+
     # Prints the player's name and units
     def __str__(self):
         string = f"{self.name}: \n"
