@@ -18,6 +18,6 @@ class Colonyship(Unit):
     def test_for_planet(self):
         if self.game.board.on_unoccupied_planet(self.pos):
             # ask player to settle
-            if self.player.can_settle(self):
+            if self.player.strat.will_colonize_planet(self):
                 col = self.player.build_unit(Colony, self.pos)
                 self.destroy("turning into a colony")

@@ -23,10 +23,15 @@ def assert_player_economic(turn, player, cps):
     do_assert(f"turn {turn} economic phase", player.cp, cps)
 
 
-p1 = DumbPlayer(1, "DumbPlayer1", (2, 0), game, "red")
-p2 = DumbPlayer(2, "DumbPlayer2", (2, 4), game, "blue")
+# p1 = DumbPlayer(1, "DumbPlayer1", (2, 0), game, "red")
+# p2 = DumbPlayer(2, "DumbPlayer2", (2, 4), game, "blue")
+# game.add_player(p1)
+# game.add_player(p2)
+p1 = Player(DumbStrategy(), 1, "DumbPlayer1", (2, 0), game, "red")
+p2 = Player(DumbStrategy(), 1, "DumbPlayer1", (2, 0), game, "red")
 game.add_player(p1)
 game.add_player(p2)
+
 
 # 1 Movement Phase
 print("Turn 1 Movement Phase")

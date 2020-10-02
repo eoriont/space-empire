@@ -4,6 +4,7 @@ from unit.colony import Colony
 from board import Board
 from unit.decoy import Decoy
 from combat_engine import CombatEngine
+from movement_engine import MovementEngine
 
 
 class Game:
@@ -21,6 +22,8 @@ class Game:
         self.board.init_planets((3, 6), (3, 0))
         self.board.create()
         self.combat = CombatEngine(self)
+        self.movement = MovementEngine(self)
+        self.economy = EconomicEngine(self)
 
     # Add player to the game before running
     def add_player(self, player):
@@ -32,59 +35,29 @@ class Game:
     def run_until_completion(self, max_turns=100):
         for _ in range(self.current_turn, max_turns):
             self.current_turn += 1
-            self.complete_movement_phase()
-            self.complete_combat_phase()
+            self.movement.movement_phase(self.current_turn)
+            self.combat.combat_phase(self.current_turn)
             self.complete_economic_phase()
-            if self.winning_player() is not None:
+            if self.test_for_winner():
                 break
-        winner = self.winning_player()
-        if winner is None:
-            print(self)
-            print("Nobody won!")
-        else:
+        winner = self.test_for_winner()
+        if winner:
             print("We have a winner!!")
             print("Turns taken:", self.current_turn)
             print(winner)
+        else:
+            print(self)
+            print("Nobody won!")
 
-    # Move all units from  all players for phase
-    def complete_singular_movement(self, phase):
-        for player in self.players:
-            self.log(f"{player.name} - Move {phase+1}")
-            player.move_units(phase)
-            self.log('')
+    def test_for_winner(self):
+        ps = [len(p.units) for p in self.players]
 
-    # Move all units from all players in 3 phases
-    def complete_movement_phase(self):
-        self.log(f"Turn {self.current_turn} - Movement Phase\n")
-        for phase in range(3):
-            self.complete_singular_movement(phase)
-        self.render()
-        self.log(self)
-        self.log("------------------------")
-        self.board.create()
-
-    # Resolve combat between all units
-    def complete_combat_phase(self):
-        self.log(f"Turn {self.current_turn} - Combat Phase\n")
-        for _, units in self.board.items():
-            if not CombatEngine.units_on_same_team(units):
-                self.combat.battle(units)
-        self.log("------------------------")
-        self.board.create()
-        self.log(self)
-        self.render()
-
-    # Upgrade technology and buy new ships
-    def complete_economic_phase(self):
-        self.log(f"Turn {self.current_turn} - Economic Phase\n")
-        for player in self.players:
-            player.get_income()
-            player.unit_economics()
-            player.pay_maintenance_costs()
-            player.upgrade_tech()
-            player.build_fleet()
-        self.log("------------------------")
-        self.board.create()
+        loser = bool(ps.count(0))
+        if loser:
+            del self.players[ps.index(0)]
+            winner = self.players[0]
+            return winner
+        return False
 
     # Print to console if logging is enabled
     def log(self, *args):
@@ -95,18 +68,6 @@ class Game:
     def render(self):
         if self.rendering:
             self.board.render()
-
-    # Return the player who has units if someone else doesn't
-    def winning_player(self):
-        losers = []
-        for player in self.players:
-            if len(player.units) == 0:
-                losers.append(player)
-        winners = list(set(self.players) - set(losers))
-        if len(winners) == 1:
-            return winners[0]
-        else:
-            return None
 
     def die_roll(self):
         if self.die_mode == "ascend":
@@ -121,6 +82,9 @@ class Game:
     def next_id():
         self.current_id += 1
         return self.current_id
+
+    def generate_state(self):
+        return {'players': [{'name': p.name, 'units': [{'maintenance': u.maintenance_cost, 'type': type(u)} for u in p.units]} for p in self.players]}
 
     # Prints all the players
     def __str__(self):

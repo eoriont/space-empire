@@ -35,7 +35,7 @@ class CombatEngine:
         punits = CombatEngine.sort_units_by_player(units)
         # If a player has more units than the other, screen
         if len(set(punits.values())) <= 1:
-            return self.game.players[max(punits, key=punits.get)].screen_units()
+            return self.game.players[max(punits, key=punits.get)].strat.decide_removals(punits)
         return []
 
     # Remove decoys/colonyships
@@ -73,3 +73,11 @@ class CombatEngine:
         if len(players) == 0:
             return True
         return players.count(players[0]) == len(players)
+
+    # Resolve combat between all units
+    def combat_phase(self, current_turn):
+        for _, units in self.game.board.items():
+            if not CombatEngine.units_on_same_team(units):
+                self.battle(units)
+        self.game.board.create()
+        self.game.render()
