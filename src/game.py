@@ -5,6 +5,8 @@ from board import Board
 from unit.decoy import Decoy
 from combat_engine import CombatEngine
 from movement_engine import MovementEngine
+from economic_engine import EconomicEngine
+from unit.scout import Scout
 
 
 class Game:
@@ -17,7 +19,6 @@ class Game:
         self.logging = logging
         self.rendering = rendering
         self.players = []
-        self.player_count = 0
         self.board = Board(self, board_size)
         self.board.init_planets((3, 6), (3, 0))
         self.board.create()
@@ -28,8 +29,12 @@ class Game:
     # Add player to the game before running
     def add_player(self, player):
         self.players.append(player)
-        self.player_count = len(self.players)
+        player.id = len(self.players)
         self.board.create()
+
+    def start(self):
+        for player in self.players:
+            player.start()
 
     # Run for 100 turns or until all of a player's units are dead
     def run_until_completion(self, max_turns=100):
@@ -37,7 +42,7 @@ class Game:
             self.current_turn += 1
             self.movement.movement_phase(self.current_turn)
             self.combat.combat_phase(self.current_turn)
-            self.complete_economic_phase()
+            self.economy.economic_phase(self.current_turn)
             if self.test_for_winner():
                 break
         winner = self.test_for_winner()
@@ -86,9 +91,12 @@ class Game:
     def generate_state(self):
         return {'players': [{'name': p.name, 'units': [{'maintenance': u.maintenance_cost, 'type': type(u)} for u in p.units]} for p in self.players]}
 
-    # Prints all the players
-    def __str__(self):
-        string = "Game State: \n"
-        for p in self.players:
-            string += str(p) + "\n"
-        return string
+    def get_unit_types(self):
+        return {
+            "Scout": {"cp_cost": Scout.cp_cost}
+        }
+
+    def unit_str_to_class(self, unit):
+        return {
+            "Scout": Scout
+        }[unit]

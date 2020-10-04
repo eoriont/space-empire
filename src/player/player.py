@@ -7,17 +7,17 @@ from unit.ship_yard import ShipYard
 
 class Player:
     # Initialize player and build fleet
-    def __init__(self, strat, pid, name, starting_pos, game, color="black"):
-        self.id = pid
+    def __init__(self, strat, name, starting_pos, game):
         self.strat = strat
         self.starting_pos = starting_pos
         self.name = name
         self.units = []
-        self.color = color
         self.game = game
         self.tech = Technology(
             {'atk': 0, 'def': 0, 'mov': 1, 'syc': 1, 'ss': 1})
         self.cp = 0
+
+    def start(self):
         self.build_starting_fleet()
 
     # Build all the ships the player starts with
@@ -51,8 +51,6 @@ class Player:
                          self.game, self.tech, **unit_options)
         if pay:
             self.pay(-unit.cp_cost)
-            self.game.log(
-                f"{self.name} bought a {unit_type.__name__}, leaving them with {self.cp} cp!")
         self.units.append(unit)
         return unit
 
@@ -69,12 +67,22 @@ class Player:
     def buy_tech(self, tech_type):
         price = self.tech.buy_tech(tech_type)
         self.cp -= price
-        self.game.log(
-            f"{self.name} bought {tech_type} for {price}, leaving them with {self.cp} CP")
 
-    # Prints the player's name and units
-    def __str__(self):
-        string = f"{self.name}: \n"
-        for unit in self.units:
-            string += '    ' + str(unit)
-        return string
+    def generate_state(self, unit):
+        other_units = [
+            unit.pos for player in self.game.players for unit in player.units if player != self]
+        return {
+            "pos": unit.pos,
+            "unknown_units": other_units,
+            "cp": self.cp
+        }
+
+    def economic_state(self):
+        ships = [{
+            "maintenance_cost": unit.maintenance_cost,
+            "id": unit.id
+        } for unit in self.units if not unit.no_maintenance]
+        return ships
+
+    def get_unit_by_id(self, uid):
+        return next(x for x in self.units if uid == x.id)

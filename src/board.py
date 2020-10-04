@@ -46,7 +46,7 @@ class Board:
             x, y = pos
             for i, unit in enumerate(units):
                 offset = i/len(units)
-                ax.text(x, y+offset, unit.name, fontsize=12, color=unit.player.color,
+                ax.text(x, y+offset, unit.id, fontsize=12, color=unit.player.color,
                         horizontalalignment='center', verticalalignment='center')
 
         x_max, y_max = self.size

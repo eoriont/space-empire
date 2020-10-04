@@ -3,13 +3,12 @@ sys.path.append('src')
 try:
     from game import Game
     from unit.scout import Scout
-    from strategies.dumb_strategy import DumbStrategy
-    from player.player import Player
+    from player.dumb_player import DumbPlayer
     from otest import do_assert, assert_bool, color_print
 except ImportError as e:
     print(e)
 
-game = Game((5, 5), logging=False, rendering=False, die_mode="ascend")
+game = Game((5, 5), logging=False, rendering=False)
 
 
 def assert_player_scouts(turn, player, pos, amt):
@@ -24,26 +23,30 @@ def assert_player_economic(turn, player, cps):
     do_assert(f"turn {turn} economic phase", player.cp, cps)
 
 
-p1 = Player(DumbStrategy(), "DumbPlayer1", (2, 0), game)
-p2 = Player(DumbStrategy(), "DumbPlayer2", (2, 4), game)
+# p1 = DumbPlayer(1, "DumbPlayer1", (2, 0), game, "red")
+# p2 = DumbPlayer(2, "DumbPlayer2", (2, 4), game, "blue")
+# game.add_player(p1)
+# game.add_player(p2)
+p1 = Player(DumbStrategy(), 1, "DumbPlayer1", (2, 0), game, "red")
+p2 = Player(DumbStrategy(), 1, "DumbPlayer1", (2, 0), game, "red")
 game.add_player(p1)
 game.add_player(p2)
-game.start()
+
 
 # 1 Movement Phase
 print("Turn 1 Movement Phase")
-game.movement.movement_phase(game.current_turn)
+game.complete_movement_phase()
 assert_player_scouts(1, p1, (4, 0), 3)
 assert_player_scouts(1, p2, (4, 4), 3)
 
 # 1 Combat Phase (nothing happens)
 print("Turn 1 Combat Phase")
-game.combat.combat_phase(game.current_turn)
+game.complete_combat_phase()
 
 
 # 1 Economic Phase
 print("Turn 1 Economic Phase")
-game.economy.economic_phase(game.current_turn)
+game.complete_economic_phase()
 assert_player_economic(1, p1, 5)
 assert_player_economic(1, p2, 5)
 
@@ -54,17 +57,17 @@ assert_player_scouts(1, p2, (2, 4), 2)
 
 # 2 Movement Phase
 print("Turn 2 Movement Phase")
-game.movement.movement_phase(game.current_turn)
+game.complete_movement_phase()
 assert_player_scouts(2, p1, (4, 0), 5)
 assert_player_scouts(2, p2, (4, 4), 5)
 
 # 2 Combat Phase (nothing happens)
 print("Turn 2 Combat Phase")
-game.combat.combat_phase(game.current_turn)
+game.complete_combat_phase()
 
 # 2 Economic Phase
 print("Turn 2 Economic Phase")
-game.economy.economic_phase(game.current_turn)
+game.complete_economic_phase()
 assert_player_economic(2, p1, 2)
 assert_player_economic(2, p2, 2)
 
@@ -75,17 +78,17 @@ assert_player_scouts(2, p2, (2, 4), 3)
 
 # 3 Movement Phase
 print("Turn 3 Movement Phase")
-game.movement.movement_phase(game.current_turn)
+game.complete_movement_phase()
 assert_player_scouts(3, p1, (4, 0), 8)
 assert_player_scouts(3, p2, (4, 4), 8)
 
 # 3 Combat Phase (nothing happens)
 print("Turn 3 Combat Phase")
-game.combat.combat_phase(game.current_turn)
+game.complete_combat_phase()
 
 # 3 Economic Phase
 print("Turn 3 Economic Phase")
-game.economy.economic_phase(game.current_turn)
+game.complete_economic_phase()
 assert_player_scouts(3, p1, (4, 0), 8)
 assert_player_scouts(3, p2, (4, 4), 8)
 assert_player_scouts(3, p1, (2, 0), 2)
@@ -96,17 +99,17 @@ assert_player_economic(3, p2, 2)
 
 # 4 Movement Phase
 print("Turn 4 Movement Phase")
-game.movement.movement_phase(game.current_turn)
+game.complete_movement_phase()
 assert_player_scouts(4, p1, (4, 0), 10)
 assert_player_scouts(4, p2, (4, 4), 10)
 
 # 4 Combat Phase (nothing happens)
 print("Turn 4 Combat Phase")
-game.combat.combat_phase(game.current_turn)
+game.complete_combat_phase()
 
 # 4 Economic Phase
 print("Turn 4 Economic Phase")
-game.economy.economic_phase(game.current_turn)
+game.complete_economic_phase()
 assert_player_scouts(4, p1, (4, 0), 10)
 assert_player_scouts(4, p2, (4, 4), 10)
 

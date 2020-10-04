@@ -28,7 +28,7 @@ class CombatEngine:
                                   unit.player and u.alive]
                 if len(attack_options) == 0 or not unit.alive:
                     continue
-                unit2 = unit.player.choose_unit_to_attack(attack_options)
+                unit2 = unit.player.strat.decide_ship_to_attack(attack_options)
                 self.duel(unit, unit2)
 
     def get_screen_units(self, units):
