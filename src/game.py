@@ -50,9 +50,7 @@ class Game:
         if winner:
             print("We have a winner!!")
             print("Turns taken:", self.current_turn)
-            print(winner)
         else:
-            print(self)
             print("Nobody won!")
 
     def test_for_winner(self):
