@@ -12,6 +12,9 @@ class MovementEngine:
                 if not unit.immovable:
                     old_pos = unit.pos
                     translation = player.strat.decide_ship_movement(
-                        player.generate_state(unit), self.game.board.is_in_bounds)
+                        player.generate_state(unit),
+                        self.game.board.is_in_bounds,
+                        player.tech.get_spaces()[sp],
+                        self.game.board.get_possible_spots)
                     unit.validate_and_move(translation, sp)
         self.game.board.create()

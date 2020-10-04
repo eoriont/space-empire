@@ -82,7 +82,10 @@ class Player:
             "maintenance_cost": unit.maintenance_cost,
             "id": unit.id
         } for unit in self.units if not unit.no_maintenance]
-        return ships
+        return {
+            "units": ships,
+            "tech": self.tech.tech.copy()
+        }
 
     def get_unit_by_id(self, uid):
         return next(x for x in self.units if uid == x.id)

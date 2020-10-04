@@ -1,3 +1,6 @@
+from technology import Technology
+
+
 class EconomicEngine:
     def __init__(self, game):
         self.game = game
@@ -16,7 +19,8 @@ class EconomicEngine:
             player.pay(-player.get_maintenance())
 
             options = self.game.get_unit_types()
-            purchases = player.strat.decide_purchases(options, player.cp)
+            purchases = player.strat.decide_purchases(
+                options, player.cp, player.tech.get_state(), player.economic_state())
             self.verify_purchases(purchases, player.cp)
             self.purchase(purchases, player)
 
@@ -41,7 +45,8 @@ class EconomicEngine:
         units_cost = sum(unit_types[u]["cp_cost"] *
                          amt for u, amt in units.items())
         tech = purchases["tech"]
-        tech_cost = sum(t.get_price() for t in tech)
+        tech_cost = sum(sum(Technology.get_price({t: i-1}, t) for i in levels)
+                        for t, levels in tech.items())
 
         if cp < units_cost + tech_cost:
             raise Exception("Player bought too many units/tech!")
@@ -54,4 +59,4 @@ class EconomicEngine:
 
         tech = purchases["tech"]
         for t in tech:
-            player.buy_tech(t.type)
+            player.buy_tech(t)

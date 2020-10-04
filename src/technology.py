@@ -40,6 +40,13 @@ class Technology:
         elif tech_type == 'ss':
             return 5 + level*5
 
+    def get_state(self):
+        return {
+            "ss": {
+                "price": [5, 10, 15, 20, 25]
+            }
+        }
+
     def get_spaces(self):
         spaces_per_phase = [
             (1, 1, 1),

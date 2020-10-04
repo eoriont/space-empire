@@ -7,6 +7,7 @@ from combat_engine import CombatEngine
 from movement_engine import MovementEngine
 from economic_engine import EconomicEngine
 from unit.scout import Scout
+from unit.destroyer import Destroyer
 
 
 class Game:
@@ -88,15 +89,14 @@ class Game:
         self.current_id += 1
         return self.current_id
 
-    def generate_state(self):
-        return {'players': [{'name': p.name, 'units': [{'maintenance': u.maintenance_cost, 'type': type(u)} for u in p.units]} for p in self.players]}
-
     def get_unit_types(self):
         return {
-            "Scout": {"cp_cost": Scout.cp_cost}
+            "Scout": {"cp_cost": Scout.cp_cost, "req_size_tech": Scout.req_size_tech},
+            "Destroyer": {"cp_cost": Destroyer.cp_cost, "req_size_tech": Destroyer.req_size_tech}
         }
 
     def unit_str_to_class(self, unit):
         return {
-            "Scout": Scout
+            "Scout": Scout,
+            "Destroyer": Destroyer
         }[unit]

@@ -35,7 +35,7 @@ class CombatEngine:
         punits = CombatEngine.sort_units_by_player(units)
         # If a player has more units than the other, screen
         if len(set(punits.values())) <= 1:
-            return self.game.players[max(punits, key=punits.get)].strat.decide_removals(punits)
+            return self.game.players[max(punits, key=punits.get)].strat.screen_units(punits)
         return []
 
     # Remove decoys/colonyships
@@ -52,7 +52,7 @@ class CombatEngine:
         hit_threshold = atk_str - def_str
         die_roll = self.game.die_roll()
         if die_roll <= hit_threshold or die_roll == 1:
-            defender.hurt(attacker.name)
+            defender.hurt(attacker.id)
 
     # Return dictionary of players and their units in a unit list
     @staticmethod
