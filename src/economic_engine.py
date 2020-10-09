@@ -7,6 +7,7 @@ class EconomicEngine:
 
     # Upgrade technology and buy new ships
     def economic_phase(self, current_turn):
+        self.game.phase = "Economic"
         for player in self.game.players:
             player.get_income()
             maintenance = player.get_maintenance()

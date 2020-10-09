@@ -26,6 +26,9 @@ class Game:
         self.combat = CombatEngine(self)
         self.movement = MovementEngine(self)
         self.economy = EconomicEngine(self)
+        self.phase = "bruh"
+        self.round = 0
+        self.winner = None
 
     # Add player to the game before running
     def add_player(self, player):
@@ -46,8 +49,8 @@ class Game:
             self.economy.economic_phase(self.current_turn)
             if self.test_for_winner():
                 break
-        winner = self.test_for_winner()
-        if winner:
+        self.winner = self.test_for_winner()
+        if self.winner:
             print("We have a winner!!")
             print("Turns taken:", self.current_turn)
         else:
@@ -98,3 +101,25 @@ class Game:
             "Scout": Scout,
             "Destroyer": Destroyer
         }[unit]
+
+    def generate_state(self):
+
+        players = [{
+            'cp': p.cp,
+            'units': [{
+                'location': u.pos,
+                'type': type(u),
+                'hits': type(u).armor-u.armor,
+                'turn_created': u.turn_created,
+                'technology': u.tech
+            } for u in p.units],
+        }]
+
+        return {
+            'turn': self.current_turn,
+            'winner': None,
+            'players': players
+            'planets': self.board.planets,
+            'phase': self.phase,
+            'round': self.round
+        }

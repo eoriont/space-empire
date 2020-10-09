@@ -76,6 +76,7 @@ class CombatEngine:
 
     # Resolve combat between all units
     def combat_phase(self, current_turn):
+        self.game.phase = "Combat"
         for _, units in self.game.board.items():
             if not CombatEngine.units_on_same_team(units):
                 self.battle(units)

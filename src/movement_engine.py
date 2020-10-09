@@ -3,8 +3,11 @@ class MovementEngine:
         self.game = game
 
     def movement_phase(self, turn):
+        self.game.phase = "Movement"
         for subphase in range(3):
+            self.game.round = subphase
             self.subphase(subphase)
+        self.game.round = None
 
     def subphase(self, sp):
         for player in self.game.players:
