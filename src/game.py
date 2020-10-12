@@ -118,7 +118,7 @@ class Game:
         return {
             'turn': self.current_turn,
             'winner': None,
-            'players': players
+            'players': players,
             'planets': self.board.planets,
             'phase': self.phase,
             'round': self.round

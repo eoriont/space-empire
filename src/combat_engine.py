@@ -10,14 +10,7 @@ class CombatEngine:
         self.game = game
 
     def battle(self, units):
-        units = self.remove_units(units)
-
-        # Sort units by attack class, and by player
-        units = sorted(units, key=lambda x: (
-            ord(x.attack_class or 'Z'), x.player.id))
-
-        for u in self.get_screen_units(units):
-            units.remove(u)
+        units = self.order_ships(units)
 
         # Loop through units in the correct attack order and battle
         while not CombatEngine.units_on_same_team(units):
@@ -82,3 +75,21 @@ class CombatEngine:
                 self.battle(units)
         self.game.board.create()
         self.game.render()
+
+    def generate_combat_array(self):
+        return [{
+            'location': pos,
+            'order': self.order_ships(units)
+        } for pos, units in self.game.board.items() if not CombatEngine.units_on_same_team(units)]
+
+    def order_ships(self, ships):
+        ships = self.remove_units(ships)
+
+        # Sort units by attack class, and by player
+        ships = sorted(ships, key=lambda x: (
+            ord(x.attack_class or 'Z'), x.player.id))
+
+        for u in self.get_screen_units(ships):
+            ships.remove(u)
+
+        return ships
