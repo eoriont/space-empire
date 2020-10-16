@@ -21,3 +21,6 @@ class MovementEngine:
                         self.game.board.get_possible_spots)
                     unit.validate_and_move(translation, sp)
         self.game.board.create()
+
+    def generate_movement_state(self):
+        return {'round': self.game.round}
