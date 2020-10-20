@@ -1,0 +1,3 @@
+language = "bash"
+run = "python tests/test_combat_strategy.py"
+test = "something"
