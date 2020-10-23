@@ -9,7 +9,7 @@ class EconomicEngine:
     def economic_phase(self, current_turn):
         self.game.phase = "Economic"
         for player in self.game.players:
-            player.get_income()
+            player.pay(player.get_income())
             maintenance = player.get_maintenance()
 
             # Pass player_data in, should be immutable
@@ -61,3 +61,9 @@ class EconomicEngine:
         tech = purchases["tech"]
         for t in tech:
             player.buy_tech(t)
+
+    def generate_economic_state(self):
+        return [{
+            'maintenance_cost': p.get_maintenance(),
+            'income': p.get_income()
+        } for player in self.game.players]

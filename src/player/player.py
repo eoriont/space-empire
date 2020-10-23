@@ -56,13 +56,10 @@ class Player:
 
     # For each colony, pay the player their cp_capacity
     def get_income(self):
-        before_cp = self.cp
         amt_to_pay = sum((20 if c.is_home_colony else c.cp_capacity)
                          for c in self.units
                          if type(c) == Colony)
-        self.pay(amt_to_pay)
-        self.game.log(
-            f"{self.name} got {self.cp-before_cp} income, leaving them at {self.cp} CP!")
+        return amt_to_pay
 
     def buy_tech(self, tech_type):
         price = self.tech.buy_tech(tech_type)
