@@ -7,7 +7,7 @@ class DumbStrategy:
     def decide_purchases(self, unit_types, cp, tech_types, player_state):
         scout_cost = unit_types["Scout"]["cp_cost"]
         amt = cp//scout_cost
-        return {"units": {"Scout": amt}, "tech": []}
+        return {"units": {"Scout": amt}, "tech": {}}
 
     # Remove x amount of scouts
     def decide_removals(self, player, money_needed):
