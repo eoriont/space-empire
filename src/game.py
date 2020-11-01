@@ -110,10 +110,10 @@ class Game:
                 'location': u.pos,
                 'type': type(u),
                 'hits': type(u).armor-u.armor,
-                'turn_created': u.turn_created,
+                # 'turn_created': u.turn_created,
                 'technology': u.tech
             } for u in p.units],
-        }]
+        } for p in self.players]
 
         return {
             'turn': self.current_turn,
