@@ -40,7 +40,8 @@ class Technology:
         elif tech_type == 'ss':
             return 5 + level*5
 
-    def get_state(self):
+    @staticmethod
+    def get_state():
         return {
             "ss": {
                 "price": [5, 10, 15, 20, 25]

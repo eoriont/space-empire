@@ -25,8 +25,8 @@ def assert_player_economic(turn, player, cps):
               state['players'][player-1]['cp'], cps)
 
 
-p1 = Player(DumbStrategy(), "DumbPlayer1", (2, 0), game)
-p2 = Player(DumbStrategy(), "DumbPlayer2", (2, 4), game)
+p1 = Player(DumbStrategy(0), "DumbPlayer1", (2, 0), game)
+p2 = Player(DumbStrategy(1), "DumbPlayer2", (2, 4), game)
 game.add_player(p1)
 game.add_player(p2)
 game.start()

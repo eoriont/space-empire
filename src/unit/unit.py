@@ -21,16 +21,18 @@ class Unit:
         self.maintenance_cost = 0 if self.no_maintenance else self.hull_size
 
     # Remove unit from player's list and alive = False
-    def destroy(self, hurter_name):
+    def destroy(self, hurter_name=None):
         self.alive = False
         if self in self.player.units:
             self.player.units.remove(self)
+        #! Handle the offcase
 
     # Subtract 1 from armor
     def hurt(self, hurter_name):
         self.armor -= 1
         if self.armor <= 0:
-            self.destroy(hurter_name)
+            self.alive = False
+            self.destroyed_by = hurter_name
 
     # Check if movement is valid and move if so
     def validate_and_move(self, translation, sp):

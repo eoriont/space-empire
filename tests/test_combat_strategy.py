@@ -11,12 +11,12 @@ try:
 except ImportError as e:
     print(e)
 
-game = Game((5, 5), logging=False, rendering=False, die_mode="ascend")
+game = Game((5, 5), logging=True, rendering=False, die_mode="ascend")
 
 
 def assert_unit_positions(turn, phase, player, pos, units):
     board_units = [type(unit)
-                   for unit in game.board[pos] if unit.player == player]
+                   for unit in game.board[pos] if unit.player == player and unit.alive]
     unit_counts = {unit_type: board_units.count(
         unit_type) for unit_type in board_units}
     # Is units a subset of unit_counts?
@@ -28,8 +28,8 @@ def assert_cp(turn, player, cp):
     do_assert(f"{player.name} has cp {cp} at turn {turn}", player.cp, cp)
 
 
-p1 = Player(CombatStrategy(), "CombatPlayer1", (2, 0), game)
-p2 = Player(CombatStrategy(), "CombatPlayer2", (2, 4), game)
+p1 = Player(CombatStrategy(0), "CombatPlayer1", (2, 0), game)
+p2 = Player(CombatStrategy(1), "CombatPlayer2", (2, 4), game)
 game.add_player(p1)
 game.add_player(p2)
 game.start()
@@ -69,8 +69,8 @@ color_print("All tests passed! (For ascending dice rolls)", "Blue")
 
 # =========================================================================
 game = Game((5, 5), logging=False, rendering=False, die_mode="descend")
-p1 = Player(CombatStrategy(), "CombatPlayer1", (2, 0), game)
-p2 = Player(CombatStrategy(), "CombatPlayer2", (2, 4), game)
+p1 = Player(CombatStrategy(0), "CombatPlayer1", (2, 0), game)
+p2 = Player(CombatStrategy(1), "CombatPlayer2", (2, 4), game)
 game.add_player(p1)
 game.add_player(p2)
 game.start()

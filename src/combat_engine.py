@@ -10,26 +10,42 @@ class CombatEngine:
         self.game = game
 
     def battle(self, units):
-        units = self.order_ships(units)
-
         # Loop through units in the correct attack order and battle
-        while not CombatEngine.units_on_same_team(units):
-            for unit in units:
-                if unit.no_attack:
+        u2s = [self.state_to_unit(u) for u in units['order']]
+        while not CombatEngine.units_on_same_team(u2s):
+            for i, unit in enumerate(units['order']):
+                try:
+                    us = next(x for x in self.generate_combat_array()
+                              if x['location'] == units['location'])
+                except StopIteration:
+                    break
+                # us = units
+                unit_obj = self.state_to_unit(unit)
+                if unit_obj.no_attack or not unit_obj.alive:
                     continue
-                attack_options = [u for u in units if u.player !=
-                                  unit.player and u.alive]
-                if len(attack_options) == 0 or not unit.alive:
+                attack_options = [u for u in us['order'] if u['player']
+                                  != unit['player'] and u['alive']]
+                if len(attack_options) == 0:
                     continue
-                unit2 = unit.player.strat.decide_ship_to_attack(attack_options)
-                self.duel(unit, unit2)
+                unit2 = unit_obj.player.strat.decide_which_unit_to_attack(
+                    us, i)
+                unit2_obj = self.state_to_unit(us['order'][unit2])
+                self.duel(unit_obj, unit2_obj)
 
     def get_screen_units(self, units):
         punits = CombatEngine.sort_units_by_player(units)
         # If a player has more units than the other, screen
         if len(set(punits.values())) <= 1:
-            return self.game.players[max(punits, key=punits.get)].strat.screen_units(punits)
+            return self.game.players[max(punits, key=punits.get)-1].strat.decide_which_units_to_screen(punits)
         return []
+
+    # Turn unit + player id into class
+    def state_to_unit(self, unit):
+        #! This exception is bad and is a hack -- it should be changed
+        try:
+            return self.game.players[unit['player']].units[unit['unit']]
+        except IndexError:
+            return None
 
     # Remove decoys/colonyships
     def remove_units(self, units):
@@ -70,16 +86,23 @@ class CombatEngine:
     # Resolve combat between all units
     def combat_phase(self, current_turn):
         self.game.phase = "Combat"
-        for _, units in self.game.board.items():
-            if not CombatEngine.units_on_same_team(units):
-                self.battle(units)
+        combat_arr = self.generate_combat_array()
+        for x in combat_arr:
+            self.battle(x)
+        self.destroy_dead_units()
         self.game.board.create()
         self.game.render()
+
+    def destroy_dead_units(self):
+        for p in self.game.players:
+            for u in p.units:
+                if not u.alive:
+                    u.destroy()
 
     def generate_combat_array(self):
         return [{
             'location': pos,
-            'order': self.order_ships(units)
+            'order': [{'player': u.player.id-1, 'unit': u.player.units.index(u), 'alive': u.alive, 'type': type(u).__name__} for u in self.order_ships(units)]
         } for pos, units in self.game.board.items() if not CombatEngine.units_on_same_team(units)]
 
     def order_ships(self, ships):

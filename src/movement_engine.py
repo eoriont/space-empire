@@ -10,17 +10,22 @@ class MovementEngine:
         self.game.round = None
 
     def subphase(self, sp):
-        for player in self.game.players:
-            for unit in player.units:
-                if not unit.immovable:
-                    old_pos = unit.pos
-                    translation = player.strat.decide_ship_movement(
-                        player.generate_state(unit),
-                        self.game.board.is_in_bounds,
-                        player.tech.get_spaces()[sp],
-                        self.game.board.get_possible_spots)
-                    unit.validate_and_move(translation, sp)
+        state = self.game.generate_state(sp=sp)
+        for player in state['players']:
+            for i, unit in enumerate(player['units']):
+                if not unit['type'].immovable:
+                    old_pos = unit['location']
+                    translation = self.state_to_player(
+                        player).strat.decide_ship_movement(i, state)
+                    self.state_to_unit(unit).validate_and_move(translation, sp)
         self.game.board.create()
+
+    def state_to_player(self, p):
+        return self.game.players[p['id']]
+
+    # Turn unit + player id into class
+    def state_to_unit(self, unit):
+        return self.game.players[unit['player']].units[unit['id']]
 
     def generate_movement_state(self):
         return {'round': self.game.round}

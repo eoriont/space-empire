@@ -1,13 +1,32 @@
 import math
+from strategies.strategy_util import is_in_bounds
 
 
 class DumbStrategy:
 
+    def __init__(self, player_index):
+        self.player_index = player_index
+
+    # Don't colonize planets
+    def will_colonize_planet(self, pos, game_state):
+        return False
+
+    # Decide where each ship moves
+    def decide_ship_movement(self, unit_index, game_state):
+        x, y = game_state["players"][self.player_index]['units'][unit_index]["location"]
+        if is_in_bounds(1+x, 0+y):
+            return (1, 0)
+        return (0, 0)
+
     # Only build scouts
-    def decide_purchases(self, unit_types, cp, tech_types, player_state):
-        scout_cost = unit_types["Scout"]["cp_cost"]
-        amt = cp//scout_cost
-        return {"units": {"Scout": amt}, "tech": {}}
+    def decide_purchases(self, game_state):
+        scout_cost = game_state['unit_types']["Scout"]["cp_cost"]
+        amt = game_state['players'][self.player_index]['cp']//scout_cost
+        return {"units": ["Scout"]*amt, "tech": {}}
+
+    # Don't attack ships, should never happen
+    def decide_which_unit_to_attack(self, combat_state, attacker_index):
+        return None
 
     # Remove x amount of scouts
     def decide_removals(self, player, money_needed):
@@ -19,17 +38,5 @@ class DumbStrategy:
             return ships[:amt_to_remove-1]
         return []
 
-    # Decide where each ship moves
-    def decide_ship_movement(self, ship, is_in_bounds, tech_amt, get_possible_spots):
-        x, y = ship["pos"]
-        if is_in_bounds(1+x, 0+y):
-            return (1, 0)
-        return (0, 0)
-
-    # Don't attack ships, should never happen
-    def decide_ship_to_attack(self, ships):
-        return None
-
-    # Don't colonize planets
-    def will_colonize_planet(self, pos, ship):
-        return False
+    def decide_which_units_to_screen(self, combat_state):
+        return []

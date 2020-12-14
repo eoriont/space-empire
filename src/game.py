@@ -8,6 +8,7 @@ from movement_engine import MovementEngine
 from economic_engine import EconomicEngine
 from unit.scout import Scout
 from unit.destroyer import Destroyer
+from technology import Technology
 
 
 class Game:
@@ -102,24 +103,31 @@ class Game:
             "Destroyer": Destroyer
         }[unit]
 
-    def generate_state(self):
+    def generate_state(self, sp=None):
 
         players = [{
             'cp': p.cp,
+            'id': i,
+            'spaces': p.tech.get_spaces(),
             'units': [{
+                'id': j,
                 'location': u.pos,
                 'type': type(u),
                 'hits': type(u).armor-u.armor,
-                # 'turn_created': u.turn_created,
-                'technology': u.tech
-            } for u in p.units],
-        } for p in self.players]
+                'technology': u.tech,
+                'player': i
+            } for j, u in enumerate(p.units)],
+            'tech': p.tech.tech.copy()
+        } for i, p in enumerate(self.players)]
 
         return {
+            'sp': sp,
             'turn': self.current_turn,
             'winner': None,
             'players': players,
             'planets': self.board.planets,
             'phase': self.phase,
-            'round': self.round
+            'round': self.round,
+            'tech_types': Technology.get_state(),
+            'unit_types': self.get_unit_types()
         }

@@ -19,10 +19,9 @@ class EconomicEngine:
             self.remove_units(removals, player)
             player.pay(-player.get_maintenance())
 
-            options = self.game.get_unit_types()
             purchases = player.strat.decide_purchases(
-                options, player.cp, player.tech.get_state(), player.economic_state())
-            self.verify_purchases(purchases, player.cp)
+                self.game.generate_state())
+            self.verify_purchases(purchases, player.cp, player.tech)
             self.purchase(purchases, player)
 
         self.game.board.create()
@@ -38,22 +37,25 @@ class EconomicEngine:
         for u in removals:
             player.get_unit_by_id(u["id"]).destroy("planned demolition")
 
-    def verify_purchases(self, purchases, cp):
+    def verify_purchases(self, purchases, cp, tech):
         # Verify the purchases are within budget
         # And player has sufficient tech
-        units = purchases["units"]
+        u = purchases["units"]
+        units = {x: u.count(x) for x in set(u)}
         unit_types = self.game.get_unit_types()
         units_cost = sum(unit_types[u]["cp_cost"] *
                          amt for u, amt in units.items())
-        tech = purchases["tech"]
-        tech_cost = sum(sum(Technology.get_price({t: i-1}, t) for i in levels)
+        t = purchases["tech"]
+        tech = {x: t.count(x) for x in set(t)}
+        tech_cost = sum(sum(Technology.get_price({t: tech[t]+i}, t) for i in range(levels))
                         for t, levels in tech.items())
 
         if cp < units_cost + tech_cost:
             raise Exception("Player bought too many units/tech!")
 
     def purchase(self, purchases, player):
-        units = purchases["units"]
+        u = purchases["units"]
+        units = {x: u.count(x) for x in set(u)}
         for unit, amt in units.items():
             for _ in range(amt):
                 player.build_unit(self.game.unit_str_to_class(unit))
