@@ -12,11 +12,11 @@ class EconomicEngine:
             player.pay(player.get_income())
             maintenance = player.get_maintenance()
 
-            # Pass player_data in, should be immutable
-            removals = player.strat.decide_removals(
-                player.economic_state(), player.cp-maintenance)
-            self.verify_removals(removals, player, maintenance)
-            self.remove_units(removals, player)
+            while player.cp-maintenance < 0:
+                removal = player.strat.decide_removal(
+                    self.game.generate_state())
+                self.remove_unit(removal, player)
+                maintenance = player.get_maintenance()
             player.pay(-player.get_maintenance())
 
             purchases = player.strat.decide_purchases(
@@ -26,16 +26,8 @@ class EconomicEngine:
 
         self.game.board.create()
 
-    def verify_removals(self, removals, player, maintenance):
-        # Verify the maintenance price of removals
-        # allows the player to pay maintenance
-        removal_savings = sum(r["maintenance_cost"] for r in removals)
-        if maintenance-removal_savings > player.cp:
-            raise Exception("Player must remove more ships!")
-
-    def remove_units(self, removals, player):
-        for u in removals:
-            player.get_unit_by_id(u["id"]).destroy("planned demolition")
+    def remove_unit(self, u, player):
+        player.get_unit_by_id(u["id"]).destroy("planned demolition")
 
     def verify_purchases(self, purchases, cp, tech):
         # Verify the purchases are within budget

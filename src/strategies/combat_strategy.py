@@ -43,19 +43,23 @@ class CombatStrategy:
             purchases["units"] = ["Scout"]
         return purchases
 
-    def decide_removals(self, player, money_needed):
-        ships = player["units"]
-        if money_needed < 0:
-            m = 0
-            s = []
-            i = 0
-            while m < -money_needed:
-                s.append(ships[i])
-                m += ships[i]["maintenance_cost"]
-                i += 1
-            return s
+    # def decide_removals(self, player, money_needed):
+    #     ships = player["units"]
+    #     if money_needed < 0:
+    #         m = 0
+    #         s = []
+    #         i = 0
+    #         while m < -money_needed:
+    #             s.append(ships[i])
+    #             m += ships[i]["maintenance_cost"]
+    #             i += 1
+    #         return s
 
-        return []
+    #     return []
+
+    # Return ship #0
+    def decide_removal(self, game_state):
+        return 0
 
     # Choose the first unit to attack
     def decide_which_unit_to_attack(self, combat_state, location, attacker_index):

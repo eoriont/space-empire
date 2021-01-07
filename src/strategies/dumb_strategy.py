@@ -25,18 +25,12 @@ class DumbStrategy:
         return {"units": ["Scout"]*amt, "tech": {}}
 
     # Don't attack ships, should never happen
-    def decide_which_unit_to_attack(self, combat_state, attacker_index):
+    def decide_which_unit_to_attack(self, combat_state, location, attacker_index):
         return None
 
-    # Remove x amount of scouts
-    def decide_removals(self, player, money_needed):
-        ships = player["units"]
-        # Somehow get the scout maintenance cost
-        if money_needed < 0:
-            scout_cost = ships[0]["maintenance_cost"]
-            amt_to_remove = -math.ceil(money_needed/scout_cost)
-            return ships[:amt_to_remove-1]
-        return []
+    # Remove the first ship
+    def decide_removal(self, game_state):
+        return 0
 
     def decide_which_units_to_screen(self, combat_state):
         return []
