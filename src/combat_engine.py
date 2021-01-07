@@ -9,27 +9,26 @@ class CombatEngine:
     def __init__(self, game):
         self.game = game
 
-    def battle(self, units):
+    def battle(self, units, pos):
         # Loop through units in the correct attack order and battle
-        u2s = [self.state_to_unit(u) for u in units['order']]
+        u2s = [self.state_to_unit(u) for u in units]
+        #! Lord forgive me for this awful inefficient garbage
         while not CombatEngine.units_on_same_team(u2s):
-            for i, unit in enumerate(units['order']):
-                try:
-                    us = next(x for x in self.generate_combat_array()
-                              if x['location'] == units['location'])
-                except StopIteration:
-                    break
-                # us = units
+            for i, unit in enumerate(units):
+                cbt_arr = self.generate_combat_array()
+                if pos not in cbt_arr:
+                    return
+                us = cbt_arr[pos]
                 unit_obj = self.state_to_unit(unit)
                 if unit_obj.no_attack or not unit_obj.alive:
                     continue
-                attack_options = [u for u in us['order'] if u['player']
+                attack_options = [u for u in us if u['player']
                                   != unit['player'] and u['alive']]
                 if len(attack_options) == 0:
                     continue
                 unit2 = unit_obj.player.strat.decide_which_unit_to_attack(
-                    us, i)
-                unit2_obj = self.state_to_unit(us['order'][unit2])
+                    us, pos, i)
+                unit2_obj = self.state_to_unit(us[unit2])
                 self.duel(unit_obj, unit2_obj)
 
     def get_screen_units(self, units):
@@ -87,8 +86,8 @@ class CombatEngine:
     def combat_phase(self, current_turn):
         self.game.phase = "Combat"
         combat_arr = self.generate_combat_array()
-        for x in combat_arr:
-            self.battle(x)
+        for pos, units in combat_arr.items():
+            self.battle(units, pos)
         self.destroy_dead_units()
         self.game.board.create()
         self.game.render()
@@ -100,10 +99,15 @@ class CombatEngine:
                     u.destroy()
 
     def generate_combat_array(self):
-        return [{
-            'location': pos,
-            'order': [{'player': u.player.id-1, 'unit': u.player.units.index(u), 'alive': u.alive, 'type': type(u).__name__} for u in self.order_ships(units)]
-        } for pos, units in self.game.board.items() if not CombatEngine.units_on_same_team(units)]
+        return {
+            pos: [
+                {'player': u.player.id-1,
+                 'unit': u.player.units.index(u),
+                 'alive': u.alive, 'type': type(u).__name__}
+                for u in self.order_ships(units)
+            ] for pos, units in self.game.board.items()
+            if not CombatEngine.units_on_same_team(units)
+        }
 
     def order_ships(self, ships):
         ships = self.remove_units(ships)
