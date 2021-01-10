@@ -6,7 +6,9 @@ try:
     from unit.colony_ship import Colonyship
     from unit.destroyer import Destroyer
     from player.player import Player
-    from strategies.combat_strategy import CombatStrategy
+    # Change this next line to import a different person's strat
+    from strategies.imported.colby_combat_strategy import CombatStrategy
+
     from otest import do_assert, assert_err, assert_success, assert_bool, color_print
 except ImportError as e:
     print(e)
