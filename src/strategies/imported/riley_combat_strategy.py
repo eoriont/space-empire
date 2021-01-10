@@ -53,7 +53,8 @@ class CombatStrategy:
             else:
                 i += 1
 
-    def decide_which_unit_to_attack(self, attacking_ship_index, location, combat_state):
+    def decide_which_unit_to_attack(self, combat_state, location, attacker_index):
+        print(combat_state)
         for entry in combat_state[location]:
             if entry['player'] != combat_state[location][attacking_ship_index]['player']:
                 return combat_state[location].index(entry)

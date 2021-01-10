@@ -1,11 +1,11 @@
-from units.scout import Scout
-from units.cruiser import Cruiser
-from units.colonyship import Colonyship
-from units.colony import Colony
+from unit.scout import Scout
+from unit.cruiser import Cruiser
+from unit.colony_ship import Colonyship
+from unit.colony import Colony
 from planet import Planet
-from units.shipyard import Shipyard
-from units.base import Base
-from units.destroyer import Destroyer
+from unit.ship_yard import ShipYard
+from unit.base import Base
+from unit.destroyer import Destroyer
 
 
 class DumbStrategy:

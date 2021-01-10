@@ -129,5 +129,6 @@ class Game:
             'phase': self.phase,
             'round': self.round,
             'tech_types': Technology.get_state(),
-            'unit_types': self.get_unit_types()
+            'unit_types': self.get_unit_types(),
+            'board_size': self.board.size
         }

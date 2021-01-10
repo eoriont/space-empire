@@ -46,10 +46,10 @@ class CombatStrategy:
         screens = []
         for ship in combat_state['order']:
             if ship['player'] != self.player_num:
-                enemy_count++
+                enemy_count += 1
         for ship in combat_state['order']:
             if ship['player'] == self.player_num:
-                player_count++
+                player_count += 1
                 if player_count >= enemy_count:
                     screens.append(combat_state['order'].index(ship))
         return screens

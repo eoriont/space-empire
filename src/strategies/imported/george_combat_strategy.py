@@ -1,11 +1,14 @@
-from units.scout import Scout
-from units.cruiser import Cruiser
-from units.colonyship import Colonyship
-from units.colony import Colony
+
+from unit.destroyer import Destroyer
+from unit.base import Base
+from unit.ship_yard import ShipYard
 from planet import Planet
-from units.shipyard import Shipyard
-from units.base import Base
-from units.destroyer import Destroyer
+from unit.colony import Colony
+from unit.colony_ship import Colonyship
+from unit.cruiser import Cruiser
+from unit.scout import Scout
+import sys
+sys.path.append('src')
 
 
 class CombatStrategy:
