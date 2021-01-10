@@ -1,3 +1,6 @@
+# This utility file is used by Elijah's strategies
+# to calculate some things
+
 # Check if a position is within the grid
 def is_in_bounds(x, y, bounds):
     x1, y1 = bounds
