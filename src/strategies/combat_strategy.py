@@ -16,7 +16,8 @@ class CombatStrategy:
         unit = game_state['players'][self.player_index]['units'][unit_index]
         sp = game_state['sp']
         tech_amt = game_state['players'][self.player_index]['spaces'][sp]
-        possible_spaces = get_possible_spots(unit["location"], tech_amt)
+        possible_spaces = get_possible_spots(
+            unit["location"], tech_amt, game_state["board_size"])
         distances = [dist((2, 2), pos)
                      for pos in possible_spaces]
         next_space = possible_spaces[distances.index(min(distances))]

@@ -14,7 +14,7 @@ class DumbStrategy:
     # Decide where each ship moves
     def decide_ship_movement(self, unit_index, game_state):
         x, y = game_state["players"][self.player_index]['units'][unit_index]["location"]
-        if is_in_bounds(1+x, 0+y):
+        if is_in_bounds(1+x, 0+y, game_state["board_size"]):
             return (1, 0)
         return (0, 0)
 
