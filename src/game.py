@@ -1,6 +1,8 @@
 import random
 from player.player import Player
 from unit.colony import Colony
+from unit.colony_ship import Colonyship
+from unit.ship_yard import ShipYard
 from board import Board
 from unit.decoy import Decoy
 from combat_engine import CombatEngine
@@ -27,9 +29,10 @@ class Game:
         self.combat = CombatEngine(self)
         self.movement = MovementEngine(self)
         self.economy = EconomicEngine(self)
-        self.phase = "bruh"
+        self.phase = ""
         self.round = 0
         self.winner = None
+        self.current_player_id = 0
 
     # Add player to the game before running
     def add_player(self, player):
@@ -45,8 +48,11 @@ class Game:
     def run_until_completion(self, max_turns=100):
         for _ in range(self.current_turn, max_turns):
             self.current_turn += 1
+            self.phase = "Movement"
             self.movement.movement_phase(self.current_turn)
+            self.phase = "Combat"
             self.combat.combat_phase(self.current_turn)
+            self.phase = "Economic"
             self.economy.economic_phase(self.current_turn)
             if self.test_for_winner():
                 break
@@ -91,7 +97,7 @@ class Game:
         self.current_id += 1
         return self.current_id
 
-    def get_unit_types(self):
+    def get_unit_data(self):
         return {
             "Scout": {"cp_cost": Scout.cp_cost, "req_size_tech": Scout.req_size_tech},
             "Destroyer": {"cp_cost": Destroyer.cp_cost, "req_size_tech": Destroyer.req_size_tech}
@@ -100,35 +106,39 @@ class Game:
     def unit_str_to_class(self, unit):
         return {
             "Scout": Scout,
-            "Destroyer": Destroyer
+            "Destroyer": Destroyer,
+            "Colonyship": Colonyship,
+            "ShipYard": ShipYard,
+            "Colony": Colony
         }[unit]
 
-    def generate_state(self, sp=None):
+    def generate_state(self):
 
         players = [{
             'cp': p.cp,
             'id': i,
+            #! spaces wasn't in the specification, figure out a way to remove it
             'spaces': p.tech.get_spaces(),
             'units': [{
                 'id': j,
                 'coords': u.pos,
-                'type': type(u),
+                'type': type(u).__name__,
                 'hits': type(u).armor-u.armor,
-                'technology': u.tech,
+                'technology': u.tech.get_obj_state(),
                 'player': i
             } for j, u in enumerate(p.units)],
             'tech': p.tech.tech.copy()
         } for i, p in enumerate(self.players)]
 
         return {
-            'sp': sp,
             'turn': self.current_turn,
             'winner': None,
             'players': players,
+            'player_whose_turn': self.current_player_id,
             'planets': self.board.planets,
             'phase': self.phase,
             'round': self.round,
-            'tech_types': Technology.get_state(),
-            'unit_types': self.get_unit_types(),
+            'technology_data': Technology.get_state(),
+            'unit_data': self.get_unit_data(),
             'board_size': self.board.size
         }

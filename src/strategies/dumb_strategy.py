@@ -20,7 +20,7 @@ class DumbStrategy:
 
     # Only build scouts
     def decide_purchases(self, game_state):
-        scout_cost = game_state['unit_types']["Scout"]["cp_cost"]
+        scout_cost = game_state['unit_data']["Scout"]["cp_cost"]
         amt = game_state['players'][self.player_index]['cp']//scout_cost
         return {"units": ["Scout"]*amt, "tech": {}}
 

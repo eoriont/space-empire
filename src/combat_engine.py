@@ -26,6 +26,7 @@ class CombatEngine:
                                   != unit['player'] and u['alive']]
                 if len(attack_options) == 0:
                     continue
+                self.game.current_player_id = unit['id']
                 unit2 = unit_obj.player.strat.decide_which_unit_to_attack(
                     us, pos, i)
                 unit2_obj = self.state_to_unit(us[unit2])
@@ -103,8 +104,9 @@ class CombatEngine:
             pos: [
                 {'player': u.player.id-1,
                  'unit': u.player.units.index(u),
-                 'alive': u.alive, 'type': type(u).__name__}
-                for u in self.order_ships(units)
+                 'alive': u.alive, 'type': type(u).__name__,
+                 'id': i}
+                for i, u in enumerate(self.order_ships(units))
             ] for pos, units in self.game.board.items()
             if not CombatEngine.units_on_same_team(units)
         }

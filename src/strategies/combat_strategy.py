@@ -8,13 +8,13 @@ class CombatStrategy:
         self.player_index = player_index
 
     # Don't colonize planets
-    def will_colonize_planets(self, pos, ship):
+    def will_colonize_planets(self, coords, game_state):
         return False
 
     # Move all ships closer to the center
     def decide_ship_movement(self, unit_index, game_state):
         unit = game_state['players'][self.player_index]['units'][unit_index]
-        sp = game_state['sp']
+        sp = game_state['round']
         tech_amt = game_state['players'][self.player_index]['spaces'][sp]
         possible_spaces = get_possible_spots(
             unit["coords"], tech_amt, game_state["board_size"])
@@ -25,38 +25,24 @@ class CombatStrategy:
 
     # Buy all possible size tech and scouts/destroyers
     def decide_purchases(self, game_state):
-        unit_types = game_state['unit_types']
+        unit_data = game_state['unit_data']
         player_state = game_state['players'][self.player_index]
         cp = player_state['cp']
-        tech_types = game_state['tech_types']
+        technology_data = game_state['technology_data']
         ss_level = player_state["tech"]["ss"]
         purchases = {"tech": [], "units": []}
-        if cp > tech_types["ss"]["price"][ss_level] and ss_level < 2:
+        if cp > technology_data["ss"]["price"][ss_level] and ss_level < 2:
             purchases["tech"].append("ss")
-            cp -= tech_types["ss"]["price"][ss_level]
+            cp -= technology_data["ss"]["price"][ss_level]
             ss_level = 2
-        can_buy_destroyer = cp >= unit_types["Destroyer"][
-            "cp_cost"] and ss_level >= unit_types["Destroyer"]["req_size_tech"]
+        can_buy_destroyer = cp >= unit_data["Destroyer"][
+            "cp_cost"] and ss_level >= unit_data["Destroyer"]["req_size_tech"]
         if self.buy_destroyer:
             if can_buy_destroyer:
                 purchases["units"] = ["Destroyer"]
         else:
             purchases["units"] = ["Scout"]
         return purchases
-
-    # def decide_removals(self, player, money_needed):
-    #     ships = player["units"]
-    #     if money_needed < 0:
-    #         m = 0
-    #         s = []
-    #         i = 0
-    #         while m < -money_needed:
-    #             s.append(ships[i])
-    #             m += ships[i]["maintenance_cost"]
-    #             i += 1
-    #         return s
-
-    #     return []
 
     # Return ship #0
     def decide_removal(self, game_state):

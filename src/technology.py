@@ -48,6 +48,13 @@ class Technology:
             }
         }
 
+    def get_obj_state(self):
+        return {
+            'attack': self['atk'],
+            'defense': self['def'],
+            'movement': self['mov']
+        }
+
     def get_spaces(self):
         spaces_per_phase = [
             (1, 1, 1),

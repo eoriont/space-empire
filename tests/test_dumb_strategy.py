@@ -18,7 +18,7 @@ game = Game((5, 5), logging=False, rendering=False, die_mode="ascend")
 def assert_player_scouts(turn, player, pos, amt):
     state = game.generate_state()
     units = [u for u in state['players'][player-1]['units']
-             if u['coords'] == pos and u['type'] == Scout]
+             if u['coords'] == pos and u['type'] == 'Scout']
     assert_bool(f"turn {turn} movement phase", len(units) == amt)
 
 

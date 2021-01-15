@@ -34,8 +34,8 @@ class EconomicEngine:
         # And player has sufficient tech
         u = purchases["units"]
         units = {x: u.count(x) for x in set(u)}
-        unit_types = self.game.get_unit_types()
-        units_cost = sum(unit_types[u]["cp_cost"] *
+        unit_data = self.game.get_unit_data()
+        units_cost = sum(unit_data[u]["cp_cost"] *
                          amt for u, amt in units.items())
         t = purchases["tech"]
         tech = {x: t.count(x) for x in set(t)}
