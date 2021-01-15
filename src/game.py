@@ -111,7 +111,7 @@ class Game:
             'spaces': p.tech.get_spaces(),
             'units': [{
                 'id': j,
-                'location': u.pos,
+                'coords': u.pos,
                 'type': type(u),
                 'hits': type(u).armor-u.armor,
                 'technology': u.tech,

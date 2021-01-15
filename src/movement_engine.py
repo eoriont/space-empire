@@ -14,7 +14,7 @@ class MovementEngine:
         for player in state['players']:
             for i, unit in enumerate(player['units']):
                 if not unit['type'].immovable:
-                    old_pos = unit['location']
+                    old_pos = unit['coords']
                     translation = self.state_to_player(
                         player).strat.decide_ship_movement(i, state)
                     self.state_to_unit(unit).validate_and_move(translation, sp)

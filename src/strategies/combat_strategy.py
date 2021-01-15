@@ -17,11 +17,11 @@ class CombatStrategy:
         sp = game_state['sp']
         tech_amt = game_state['players'][self.player_index]['spaces'][sp]
         possible_spaces = get_possible_spots(
-            unit["location"], tech_amt, game_state["board_size"])
+            unit["coords"], tech_amt, game_state["board_size"])
         distances = [dist((2, 2), pos)
                      for pos in possible_spaces]
         next_space = possible_spaces[distances.index(min(distances))]
-        return next_space[0] - unit["location"][0], next_space[1] - unit["location"][1]
+        return next_space[0] - unit["coords"][0], next_space[1] - unit["coords"][1]
 
     # Buy all possible size tech and scouts/destroyers
     def decide_purchases(self, game_state):
@@ -63,7 +63,7 @@ class CombatStrategy:
         return 0
 
     # Choose the first unit to attack
-    def decide_which_unit_to_attack(self, combat_state, location, attacker_index):
+    def decide_which_unit_to_attack(self, combat_state, coords, attacker_index):
         return next((i for i, x in enumerate(combat_state) if self.player_index != x['player'] and x['alive']), None)
 
     # Don't screen any units
