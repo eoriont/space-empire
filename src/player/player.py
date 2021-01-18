@@ -14,7 +14,7 @@ class Player:
         self.units = []
         self.game = game
         self.tech = Technology(
-            {'atk': 0, 'def': 0, 'mov': 1, 'syc': 1, 'ss': 1})
+            {'attack': 0, 'defense': 0, 'movement': 1, 'shipyard': 1, 'shipsize': 1})
         self.cp = 0
 
     def start(self):
@@ -86,3 +86,6 @@ class Player:
 
     def get_unit_by_id(self, uid):
         return next(x for x in self.units if uid == x.id)
+
+    def get_home_coords(self):
+        return next(x for x in self.units if type(x) == Colony and x.is_home_colony).pos

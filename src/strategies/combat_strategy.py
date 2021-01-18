@@ -1,4 +1,4 @@
-from strategies.strategy_util import get_possible_spots, is_in_bounds
+from strategies.strategy_util import get_possible_spots, is_in_bounds, get_spaces
 
 
 class CombatStrategy:
@@ -13,9 +13,11 @@ class CombatStrategy:
 
     # Move all ships closer to the center
     def decide_ship_movement(self, unit_index, game_state):
-        unit = game_state['players'][self.player_index]['units'][unit_index]
+        p = game_state['players'][self.player_index]
+        unit = p['units'][unit_index]
         sp = game_state['round']
-        tech_amt = game_state['players'][self.player_index]['spaces'][sp]
+        mov_lvl = p['tech']['movement']
+        tech_amt = get_spaces(mov_lvl)[sp]
         possible_spaces = get_possible_spots(
             unit["coords"], tech_amt, game_state["board_size"])
         distances = [dist((2, 2), pos)
@@ -29,14 +31,14 @@ class CombatStrategy:
         player_state = game_state['players'][self.player_index]
         cp = player_state['cp']
         technology_data = game_state['technology_data']
-        ss_level = player_state["tech"]["ss"]
+        ss_level = player_state["tech"]["shipsize"]
         purchases = {"tech": [], "units": []}
-        if cp > technology_data["ss"]["price"][ss_level] and ss_level < 2:
-            purchases["tech"].append("ss")
-            cp -= technology_data["ss"]["price"][ss_level]
+        if cp > technology_data["shipsize"][ss_level] and ss_level < 2:
+            purchases["tech"].append("shipsize")
+            cp -= technology_data["shipsize"][ss_level]
             ss_level = 2
         can_buy_destroyer = cp >= unit_data["Destroyer"][
-            "cp_cost"] and ss_level >= unit_data["Destroyer"]["req_size_tech"]
+            "cp_cost"] and ss_level >= unit_data["Destroyer"]["ship_size_needed"]
         if self.buy_destroyer:
             if can_buy_destroyer:
                 purchases["units"] = ["Destroyer"]
@@ -50,7 +52,7 @@ class CombatStrategy:
 
     # Choose the first unit to attack
     def decide_which_unit_to_attack(self, combat_state, coords, attacker_index):
-        return next((i for i, x in enumerate(combat_state) if self.player_index != x['player'] and x['alive']), None)
+        return next((i for i, x in enumerate(combat_state[coords]) if self.player_index != x['player'] and x['alive']), None)
 
     # Don't screen any units
     def decide_which_units_to_screen(self, combat_state):

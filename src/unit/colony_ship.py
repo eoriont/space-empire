@@ -11,9 +11,11 @@ class Colonyship(Unit):
     armor = 1
     hull_size = 1
     req_size_tech = 1
-    default_tech = {'mov': 1}
+    default_tech = {'movement': 1}
     no_maintenance = True
     no_attack = True
+    #! Somehow make it not affected by technology
+    #! This shouldn't matter right now bc tests don't need it
 
     def test_for_planet(self):
         if self.game.board.on_unoccupied_planet(self.pos):

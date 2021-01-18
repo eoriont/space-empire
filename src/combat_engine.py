@@ -28,7 +28,7 @@ class CombatEngine:
                     continue
                 self.game.current_player_id = unit['id']
                 unit2 = unit_obj.player.strat.decide_which_unit_to_attack(
-                    us, pos, i)
+                    cbt_arr, pos, i)
                 unit2_obj = self.state_to_unit(us[unit2])
                 self.duel(unit_obj, unit2_obj)
 
@@ -56,8 +56,8 @@ class CombatEngine:
 
     # A duel between an attacker and a defender
     def duel(self, attacker, defender):
-        atk_str = attacker.attack_strength + attacker.tech['atk']
-        def_str = defender.defense_strength + defender.tech['def']
+        atk_str = attacker.attack_strength + attacker.tech['attack']
+        def_str = defender.defense_strength + defender.tech['defense']
         hit_threshold = atk_str - def_str
         die_roll = self.game.die_roll()
         if die_roll <= hit_threshold or die_roll == 1:

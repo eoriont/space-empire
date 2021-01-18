@@ -99,8 +99,8 @@ class Game:
 
     def get_unit_data(self):
         return {
-            "Scout": {"cp_cost": Scout.cp_cost, "req_size_tech": Scout.req_size_tech},
-            "Destroyer": {"cp_cost": Destroyer.cp_cost, "req_size_tech": Destroyer.req_size_tech}
+            "Scout": {"cp_cost": Scout.cp_cost, "ship_size_needed": Scout.req_size_tech},
+            "Destroyer": {"cp_cost": Destroyer.cp_cost, "ship_size_needed": Destroyer.req_size_tech}
         }
 
     def unit_str_to_class(self, unit):
@@ -117,17 +117,16 @@ class Game:
         players = [{
             'cp': p.cp,
             'id': i,
-            #! spaces wasn't in the specification, figure out a way to remove it
-            'spaces': p.tech.get_spaces(),
             'units': [{
                 'id': j,
                 'coords': u.pos,
                 'type': type(u).__name__,
-                'hits': type(u).armor-u.armor,
+                'hits_left': type(u).armor-u.armor,
                 'technology': u.tech.get_obj_state(),
-                'player': i
+                'player': i,
             } for j, u in enumerate(p.units)],
-            'tech': p.tech.tech.copy()
+            'tech': p.tech.tech.copy(),
+            'home_coords': p.get_home_coords()
         } for i, p in enumerate(self.players)]
 
         return {

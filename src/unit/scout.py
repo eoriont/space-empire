@@ -10,6 +10,6 @@ class Scout(Unit):
     defense_strength = 0
     abbr = "S"
     armor = 1
-    default_tech = {'mov': 1}
+    default_tech = {'movement': 1}
     hull_size = 1
     req_size_tech = 1

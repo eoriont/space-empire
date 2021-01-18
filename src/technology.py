@@ -1,6 +1,7 @@
 class Technology:
     def __init__(self, tech, default_tech=None):
         if default_tech is None:
+            #! Not sure if atk and def start at 0 + mov, ss, sy start at 1
             default_tech = {}
         if type(default_tech) == Technology:
             default_tech = default_tech.tech
@@ -24,35 +25,38 @@ class Technology:
     # Get the price for a certain tech
     def get_price(self, tech_type):
         level = self[tech_type]
-        if tech_type == 'atk':
+        if tech_type == 'attack':
             return (level + 1) * 10
-        elif tech_type == 'def':
+        elif tech_type == 'defense':
             return (level + 1) * 10
-        elif tech_type == 'mov':
+        elif tech_type == 'movement':
             if level == 1:
                 return 20
             elif level == 2:
                 return 30
             elif level in [3, 4, 5]:
                 return 40
-        elif tech_type == 'syc':
+        elif tech_type == 'shipyard':
             return level * 10
-        elif tech_type == 'ss':
+        elif tech_type == 'shipsize':
             return 5 + level*5
 
     @staticmethod
     def get_state():
+        # TODO: Change get_price to reflect this
         return {
-            "ss": {
-                "price": [5, 10, 15, 20, 25]
-            }
+            "shipsize": [5, 10, 15, 20, 25],
+            "attack": [20, 30, 40],
+            "defense": [20, 30, 40],
+            "movement": [20, 30, 40, 40, 40],
+            "shipyard": [20, 30]
         }
 
     def get_obj_state(self):
         return {
-            'attack': self['atk'],
-            'defense': self['def'],
-            'movement': self['mov']
+            'attack': self['attack'],
+            'defense': self['defense'],
+            'movement': self['movement']
         }
 
     def get_spaces(self):
@@ -64,21 +68,21 @@ class Technology:
             (2, 2, 3),
             (2, 3, 3),
         ]
-        return spaces_per_phase[self.tech['mov']]
+        return spaces_per_phase[self.tech['movement']]
 
     # Return the upgradeable tech with cp
     def get_available(self, cp):
         available = []
-        if self['atk'] <= 3 and cp >= self.get_price('atk'):
-            available.append('atk')
-        if self['def'] <= 3 and cp >= self.get_price('def'):
-            available.append('def')
-        if self['mov'] <= 5 and cp >= self.get_price('mov'):
-            available.append('mov')
-        if self['syc'] <= 3 and cp >= self.get_price('syc'):
-            available.append('syc')
-        if self['ss'] <= 5 and cp >= self.get_price('ss'):
-            available.append('ss')
+        if self['attack'] <= 3 and cp >= self.get_price('attack'):
+            available.append('attack')
+        if self['defense'] <= 3 and cp >= self.get_price('defense'):
+            available.append('defense')
+        if self['movement'] <= 5 and cp >= self.get_price('movement'):
+            available.append('movement')
+        if self['shipyard'] <= 3 and cp >= self.get_price('shipyard'):
+            available.append('shipyard')
+        if self['shipsize'] <= 5 and cp >= self.get_price('shipsize'):
+            available.append('shipsize')
         return available
 
     # Return string of all the technologies

@@ -13,3 +13,15 @@ def get_possible_spots(pos, speed, bounds):
             for y in range(-speed, speed+1)
             if abs(x)+abs(y) <= speed
             and is_in_bounds(pos[0]+x, pos[1]+y, bounds)]
+
+
+def get_spaces(mov_level):
+    spaces_per_phase = [
+        (1, 1, 1),
+        (1, 1, 2),
+        (1, 2, 2),
+        (2, 2, 2),
+        (2, 2, 3),
+        (2, 3, 3),
+    ]
+    return spaces_per_phase[mov_level]
