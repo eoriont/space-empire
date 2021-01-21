@@ -3,6 +3,7 @@ from strategies.strategy_util import is_in_bounds
 
 
 class DumbStrategy:
+    __name__ = 'DumbStrategy'
 
     def __init__(self, player_index):
         self.player_index = player_index

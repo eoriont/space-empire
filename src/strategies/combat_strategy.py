@@ -3,6 +3,7 @@ from strategies.strategy_util import get_possible_spots, is_in_bounds, get_space
 
 class CombatStrategy:
     buy_destroyer = True
+    __name__ = 'CombatStrategy'
 
     def __init__(self, player_index):
         self.player_index = player_index
