@@ -43,12 +43,12 @@ class CombatStrategy:
             if can_buy_destroyer:
                 purchases["units"] = [{
                     'type': 'Destroyer',
-                    'location': player_state["home_coords"]
+                    'coords': player_state["home_coords"]
                 }]
         else:
             purchases["units"] = [{
                 'type': 'Scout',
-                'location': player_state["home_coords"]
+                'coords': player_state["home_coords"]
             }]
         return purchases
 

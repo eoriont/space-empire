@@ -48,7 +48,7 @@ class EconomicEngine:
     def purchase(self, purchases, player):
         units = purchases["units"]
         for unit in units:
-            player.build_unit(self.game.unit_str_to_class(unit['type']), starting_pos=unit['location'])
+            player.build_unit(self.game.unit_str_to_class(unit['type']), starting_pos=unit['coords'])
 
         tech = purchases["technology"]
         for t in tech:
