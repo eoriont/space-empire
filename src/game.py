@@ -1,15 +1,10 @@
 import random
-from player.player import Player
-from unit.colony import Colony
-from unit.colony_ship import Colonyship
-from unit.ship_yard import ShipYard
+from player import Player
 from board import Board
-from unit.decoy import Decoy
 from combat_engine import CombatEngine
 from movement_engine import MovementEngine
 from economic_engine import EconomicEngine
-from unit.scout import Scout
-from unit.destroyer import Destroyer
+from unit import Destroyer, Scout, Decoy, Colony, ColonyShip, ShipYard
 from technology import Technology
 
 
@@ -93,6 +88,7 @@ class Game:
             self.last_die -= 1
             return (self.last_die % 6) + 1
 
+    # Theoretically this should just be a nonrepeating value
     def next_id():
         self.current_id += 1
         return self.current_id
@@ -107,7 +103,7 @@ class Game:
         return {
             "Scout": Scout,
             "Destroyer": Destroyer,
-            "Colonyship": Colonyship,
+            "ColonyShip": ColonyShip,
             "ShipYard": ShipYard,
             "Colony": Colony
         }[unit]

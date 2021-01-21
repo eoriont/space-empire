@@ -1,6 +1,6 @@
 from planet import Planet
 import random
-from unit.colony import Colony
+from unit import Colony
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 

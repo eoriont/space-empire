@@ -1,7 +1,6 @@
 
 import random
-from unit.decoy import Decoy
-from unit.colony_ship import Colonyship
+from unit import Decoy, ColonyShip
 
 
 class CombatEngine:
@@ -50,7 +49,7 @@ class CombatEngine:
     # Remove decoys/colonyships
     def remove_units(self, units):
         for u in units:
-            if type(u) in [Decoy, Colonyship]:
+            if type(u) in [Decoy, ColonyShip]:
                 u.destroy("combat")
         return [u for u in units if u.alive]
 

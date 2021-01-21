@@ -2,16 +2,16 @@ import sys
 sys.path.append('src')
 try:
     from game import Game
-    from unit.scout import Scout
+    from unit import Scout
 
     # Change this line to use other people's strategies
-    # from strategies.dumb_strategy import DumbStrategy
-    from strategies.imported.riley_dumb_strategy import DumbStrategy
+    from strategies.dumb_strategy import DumbStrategy
+    # from strategies.imported.riley_dumb_strategy import DumbStrategy
     # from strategies.imported.colby_dumb_strategy import DumbStrategy
     # from strategies.imported.george_dumb_strategy import DumbStrategy
     # from strategies.imported.david_dumb_strategy import DumbStrategy
 
-    from player.player import Player
+    from player import Player
     from otest import do_assert, assert_bool, color_print
 except ImportError as e:
     print(e)

@@ -1,6 +1,6 @@
 from game import Game
 from strategies.combat_strategy import CombatStrategy
-from player.player import Player
+from player import Player
 game = Game((5, 5), logging=False, rendering=False, die_mode="ascend")
 p1 = Player(CombatStrategy(), "CombatPlayer1", (2, 0), game)
 p2 = Player(CombatStrategy(), "CombatPlayer2", (2, 4), game)

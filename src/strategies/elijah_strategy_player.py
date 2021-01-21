@@ -1,5 +1,3 @@
-from player import Player
-
 
 class ElijahStrategyPlayer(Player):
     def will_colonize_planet(self, colony_ship, planet, game):

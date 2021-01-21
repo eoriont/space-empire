@@ -1,8 +1,5 @@
 from technology import Technology
-from unit.scout import Scout
-from unit.colony_ship import Colonyship
-from unit.colony import Colony
-from unit.ship_yard import ShipYard
+from unit import Scout, ColonyShip, Colony, ShipYard
 
 
 class Player:
@@ -26,7 +23,7 @@ class Player:
             self.build_unit(Scout, pay=False)
 
         for _ in range(3):
-            self.build_unit(Colonyship, pay=False)
+            self.build_unit(ColonyShip, pay=False)
 
         for _ in range(4):
             self.build_unit(ShipYard, pay=False)

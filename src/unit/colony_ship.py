@@ -1,9 +1,8 @@
-from unit.unit import Unit
-from unit.colony import Colony
+from unit import Unit, Colony
 
 
-class Colonyship(Unit):
-    # Colonyship unit's stats
+class ColonyShip(Unit):
+    # ColonyShip unit's stats
     cp_cost = 8
     attack_strength = 0
     defense_strength = 0

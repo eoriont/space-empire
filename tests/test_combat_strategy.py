@@ -2,13 +2,11 @@ import sys
 sys.path.append('src')
 try:
     from game import Game
-    from unit.scout import Scout
-    from unit.colony_ship import Colonyship
-    from unit.destroyer import Destroyer
-    from player.player import Player
+    from unit import Scout, ColonyShip, Destroyer
+    from player import Player
     # Change this next line to import a different person's strat
-    # from strategies.combat_strategy import CombatStrategy
-    from strategies.imported.riley_combat_strategy import CombatStrategy
+    from strategies.combat_strategy import CombatStrategy
+    # from strategies.imported.riley_combat_strategy import CombatStrategy
     # from strategies.imported.colby_combat_strategy import CombatStrategy
     # from strategies.imported.george_combat_strategy import CombatStrategy
     # from strategies.imported.david_combat_strategy import CombatStrategy
@@ -43,8 +41,8 @@ game.start()
 # Turn 1 Movement Phases
 print("Movement Phase Turn 1")
 game.movement.movement_phase(game.current_turn)
-assert_unit_positions(1, "movement", p1, (2, 2), {Scout: 3, Colonyship: 3})
-assert_unit_positions(1, "movement", p2, (2, 2), {Scout: 3, Colonyship: 3})
+assert_unit_positions(1, "movement", p1, (2, 2), {Scout: 3, ColonyShip: 3})
+assert_unit_positions(1, "movement", p2, (2, 2), {Scout: 3, ColonyShip: 3})
 
 # Turn 1 Combat Phase
 print("Combat Phase Turn 1")
@@ -55,10 +53,10 @@ assert_unit_positions(1, "combat", p2, (2, 2), {})
 # Turn 1 Economic Phase
 print("Economic Phase Turn 1")
 game.economy.economic_phase(game.current_turn)
-assert_unit_positions(1, "economic", p1, (2, 0), {})
-assert_unit_positions(1, "economic", p2, (2, 4), {Destroyer: 1})
 assert_cp(1, p1, 7)
 assert_cp(1, p2, 1)
+assert_unit_positions(1, "economic", p1, (2, 0), {})
+assert_unit_positions(1, "economic", p2, (2, 4), {Destroyer: 1})
 
 # Turn 2 Movement Phases
 print("Movement Phase Turn 2")
@@ -84,8 +82,8 @@ game.start()
 # Turn 1 Movement Phases
 print("Movement Phase Turn 1")
 game.movement.movement_phase(game.current_turn)
-assert_unit_positions(1, "movement", p1, (2, 2), {Scout: 3, Colonyship: 3})
-assert_unit_positions(1, "movement", p2, (2, 2), {Scout: 3, Colonyship: 3})
+assert_unit_positions(1, "movement", p1, (2, 2), {Scout: 3, ColonyShip: 3})
+assert_unit_positions(1, "movement", p2, (2, 2), {Scout: 3, ColonyShip: 3})
 
 # Turn 1 Combat Phase
 print("Combat Phase Turn 1")
