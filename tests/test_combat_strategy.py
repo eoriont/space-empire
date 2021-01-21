@@ -67,6 +67,7 @@ assert_unit_positions(2, "movement", p2, (2, 2), {Destroyer: 1})
 # Turn 2 Combat Phase
 print("Combat Phase Turn 2")
 game.combat.combat_phase(game.current_turn)
+print([u.player.id for u in game.board[(2,2)]])
 assert_unit_positions(2, "combat", p1, (2, 2), {Scout: 1})
 assert_unit_positions(2, "combat", p2, (2, 2), {})
 color_print("All tests passed! (For ascending dice rolls)", "Blue")

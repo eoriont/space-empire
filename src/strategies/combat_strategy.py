@@ -17,7 +17,7 @@ class CombatStrategy:
         p = game_state['players'][self.player_index]
         unit = p['units'][unit_index]
         sp = game_state['round']
-        mov_lvl = p['technology']['movement']
+        mov_lvl = p['technology']['movement']-1
         tech_amt = get_spaces(mov_lvl)[sp]
         possible_spaces = get_possible_spots(
             unit["coords"], tech_amt, game_state["board_size"])
@@ -36,10 +36,11 @@ class CombatStrategy:
         purchases = {"technology": [], "units": []}
         if cp > technology_data["shipsize"][ss_level] and ss_level < 2:
             purchases["technology"].append("shipsize")
+            # SS prices list starts level 1 at index 0
             cp -= technology_data["shipsize"][ss_level]
             ss_level = 2
         can_buy_destroyer = cp >= unit_data["Destroyer"][
-            "cp_cost"] and ss_level >= unit_data["Destroyer"]["ship_size_needed"]
+            "cp_cost"] and ss_level >= unit_data["Destroyer"]["shipsize_needed"]
         if self.buy_destroyer:
             if can_buy_destroyer:
                 purchases["units"] = [{
@@ -59,7 +60,7 @@ class CombatStrategy:
 
     # Choose the first unit to attack
     def decide_which_unit_to_attack(self, combat_state, coords, attacker_index):
-        return next((i for i, x in enumerate(combat_state[coords]) if self.player_index != x['player'] and x['alive']), None)
+        return next((i for i, x in enumerate(combat_state[coords]) if self.player_index != x['player']), None)
 
     # Don't screen any units
     def decide_which_units_to_screen(self, combat_state):

@@ -39,7 +39,7 @@ class EconomicEngine:
                          amt for u, amt in units.items())
         t = purchases["technology"]
         tech = {x: t.count(x) for x in set(t)}
-        tech_cost = sum(sum(Technology.get_price({t: tech[t]+i}, t) for i in range(levels))
+        tech_cost = sum(sum(Technology.get_state()[t][tech[t]] for i in range(levels))
                         for t, levels in tech.items())
 
         if cp < units_cost + tech_cost:

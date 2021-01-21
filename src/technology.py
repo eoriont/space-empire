@@ -18,34 +18,14 @@ class Technology:
 
     # Add 1 to tech level and return price
     def buy_tech(self, tech_type):
-        price = self.get_price(tech_type)
+        price = Technology.get_state()[tech_type][self[tech_type]]
         self[tech_type] += 1
         return price
 
-    # Get the price for a certain tech
-    def get_price(self, tech_type):
-        level = self[tech_type]
-        if tech_type == 'attack':
-            return (level + 1) * 10
-        elif tech_type == 'defense':
-            return (level + 1) * 10
-        elif tech_type == 'movement':
-            if level == 1:
-                return 20
-            elif level == 2:
-                return 30
-            elif level in [3, 4, 5]:
-                return 40
-        elif tech_type == 'shipyard':
-            return level * 10
-        elif tech_type == 'shipsize':
-            return 5 + level*5
-
     @staticmethod
     def get_state():
-        # TODO: Change get_price to reflect this
         return {
-            "shipsize": [5, 10, 15, 20, 25],
+            "shipsize": [0, 10, 15, 20, 25, 30],
             "attack": [20, 30, 40],
             "defense": [20, 30, 40],
             "movement": [20, 30, 40, 40, 40],
@@ -56,7 +36,9 @@ class Technology:
         return {
             'attack': self['attack'],
             'defense': self['defense'],
-            'movement': self['movement']
+            'movement': self['movement'],
+            'shipsize': self["shipsize"],
+            'shipyard': self["shipyard"]
         }
 
     def get_spaces(self):
@@ -68,22 +50,7 @@ class Technology:
             (2, 2, 3),
             (2, 3, 3),
         ]
-        return spaces_per_phase[self.tech['movement']]
-
-    # Return the upgradeable tech with cp
-    def get_available(self, cp):
-        available = []
-        if self['attack'] <= 3 and cp >= self.get_price('attack'):
-            available.append('attack')
-        if self['defense'] <= 3 and cp >= self.get_price('defense'):
-            available.append('defense')
-        if self['movement'] <= 5 and cp >= self.get_price('movement'):
-            available.append('movement')
-        if self['shipyard'] <= 3 and cp >= self.get_price('shipyard'):
-            available.append('shipyard')
-        if self['shipsize'] <= 5 and cp >= self.get_price('shipsize'):
-            available.append('shipsize')
-        return available
+        return spaces_per_phase[self['movement']]
 
     # Return string of all the technologies
     def __str__(self):

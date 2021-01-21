@@ -24,10 +24,10 @@ class CombatEngine:
 
                 self.game.current_player_id = attacker.player.id
                 # I pass in the fake dict because there might not be a point for the whole cbt_arr
-                defender_state = attacker.player.strat.decide_which_unit_to_attack(
-                    self.generate_combat_array(), pos, attacker.id)
+                defender_id = attacker.player.strat.decide_which_unit_to_attack(
+                    self.generate_combat_array(), pos, cbt_arr.index(attacker.generate_state()))
 
-                defender = self.state_to_unit(cbt_arr[defender_state])
+                defender = self.state_to_unit(cbt_arr[defender_id])
                 self.duel(attacker, defender)
 
             units = [self.state_to_unit(u) for u in self.generate_combat_array(pos)]
