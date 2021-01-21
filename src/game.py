@@ -125,7 +125,7 @@ class Game:
                 'technology': u.tech.get_obj_state(),
                 'player': i,
             } for j, u in enumerate(p.units)],
-            'tech': p.tech.tech.copy(),
+            'technology': p.tech.tech.copy(),
             'home_coords': p.get_home_coords()
         } for i, p in enumerate(self.players)]
 

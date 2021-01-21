@@ -37,7 +37,7 @@ class EconomicEngine:
         unit_data = self.game.get_unit_data()
         units_cost = sum(unit_data[u]["cp_cost"] *
                          amt for u, amt in units.items())
-        t = purchases["tech"]
+        t = purchases["technology"]
         tech = {x: t.count(x) for x in set(t)}
         tech_cost = sum(sum(Technology.get_price({t: tech[t]+i}, t) for i in range(levels))
                         for t, levels in tech.items())
@@ -52,7 +52,7 @@ class EconomicEngine:
             for _ in range(amt):
                 player.build_unit(self.game.unit_str_to_class(unit))
 
-        tech = purchases["tech"]
+        tech = purchases["technology"]
         for t in tech:
             player.buy_tech(t)
 

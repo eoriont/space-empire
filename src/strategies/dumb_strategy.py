@@ -22,7 +22,7 @@ class DumbStrategy:
     def decide_purchases(self, game_state):
         scout_cost = game_state['unit_data']["Scout"]["cp_cost"]
         amt = game_state['players'][self.player_index]['cp']//scout_cost
-        return {"units": ["Scout"]*amt, "tech": {}}
+        return {"units": ["Scout"]*amt, "technology": {}}
 
     # Don't attack ships, should never happen
     def decide_which_unit_to_attack(self, combat_state, coords, attacker_index):

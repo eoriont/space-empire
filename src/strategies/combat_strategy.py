@@ -16,7 +16,7 @@ class CombatStrategy:
         p = game_state['players'][self.player_index]
         unit = p['units'][unit_index]
         sp = game_state['round']
-        mov_lvl = p['tech']['movement']
+        mov_lvl = p['technology']['movement']
         tech_amt = get_spaces(mov_lvl)[sp]
         possible_spaces = get_possible_spots(
             unit["coords"], tech_amt, game_state["board_size"])
@@ -31,10 +31,10 @@ class CombatStrategy:
         player_state = game_state['players'][self.player_index]
         cp = player_state['cp']
         technology_data = game_state['technology_data']
-        ss_level = player_state["tech"]["shipsize"]
-        purchases = {"tech": [], "units": []}
+        ss_level = player_state["technology"]["shipsize"]
+        purchases = {"technology": [], "units": []}
         if cp > technology_data["shipsize"][ss_level] and ss_level < 2:
-            purchases["tech"].append("shipsize")
+            purchases["technology"].append("shipsize")
             cp -= technology_data["shipsize"][ss_level]
             ss_level = 2
         can_buy_destroyer = cp >= unit_data["Destroyer"][
