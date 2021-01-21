@@ -19,7 +19,7 @@ class CombatEngine:
                     continue
 
                 # If only the attacker is in cbt_arr, then there's no battle
-                if len(cbt_arr) <= 1:
+                if len(cbt_arr) <= 1 or pos not in self.get_combat_positions():
                     continue
 
                 self.game.current_player_id = attacker.player.id
