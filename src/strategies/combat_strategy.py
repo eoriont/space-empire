@@ -41,9 +41,15 @@ class CombatStrategy:
             "cp_cost"] and ss_level >= unit_data["Destroyer"]["ship_size_needed"]
         if self.buy_destroyer:
             if can_buy_destroyer:
-                purchases["units"] = ["Destroyer"]
+                purchases["units"] = [{
+                    'type': 'Destroyer',
+                    'location': player_state["home_coords"]
+                }]
         else:
-            purchases["units"] = ["Scout"]
+            purchases["units"] = [{
+                'type': 'Scout',
+                'location': player_state["home_coords"]
+            }]
         return purchases
 
     # Return ship #0

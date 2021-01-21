@@ -32,7 +32,7 @@ class EconomicEngine:
     def verify_purchases(self, purchases, cp, tech):
         # Verify the purchases are within budget
         # And player has sufficient tech
-        u = purchases["units"]
+        u = [x['type'] for x in purchases["units"]]
         units = {x: u.count(x) for x in set(u)}
         unit_data = self.game.get_unit_data()
         units_cost = sum(unit_data[u]["cp_cost"] *
@@ -46,11 +46,9 @@ class EconomicEngine:
             raise Exception("Player bought too many units/tech!")
 
     def purchase(self, purchases, player):
-        u = purchases["units"]
-        units = {x: u.count(x) for x in set(u)}
-        for unit, amt in units.items():
-            for _ in range(amt):
-                player.build_unit(self.game.unit_str_to_class(unit))
+        units = purchases["units"]
+        for unit in units:
+            player.build_unit(self.game.unit_str_to_class(unit['type']), starting_pos=unit['location'])
 
         tech = purchases["technology"]
         for t in tech:

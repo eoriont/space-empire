@@ -5,9 +5,9 @@ try:
     from unit import Scout, ColonyShip, Destroyer
     from player import Player
     # Change this next line to import a different person's strat
-    # from strategies.combat_strategy import CombatStrategy
+    from strategies.combat_strategy import CombatStrategy
     # from strategies.imported.riley_combat_strategy import CombatStrategy
-    from strategies.imported.colby_combat_strategy import CombatStrategy
+    # from strategies.imported.colby_combat_strategy import CombatStrategy
     # from strategies.imported.george_combat_strategy import CombatStrategy
     # from strategies.imported.david_combat_strategy import CombatStrategy
 
@@ -53,7 +53,6 @@ assert_unit_positions(1, "combat", p2, (2, 2), {})
 # Turn 1 Economic Phase
 print("Economic Phase Turn 1")
 game.economy.economic_phase(game.current_turn)
-print([type(u).__name__ for u in game.board[(2, 4)]])
 assert_cp(1, p1, 7)
 assert_cp(1, p2, 1)
 assert_unit_positions(1, "economic", p1, (2, 0), {})
