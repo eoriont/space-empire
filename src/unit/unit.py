@@ -11,7 +11,8 @@ class Unit:
     immovable = False
 
     # Initialize the unit
-    def __init__(self, player, uid, starting_pos, game, tech):
+    def __init__(self, uid, player, name, starting_pos, game, tech):
+        self.id = uid
         self.player = player
         self.id = uid
         self.pos = starting_pos
@@ -23,16 +24,17 @@ class Unit:
     # Remove unit from player's list and alive = False
     def destroy(self, hurter_name=None):
         self.alive = False
-        if self in self.player.units:
-            self.player.units.remove(self)
-        #! Handle the offcase
+        if self.id in self.player.units:
+            del self.player.units[self.id]
+        else:
+            #! Handle the offcase
+            pass
 
     # Subtract 1 from armor
     def hurt(self, hurter_name):
         self.armor -= 1
         if self.armor <= 0:
-            self.alive = False
-            self.destroyed_by = hurter_name
+            self.destroy(hurter_name)
 
     # Check if movement is valid and move if so
     def validate_and_move(self, translation, sp):
@@ -48,3 +50,14 @@ class Unit:
 
     def pos_from_translation(self, pos):
         return (self.pos[0]+pos[0], self.pos[1]+pos[1])
+
+    def generate_state(self):
+        return {
+            'id': self.id,
+            'coords': self.pos,
+            'type': type(self).__name__,
+            'hits_left': type(self).armor-self.armor,
+            'technology': self.tech.get_obj_state(),
+            'player': self.player.id,
+            'alive': self.alive
+        }

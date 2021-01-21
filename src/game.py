@@ -32,7 +32,7 @@ class Game:
     # Add player to the game before running
     def add_player(self, player):
         self.players.append(player)
-        player.id = len(self.players)
+        player.id = len(self.players)-1
         self.board.create()
 
     def start(self):
@@ -73,10 +73,10 @@ class Game:
         if self.logging:
             print(*args)
 
-    # Render if rendering is enabled
-    def render(self):
-        if self.rendering:
-            self.board.render()
+    # # Render if rendering is enabled
+    # def render(self):
+    #     if self.rendering:
+    #         self.board.render()
 
     def die_roll(self):
         if self.die_mode == "ascend":
@@ -89,7 +89,7 @@ class Game:
             return (self.last_die % 6) + 1
 
     # Theoretically this should just be a nonrepeating value
-    def next_id():
+    def next_id(self):
         self.current_id += 1
         return self.current_id
 
@@ -109,26 +109,10 @@ class Game:
         }[unit]
 
     def generate_state(self):
-
-        players = [{
-            'cp': p.cp,
-            'id': i,
-            'units': [{
-                'id': j,
-                'coords': u.pos,
-                'type': type(u).__name__,
-                'hits_left': type(u).armor-u.armor,
-                'technology': u.tech.get_obj_state(),
-                'player': i,
-            } for j, u in enumerate(p.units)],
-            'technology': p.tech.tech.copy(),
-            'home_coords': p.get_home_coords()
-        } for i, p in enumerate(self.players)]
-
         return {
             'turn': self.current_turn,
             'winner': None,
-            'players': players,
+            'players': [p.generate_state() for p in self.players],
             'player_whose_turn': self.current_player_id,
             'planets': self.board.planets,
             'phase': self.phase,
