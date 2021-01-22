@@ -18,7 +18,6 @@ class EconomicEngine:
                 self.remove_unit(removal, player)
                 maintenance = player.get_maintenance()
             player.pay(-player.get_maintenance())
-
             purchases = player.strat.decide_purchases(
                 self.game.generate_state())
             self.verify_purchases(purchases, player.cp, player.tech)

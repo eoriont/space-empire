@@ -31,6 +31,7 @@ class CombatStrategy:
         unit_data = game_state['unit_data']
         player_state = game_state['players'][self.player_index]
         cp = player_state['cp']
+        print(cp)
         technology_data = game_state['technology_data']
         ss_level = player_state["technology"]["shipsize"]
         purchases = {"technology": [], "units": []}

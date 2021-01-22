@@ -6,9 +6,9 @@ try:
     from player import Player
     # Change this next line to import a different person's strat
     # from strategies.combat_strategy import CombatStrategy
-    # from strategies.imported.riley_combat_strategy import CombatStrategy
+    from strategies.imported.riley_combat_strategy import CombatStrategy
     # from strategies.imported.colby_combat_strategy import CombatStrategy
-    from strategies.imported.george_combat_strategy import CombatStrategy
+    # from strategies.imported.george_combat_strategy import CombatStrategy
     # from strategies.imported.david_combat_strategy import CombatStrategy
 
     from otest import do_assert, assert_err, assert_success, assert_bool, color_print
@@ -67,7 +67,6 @@ assert_unit_positions(2, "movement", p2, (2, 2), {Destroyer: 1})
 # Turn 2 Combat Phase
 print("Combat Phase Turn 2")
 game.combat.combat_phase(game.current_turn)
-print([u.player.id for u in game.board[(2,2)]])
 assert_unit_positions(2, "combat", p1, (2, 2), {Scout: 1})
 assert_unit_positions(2, "combat", p2, (2, 2), {})
 color_print("All tests passed! (For ascending dice rolls)", "Blue")
