@@ -31,15 +31,18 @@ class EconomicEngine:
     def verify_purchases(self, purchases, cp, tech):
         # Verify the purchases are within budget
         # And player has sufficient tech
-        u = [x['type'] for x in purchases["units"]]
-        units = {x: u.count(x) for x in set(u)}
+        tech_purchases = purchases["technology"]
+        te = Technology(tech.tech.copy())
+        tech_cost = sum(te.buy_tech(t) for t in tech_purchases)
+
+        units_cost = 0
         unit_data = self.game.get_unit_data()
-        units_cost = sum(unit_data[u]["cp_cost"] *
-                         amt for u, amt in units.items())
-        t = purchases["technology"]
-        tech = {x: t.count(x) for x in set(t)}
-        tech_cost = sum(sum(Technology.get_state()[t][tech[t]] for i in range(levels))
-                        for t, levels in tech.items())
+        for u in purchases['units']:
+            unit_type = u['type']
+            if te['shipsize'] >= unit_data[unit_type]['shipsize_needed']:
+                units_cost += unit_data[unit_type]['cp_cost']
+            else:
+                raise Exception("Player bought unit without sufficient shipsize!")
 
         if cp < units_cost + tech_cost:
             raise Exception("Player bought too many units/tech!")
