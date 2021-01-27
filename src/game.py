@@ -71,6 +71,13 @@ class Game:
             return winner
         return False
 
+    def surrender(self, id):
+        self.winner = self.test_for_winner()
+        print("We have a winner!!")
+        print("Turns taken:", self.current_turn)
+        sys.exit(0)
+
+
     # Print to console if logging is enabled
     def log(self, s):
         if self.logging:

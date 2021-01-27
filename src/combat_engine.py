@@ -1,6 +1,6 @@
 
 import random
-from unit import Decoy, ColonyShip
+from unit import Decoy, ColonyShip, Colony
 
 
 class CombatEngine:
@@ -13,6 +13,9 @@ class CombatEngine:
         units = [self.state_to_unit(u) for u in self.generate_combat_array(pos)]
         while CombatEngine.is_battle(units):
             for attacker in units:
+                #! Hacky sack
+                if type(attacker) == Colony:
+                    continue
                 cbt_arr = self.generate_combat_array(pos)
 
                 if attacker.no_attack or not attacker.alive:
