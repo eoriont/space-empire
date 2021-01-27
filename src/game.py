@@ -6,6 +6,9 @@ from movement_engine import MovementEngine
 from economic_engine import EconomicEngine
 from unit import Destroyer, Scout, Decoy, Colony, ColonyShip, ShipYard
 from technology import Technology
+import sys
+sys.path.append("tests")
+from otest import cstring
 
 
 class Game:
@@ -69,9 +72,9 @@ class Game:
         return False
 
     # Print to console if logging is enabled
-    def log(self, *args):
+    def log(self, s):
         if self.logging:
-            print(*args)
+            print(cstring(f"&6{self.current_turn} &4{self.phase} &3{s}"))
 
     # # Render if rendering is enabled
     # def render(self):

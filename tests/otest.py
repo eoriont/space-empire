@@ -11,10 +11,22 @@ colors = {
     'Reset': '\u001b[0m',
 }
 
+color_codes = {
+    '&0': 'Black',
+    '&1': 'Red',
+    '&2': 'Green',
+    '&3': 'Yellow',
+    '&4': 'Blue',
+    '&5': 'Magenta',
+    '&6': 'Cyan',
+    '&7': 'White',
+    '&8': 'Reset',
+}
+
 
 def assert_err(test_name):
-    assert False, color_string(
-        f"Test {test_name} failed!", 'Red')
+    assert False, cstring(
+        f"&3Test &1{test_name} failed!")
 
 
 def assert_success(test_name):
@@ -22,9 +34,9 @@ def assert_success(test_name):
 
 
 def do_assert(test_name, output, expected):
-    assert output == expected, color_string(
-        f"Test {test_name} failed: output {output} expected to be {expected}", 'Red')
-    print(color_string(f"Test {test_name} PASSED!", 'Green'))
+    assert output == expected, cstring(
+        f"&1Test {test_name} failed: output &3{output}&1 expected to be &3{expected}")
+    print(cstring(f"&2Test &5{test_name}&2 PASSED!"))
 
 
 def assert_bool(test_name, boolean):
@@ -49,3 +61,14 @@ def color_print(s, col):
 
 def color_string(s, col):
     return f"{colors[col]}{s}{colors['Reset']}"
+
+
+def cstring(s):
+    s += "&8  "
+    ac = 0
+    for c in range(len(s)):
+        x = c+ac
+        if s[x] == "&" and s[x-1] != "\\":
+            ac += len(colors[color_codes[s[x:x+2]]])-2
+            s = s[:x] + colors[color_codes[s[x:x+2]]] + s[x+2:]
+    return s

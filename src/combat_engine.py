@@ -43,7 +43,11 @@ class CombatEngine:
         hit_threshold = atk_str - def_str
         die_roll = self.game.die_roll()
         if die_roll <= hit_threshold or die_roll == 1:
-            defender.hurt(attacker.id)
+            self.game.log(f"{attacker.get_name()} &2attacks&3 {defender.get_name()}")
+            defender.hurt(attacker.get_name())
+        else:
+            self.game.log(f"{attacker.get_name()} &5misses&3 {defender.get_name()}")
+
 
     # Return if all the units in the given list belong to the same player
     @staticmethod

@@ -25,3 +25,6 @@ def get_spaces(mov_level):
         (2, 3, 3),
     ]
     return spaces_per_phase[mov_level]
+
+def get_other_player(game_state, player_index):
+    return next(p for i, p in enumerate(game_state['players']) if i != player_index)

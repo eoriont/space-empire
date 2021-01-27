@@ -25,6 +25,7 @@ class Unit:
     def destroy(self, hurter_name=None):
         self.alive = False
         if self.id in self.player.units:
+            self.game.log(f"{self.get_name()} &1has been destroyed! Reason: {hurter_name}")
             del self.player.units[self.id]
         else:
             #! Handle the offcase
@@ -61,3 +62,6 @@ class Unit:
             'player': self.player.id,
             'alive': self.alive
         }
+
+    def get_name(self):
+        return f"Player {self.player.id} {type(self).__name__} {self.id}"

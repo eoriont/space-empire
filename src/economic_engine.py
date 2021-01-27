@@ -8,14 +8,16 @@ class EconomicEngine:
     # Upgrade technology and buy new ships
     def economic_phase(self, current_turn):
         self.game.phase = "Economic"
+        self.game.log("")
         for player in self.game.players:
             player.pay(player.get_income())
             maintenance = player.get_maintenance()
 
             while player.cp-maintenance < 0:
-                removal = player.strat.decide_removal(
-                    self.game.generate_state())
-                self.remove_unit(removal, player)
+                state = self.game.generate_state()
+                removal = player.strat.decide_removal(state)
+                removal = player.units[state['players'][player.id]['units'][removal]['id']]
+                removal.destroy("planned demolition")
                 maintenance = player.get_maintenance()
             player.pay(-player.get_maintenance())
             purchases = player.strat.decide_purchases(
@@ -24,9 +26,6 @@ class EconomicEngine:
             self.purchase(purchases, player)
 
         self.game.board.create()
-
-    def remove_unit(self, u, player):
-        player.get_unit_by_id(u["id"]).destroy("planned demolition")
 
     def verify_purchases(self, purchases, cp, tech):
         # Verify the purchases are within budget
