@@ -38,9 +38,7 @@ class AggressiveStrategy:
         purchases = {"technology": [], "units": []}
         if cp > technology_data["shipsize"][ss_level] and ss_level < 2:
             purchases["technology"].append("shipsize")
-            # SS prices list starts level 1 at index 0
-            # Remove the -1 on this line
-            cp -= technology_data["shipsize"][ss_level-1]
+            cp -= technology_data["shipsize"][ss_level]
             ss_level = 2
         can_buy_destroyer = cp >= unit_data["Destroyer"][
             "cp_cost"] and ss_level >= unit_data["Destroyer"]["shipsize_needed"]

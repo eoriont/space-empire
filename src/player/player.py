@@ -70,9 +70,13 @@ class Player:
     def buy_tech(self, tech_type):
         price = self.tech.buy_tech(tech_type)
         self.cp -= price
+        return price
 
     def get_home_coords(self):
         return next(x for x in self.get_units() if type(x) == Colony and x.is_home_colony).pos
+
+    def get_name(self):
+        return f"Player {self.id}"
 
     def generate_state(self):
         return {

@@ -12,6 +12,7 @@ class EconomicEngine:
         for player in self.game.players:
             player.pay(player.get_income())
             maintenance = player.get_maintenance()
+            self.game.log(f"{player.get_name()} starts economic phase with &5{player.cp}cp&3, after getting &5{player.get_income()}cp&3 as income")
 
             while player.cp-maintenance < 0:
                 state = self.game.generate_state()
@@ -19,11 +20,14 @@ class EconomicEngine:
                 removal = player.units[state['players'][player.id]['units'][removal]['id']]
                 removal.destroy("planned demolition")
                 maintenance = player.get_maintenance()
-            player.pay(-player.get_maintenance())
+            self.game.log(f"Their maintenance costs are &5{maintenance}cp")
+            player.pay(-maintenance)
             purchases = player.strat.decide_purchases(
                 self.game.generate_state())
             self.verify_purchases(purchases, player.cp, player.tech)
             self.purchase(purchases, player)
+            self.game.log(f"{player.get_name()} ends economic phase with &5{player.cp}cp")
+
 
         self.game.board.create()
 
@@ -49,11 +53,13 @@ class EconomicEngine:
     def purchase(self, purchases, player):
         units = purchases["units"]
         for unit in units:
-            player.build_unit(self.game.unit_str_to_class(unit['type']), starting_pos=unit['coords'])
+            u = player.build_unit(self.game.unit_str_to_class(unit['type']), starting_pos=unit['coords'])
+            self.game.log(f"They bought &2{u.get_name()}&3 for &5{u.cp_cost}")
 
         tech = purchases["technology"]
         for t in tech:
-            player.buy_tech(t)
+            p = player.buy_tech(t)
+            self.game.log(f"They bought &2{t}&3 for &5{p}cp")
 
     def generate_economic_state(self):
         return [{

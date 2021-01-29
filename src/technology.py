@@ -18,22 +18,18 @@ class Technology:
 
     # Add 1 to tech level and return price
     def buy_tech(self, tech_type):
-        if tech_type == "shipsize":
-            price = Technology.get_state()[tech_type][self[tech_type]-1]
-        else:
-            price = Technology.get_state()[tech_type][self[tech_type]]
+        price = Technology.get_state()[tech_type][self[tech_type]]
         self[tech_type] += 1
         return price
 
     @staticmethod
     def get_state():
         return {
-            #! Queue a 0 once everyone grows a brain
-            "shipsize": [10, 15, 20, 25, 30],
+            "shipsize": [0, 10, 15, 20, 25, 30],
             "attack": [20, 30, 40],
             "defense": [20, 30, 40],
-            "movement": [20, 30, 40, 40, 40],
-            "shipyard": [20, 30]
+            "movement": [0, 20, 30, 40, 40, 40],
+            "shipyard": [0, 20, 30]
         }
 
     def get_obj_state(self):
