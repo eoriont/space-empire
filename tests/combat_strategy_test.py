@@ -5,17 +5,17 @@ try:
     from unit import Scout, ColonyShip, Destroyer
     from player import Player
     # Change this next line to import a different person's strat
-    # from strategies.combat_strategy import CombatStrategy
+    from strategies.combat_strategy import CombatStrategy
     # from strategies.imported.riley_combat_strategy import CombatStrategy
     # from strategies.imported.colby_combat_strategy import CombatStrategy
     # from strategies.imported.george_combat_strategy import CombatStrategy
-    from strategies.imported.david_combat_strategy import CombatStrategy
+    # from strategies.imported.david_combat_strategy import CombatStrategy
 
     from otest import do_assert, assert_err, assert_success, assert_bool, color_print
 except ImportError as e:
     print(e)
 
-game = Game((5, 5), logging=True, rendering=False, die_mode="ascend")
+game = Game((5, 5), logging=True, rendering=False, die_mode="ascend", simple_mode=False)
 
 
 def assert_unit_positions(turn, phase, player, pos, units):

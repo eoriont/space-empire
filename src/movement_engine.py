@@ -5,7 +5,8 @@ class MovementEngine:
     def movement_phase(self, turn):
         self.game.phase = "Movement"
         self.game.log("")
-        for subphase in range(3):
+        rounds = 1 if self.game.simple_mode else 3
+        for subphase in range(rounds):
             self.game.round = subphase
             self.subphase(subphase)
         self.game.round = None
@@ -34,7 +35,7 @@ class MovementEngine:
 
     # Turn unit + player id into class
     def state_to_unit(self, unit):
-        return self.game.players[unit['player']].units[unit['id']]
+        return self.game.players[unit['player_index']].units[unit['id']]
 
     def generate_movement_state(self):
         return {'round': self.game.round}

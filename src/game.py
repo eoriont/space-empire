@@ -13,7 +13,8 @@ from otest import cstring
 
 class Game:
     # Initialize with 2 players and turn starts at 0
-    def __init__(self, board_size, logging=False, rendering=False, die_mode="normal"):
+    def __init__(self, board_size, logging=False, rendering=False, die_mode="normal", simple_mode=True):
+        self.simple_mode = simple_mode
         self.die_mode = die_mode
         self.current_id = 0
         self.last_die = 0
@@ -44,32 +45,37 @@ class Game:
 
     # Run for 100 turns or until all of a player's units are dead
     def run_until_completion(self, max_turns=100):
-        for _ in range(self.current_turn, max_turns):
+        while self.current_turn <= max_turns:
             self.current_turn += 1
             self.phase = "Movement"
             self.movement.movement_phase(self.current_turn)
             self.phase = "Combat"
-            self.combat.combat_phase(self.current_turn)
-            self.phase = "Economic"
-            self.economy.economic_phase(self.current_turn)
+
+            # Combat phase returns if someone won
+            if self.combat.combat_phase(self.current_turn):
+                break
+            if not self.simple_mode:
+                self.phase = "Economic"
+                self.economy.economic_phase(self.current_turn)
             if self.test_for_winner():
                 break
         self.winner = self.test_for_winner()
         if self.winner:
             print("We have a winner!!")
             print("Turns taken:", self.current_turn)
+            return True
         else:
             print("Nobody won!")
+            return False
 
     def test_for_winner(self):
-        ps = [len(p.units) for p in self.players]
+        alive_players = [(p, any(True for c in p.get_units() if type(c) == Colony and c.is_home_colony)) for p in self.players]
 
-        loser = bool(ps.count(0))
-        if loser:
-            del self.players[ps.index(0)]
-            winner = self.players[0]
-            return winner
-        return False
+        loser = next((x[0] for x in alive_players if not x[1]), None)
+        if loser is not None:
+            alive_players.remove((loser, False))
+            return alive_players[0][0]
+        return None
 
     def surrender(self, id):
         self.winner = self.test_for_winner()
@@ -118,13 +124,12 @@ class Game:
             "Colony": Colony
         }[unit]
 
-    def generate_state(self):
+    def generate_state(self, player=None, combat=False):
         return {
             'turn': self.current_turn,
             'winner': None,
-            'players': [p.generate_state() for p in self.players],
+            'players': [p.generate_state(player==p, combat) for p in self.players],
             'player_whose_turn': self.current_player_id,
-            'planets': self.board.planets,
             'phase': self.phase,
             'round': self.round,
             'technology_data': Technology.get_state(),

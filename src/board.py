@@ -31,13 +31,15 @@ class Board:
         return (x >= 0 and x < x1) and (y >= 0 and y < y1)
 
     # Create 8 additional randomly placed planets in addition to defaults
+    # Unless game is in simple mode, just create home colonies
     def init_planets(self, *planets):
-        planets = list(planets)
-        while len(planets) < 8:
-            planet = random.randint(
-                0, self.size[0]-1), random.randint(0, self.size[1]-1)
-            if planet not in planets:
-                planets.append(planet)
+        if not self.game.simple_mode:
+            planets = list(planets)
+            while len(planets) < 8:
+                planet = random.randint(
+                    0, self.size[0]-1), random.randint(0, self.size[1]-1)
+                if planet not in planets:
+                    planets.append(planet)
         self.planets = [Planet(p) for p in planets]
 
     # Return list of grid positions and unit lists

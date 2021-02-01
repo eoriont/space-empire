@@ -52,16 +52,23 @@ class Unit:
     def pos_from_translation(self, pos):
         return (self.pos[0]+pos[0], self.pos[1]+pos[1])
 
-    def generate_state(self):
-        return {
-            'id': self.id,
-            'coords': self.pos,
-            'type': type(self).__name__,
-            'hits_left': type(self).armor-self.armor,
-            'technology': self.tech.get_obj_state(),
-            'player': self.player.id,
-            'alive': self.alive
-        }
+    def generate_state(self, recipient_player=True, combat=False):
+        if recipient_player or combat:
+            return {
+                'id': self.id,
+                'coords': self.pos,
+                'type': type(self).__name__,
+                'hits_left': type(self).armor-self.armor,
+                'technology': self.tech.get_obj_state(),
+                'player_index': self.player.id,
+            }
+        else:
+            return {
+                'id': self.id,
+                'coords': self.pos,
+                'type': type(self).__name__,
+                'player_index': self.player.id,
+            }
 
     def get_name(self):
         return f"Player {self.player.id} {type(self).__name__} {self.id}"

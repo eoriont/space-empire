@@ -7,6 +7,7 @@ class Player:
     def __init__(self, strat, name, starting_pos, game):
         self.strat = strat
         self.starting_pos = starting_pos
+        self.home_coords = starting_pos
         self.name = name
         self.units = {}
         self.game = game
@@ -22,11 +23,12 @@ class Player:
         for _ in range(3):
             self.build_unit(Scout, free=True)
 
-        for _ in range(3):
-            self.build_unit(ColonyShip, free=True)
+        if not self.game.simple_mode:
+            for _ in range(3):
+                self.build_unit(ColonyShip, free=True)
 
-        for _ in range(4):
-            self.build_unit(ShipYard, free=True)
+            for _ in range(4):
+                self.build_unit(ShipYard, free=True)
 
         self.build_unit(Colony, free=True, unit_options={"home_colony": True})
 
@@ -72,17 +74,21 @@ class Player:
         self.cp -= price
         return price
 
-    def get_home_coords(self):
-        return next(x for x in self.get_units() if type(x) == Colony and x.is_home_colony).pos
-
     def get_name(self):
         return f"Player {self.id}"
 
-    def generate_state(self):
-        return {
-            'cp': self.cp,
-            'id': self.id,
-            'units': [u.generate_state() for u in self.get_units()],
-            'technology': self.tech.tech.copy(),
-            'home_coords': self.get_home_coords()
-        }
+    def generate_state(self, recipient_player=True, combat=False):
+        if recipient_player:
+            return {
+                'cp': self.cp,
+                'id': self.id,
+                'units': [u.generate_state(recipient_player, combat) for u in self.get_units()],
+                'technology': self.tech.tech.copy(),
+                'home_coords': self.home_coords
+            }
+        else:
+            return {
+                'id': self.id,
+                'units': [u.generate_state(recipient_player, combat) for u in self.get_units()],
+                'home_coords': self.home_coords
+            }
