@@ -13,7 +13,8 @@ from otest import cstring
 
 class Game:
     # Initialize with 2 players and turn starts at 0
-    def __init__(self, board_size, logging=False, rendering=False, die_mode="normal", simple_mode=True):
+    def __init__(self, board_size, logging=False, rendering=False, die_mode="normal", simple_mode=True, die_size=6):
+        self.die_size = die_size
         self.simple_mode = simple_mode
         self.die_mode = die_mode
         self.current_id = 0
@@ -61,11 +62,11 @@ class Game:
                 break
         self.winner = self.test_for_winner()
         if self.winner:
-            print("We have a winner!!")
-            print("Turns taken:", self.current_turn)
+            self.log("We have a winner!!")
+            self.log("Turns taken:", self.current_turn)
             return True
         else:
-            print("Nobody won!")
+            self.log("Nobody won!")
             return False
 
     def test_for_winner(self):
@@ -77,17 +78,10 @@ class Game:
             return alive_players[0][0]
         return None
 
-    def surrender(self, id):
-        self.winner = self.test_for_winner()
-        print("We have a winner!!")
-        print("Turns taken:", self.current_turn)
-        sys.exit(0)
-
-
     # Print to console if logging is enabled
-    def log(self, s):
+    def log(self, *s):
         if self.logging:
-            print(cstring(f"&6{self.current_turn} &4{self.phase} &3{s}"))
+            print(cstring(f"&6{self.current_turn} &4{self.phase} &3{', '.join(s)}"))
 
     # # Render if rendering is enabled
     # def render(self):
@@ -97,12 +91,12 @@ class Game:
     def die_roll(self):
         if self.die_mode == "ascend":
             self.last_die += 1
-            return ((self.last_die-1) % 6) + 1
+            return ((self.last_die-1) % self.die_size) + 1
         elif self.die_mode == "normal":
-            return random.randint(1, 6)
+            return random.randint(1, self.die_size)
         elif self.die_mode == "descend":
             self.last_die -= 1
-            return (self.last_die % 6) + 1
+            return (self.last_die % self.die_size) + 1
 
     # Theoretically this should just be a nonrepeating value
     def next_id(self):

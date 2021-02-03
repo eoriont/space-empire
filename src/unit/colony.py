@@ -23,5 +23,3 @@ class Colony(Unit):
             if unit.player == self.player:
                 if type(unit) in (ShipYard, Base):
                     unit.destroy(reason)
-        # if self.is_home_colony:
-        #     self.game.surrender(self.player.id)
