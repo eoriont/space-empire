@@ -1,11 +1,15 @@
-class CustomStrategyLevel1:
-    # Sends all of its units directly towards the enemy home colony
+class RippleStrategyLevel1:
+    # Staggers the sending of all of its units directly towards the enemy home colony
 
     def __init__(self, player_index):
         self.player_index = player_index
+        self.uid = 0
+        self.allowed_units = 4
 
     def decide_ship_movement(self, unit_index, hidden_game_state):
-        if (unit_index+1) >= hidden_game_state['turn']:
+        uid += 1
+        allowed_units -= 1
+        if allowed_units <= uid % 3:
             myself = hidden_game_state['players'][self.player_index]
             opponent_index = 1 - self.player_index
             opponent = hidden_game_state['players'][opponent_index]
