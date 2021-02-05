@@ -20,7 +20,7 @@ print("Playing games...")
 
 def matchup(type1, type2):
     wins = [0, 0]
-    games = 100
+    games = 1000
     for _ in range(games):
         game = Game((5, 5), logging=False, rendering=False, simple_mode=True, die_size=10)
         first_player = random.choice([0, 1])
@@ -37,11 +37,10 @@ def matchup(type1, type2):
 
         if game.run_until_completion(max_turns=100):
             wins[[type1, type2].index(type(game.winner.strat))] += 1
+        else:
+            print("Tie!")
     wins = [w/games for w in wins]
     return wins
-
-print(cstring("&5Random vs Dumb Strategy wins"))
-print(matchup(RandomStrategyLevel1, DumbStrategyLevel1))
 
 print(cstring("\n &5Berserker vs Dumb Strategy wins"))
 print(matchup(BerserkerStrategyLevel1, DumbStrategyLevel1))
