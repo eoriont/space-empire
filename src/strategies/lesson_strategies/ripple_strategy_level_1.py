@@ -4,10 +4,11 @@ class RippleStrategyLevel1:
     def __init__(self, player_index):
         self.player_index = player_index
         self.allowed_units = 0
-        self.last_turn = 0
+        self.last_turn = 1
 
     def decide_ship_movement(self, unit_index, hidden_game_state):
         if hidden_game_state['turn'] != self.last_turn:
+            self.last_turn = hidden_game_state['turn']
             self.allowed_units += 1
         if self.allowed_units >= unit_index:
             myself = hidden_game_state['players'][self.player_index]

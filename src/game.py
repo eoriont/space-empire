@@ -63,7 +63,7 @@ class Game:
         self.winner = self.test_for_winner()
         if self.winner:
             self.log("We have a winner!!")
-            self.log("Turns taken:", self.current_turn)
+            self.log(f"Turns taken: {self.current_turn}")
             return True
         else:
             self.log("Nobody won!")
@@ -81,7 +81,7 @@ class Game:
     # Print to console if logging is enabled
     def log(self, *s):
         if self.logging:
-            print(cstring(f"&6{self.current_turn} &4{self.phase} &3{', '.join(s)}"))
+            print(cstring(f"&6{self.current_turn} &4{self.phase} &3{', '.join(str(x) for x in s)}"))
 
     # # Render if rendering is enabled
     # def render(self):
