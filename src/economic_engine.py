@@ -23,7 +23,7 @@ class EconomicEngine:
             self.game.log(f"Their maintenance costs are &5{maintenance}cp")
             player.pay(-maintenance)
             purchases = player.strat.decide_purchases(
-                self.game.generate_state())
+                self.game.generate_state(player=player))
             self.verify_purchases(purchases, player.cp, player.tech)
             self.purchase(purchases, player)
             self.game.log(f"{player.get_name()} ends economic phase with &5{player.cp}cp")
@@ -42,6 +42,8 @@ class EconomicEngine:
         unit_data = self.game.get_unit_data()
         for u in purchases['units']:
             unit_type = u['type']
+            if self.game.game_level == 2 and unit_type != 'Scout':
+                raise Exception("Can only buy Scouts in level 2 game!")
             if te['shipsize'] >= unit_data[unit_type]['shipsize_needed']:
                 units_cost += unit_data[unit_type]['cp_cost']
             else:

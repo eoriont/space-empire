@@ -14,9 +14,9 @@ from otest import cstring
 
 class Game:
     # Initialize with 2 players and turn starts at 0
-    def __init__(self, board_size, logging=False, rendering=False, die_mode="normal", simple_mode=True, die_size=6):
+    def __init__(self, board_size, logging=False, rendering=False, die_mode="normal", game_level=1, die_size=6):
         self.die_size = die_size
-        self.simple_mode = simple_mode
+        self.game_level = game_level
         self.die_mode = die_mode
         self.current_id = 0
         self.last_die = 0
@@ -47,6 +47,9 @@ class Game:
 
     # Run for 100 turns or until all of a player's units are dead
     def run_until_completion(self, max_turns=100):
+        if self.game_level == 2:
+            self.phase = "Economic"
+            self.economy.economic_phase(self.current_turn)
         while self.current_turn <= max_turns:
             self.current_turn += 1
             self.phase = "Movement"
@@ -56,7 +59,7 @@ class Game:
             # Combat phase returns if someone won
             if self.combat.combat_phase(self.current_turn):
                 break
-            if not self.simple_mode:
+            if self.game_level > 2:
                 self.phase = "Economic"
                 self.economy.economic_phase(self.current_turn)
             if self.test_for_winner():

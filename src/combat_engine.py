@@ -115,7 +115,7 @@ class CombatEngine:
             ord(x.attack_class or 'Z'), x.player.id))
 
         # If a player has more units than the other, screen
-        if not self.game.simple_mode:
+        if self.game.game_level > 2:
             # Screen Units
             pids = [u.player.id for u in ships]
             units_per_player = {pid: pids.count(pid) for pid in set(pids)}

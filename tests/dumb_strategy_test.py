@@ -16,7 +16,7 @@ try:
 except ImportError as e:
     print(e)
 
-game = Game((5, 5), logging=False, rendering=False, die_mode="ascend", simple_mode=False)
+game = Game((5, 5), logging=False, rendering=False, die_mode="ascend", game_level=10)
 
 def assert_player_scouts(turn, player, pos, amt):
     state = game.generate_state()

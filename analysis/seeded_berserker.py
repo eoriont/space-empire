@@ -21,7 +21,7 @@ def matchup(type1, type2):
     for i in range(games):
         first_player = 0 if 0 < i <= 10 else 1
         random.seed(i+1)
-        game = Game((5, 5), logging=True, rendering=False, simple_mode=True, die_size=10)
+        game = Game((5, 5), logging=True, rendering=False, game_level=1, die_size=10)
         p1 = Player(type1(first_player), "Player1", (2, 0), game)
         p2 = Player(type2(1-first_player), "Player2", (2, 4), game)
         if first_player == 0:

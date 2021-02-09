@@ -13,7 +13,7 @@ class Player:
         self.game = game
         self.tech = Technology(
             {'attack': 0, 'defense': 0, 'movement': 1, 'shipyard': 1, 'shipsize': 1})
-        self.cp = 0
+        self.cp = 0 if self.game.game_level != 2 else 30
 
     def start(self):
         self.build_starting_fleet()
@@ -23,7 +23,7 @@ class Player:
         for _ in range(3):
             self.build_unit(Scout, free=True)
 
-        if not self.game.simple_mode:
+        if self.game.game_level > 2:
             for _ in range(3):
                 self.build_unit(ColonyShip, free=True)
 

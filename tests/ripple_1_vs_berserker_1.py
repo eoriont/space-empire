@@ -4,8 +4,8 @@ try:
     from game import Game
     from unit import Scout
 
-    from strategies.lesson_strategies.berserker_strategy_level_1 import BerserkerStrategyLevel1
-    from strategies.lesson_strategies.ripple_strategy_level_1 import RippleStrategyLevel1
+    from strategies.lesson_strategies.level_1.berserker_strategy_level_1 import BerserkerStrategyLevel1
+    from strategies.lesson_strategies.level_1.ripple_strategy_level_1 import RippleStrategyLevel1
 
     from player import Player
     from otest import do_assert, assert_bool, color_print, cstring
@@ -24,7 +24,7 @@ print("Playing games...")
 wins = [0, 0]
 
 for _ in range(100):
-    game = Game((5, 5), logging=False, rendering=False, simple_mode=True)
+    game = Game((5, 5), logging=False, rendering=False, game_level=10)
     p2 = Player(BerserkerStrategyLevel1(1), "BerserkerLvl1", (2, 0), game)
     p1 = Player(RippleStrategyLevel1(0), "RippleLvl1", (2, 4), game)
     game.add_player(p1)

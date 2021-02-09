@@ -33,7 +33,7 @@ class Board:
     # Create 8 additional randomly placed planets in addition to defaults
     # Unless game is in simple mode, just create home colonies
     def init_planets(self, *planets):
-        if not self.game.simple_mode:
+        if self.game.game_level > 2:
             planets = list(planets)
             while len(planets) < 8:
                 planet = random.randint(

@@ -4,15 +4,15 @@ try:
     from game import Game
     from unit import Scout
 
-    from strategies.lesson_strategies.berserker_strategy_level_1 import BerserkerStrategyLevel1
-    from strategies.lesson_strategies.dumb_strategy_level_1 import DumbStrategyLevel1
+    from strategies.lesson_strategies.level_1.berserker_strategy_level_1 import BerserkerStrategyLevel1
+    from strategies.lesson_strategies.level_1.dumb_strategy_level_1 import DumbStrategyLevel1
 
     from player import Player
     from otest import do_assert, assert_bool, color_print, cstring
 except ImportError as e:
     print(e)
 
-game = Game((5, 5), logging=False, rendering=False, simple_mode=True)
+game = Game((5, 5), logging=False, rendering=False, game_level=1)
 
 def assert_player_scouts(player, pos, amt):
     state = game.generate_state()
