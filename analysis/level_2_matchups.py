@@ -21,9 +21,10 @@ print("Playing games...")
 def matchup(type1, type2):
     wins = [0, 0]
     games = 1000
-    for _ in range(games):
+    for i in range(games):
+        first_player = 0 if 0 < i <= 500 else 1
+        random.seed(i+1)
         game = Game((5, 5), logging=False, rendering=False, game_level=2, die_size=10)
-        first_player = random.choice([0, 1])
         p1 = Player(type1(first_player), "Player1", (2, 0), game)
         p2 = Player(type2(1-first_player), "Player2", (2, 4), game)
         if first_player == 0:
