@@ -1,4 +1,5 @@
 import random
+import math
 from player import Player
 from board import Board
 from combat_engine import CombatEngine
@@ -93,7 +94,9 @@ class Game:
             self.last_die += 1
             return ((self.last_die-1) % self.die_size) + 1
         elif self.die_mode == "normal":
-            return random.randint(1, self.die_size)
+            # return random.randint(1, self.die_size)
+            #! This is a problem if we don't agree on exactly what this should be
+            return math.floor(self.die_size*random.random()) + 1
         elif self.die_mode == "descend":
             self.last_die -= 1
             return (self.last_die % self.die_size) + 1

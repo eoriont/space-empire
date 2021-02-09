@@ -11,6 +11,7 @@ class CombatEngine:
     # Returns if a home colony was destroyed
     def battle(self, pos):
         # Loop through units in the correct attack order and battle
+        self.game.log("Combat order: " + str([u['id'] for u in self.generate_combat_array(pos)]))
         units = [self.state_to_unit(u) for u in self.generate_combat_array(pos)]
         while CombatEngine.is_battle(units):
             for attacker in units:
@@ -54,6 +55,7 @@ class CombatEngine:
         def_str = defender.defense_strength + defender.tech['defense']
         hit_threshold = atk_str - def_str
         die_roll = self.game.die_roll()
+        self.game.log("Die was rolled: " + str(die_roll))
         if die_roll <= hit_threshold or die_roll == 1:
             self.game.log(f"{attacker.get_name()} &2attacks&3 {defender.get_name()} &7at {attacker.pos}")
             defender.hurt(attacker.get_name())

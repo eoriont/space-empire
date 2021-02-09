@@ -1,0 +1,1172 @@
+Playing games...
+[35mFlanker vs Berserker Strategy[0m  
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 0) -> (2, 1)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [1, 2, 3, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 1[0m  
+[36m2 [34mCombat [33mDie was rolled: 9[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 2 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 3 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (3, 1) -> (3, 2)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mCombat [33mCombat order: [2, 3, 8][0m  
+[36m4 [34mCombat [33mDie was rolled: 1[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 1 Colony 8 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 0!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 4) -> (2, 3)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [2, 3, 5, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [32mattacks[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [31mhas been destroyed! Reason: Player 1 Scout 5[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [32mattacks[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [31mhas been destroyed! Reason: Player 1 Scout 6[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (3, 1) -> (3, 2)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 6 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 7 moved (2, 2) -> (2, 1)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mCombat [33mCombat order: [5, 6, 7, 4][0m  
+[36m4 [34mCombat [33mDie was rolled: 9[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 5 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 8[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 7[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 4[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 5 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 7[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 7[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 6[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 5 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 2[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [32mattacks[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 0 Colony 4 [31mhas been destroyed! Reason: Player 1 Scout 6[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 1!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 4) -> (2, 3)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [2, 3, 5, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m2 [34mCombat [33mDie was rolled: 9[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (3, 1) -> (3, 2)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 7 moved (2, 2) -> (2, 1)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mCombat [33mCombat order: [7, 4][0m  
+[36m4 [34mCombat [33mDie was rolled: 3[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 0 Colony 4 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 2!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 4) -> (2, 3)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [2, 3, 5, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (3, 1) -> (3, 2)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 2 moved (2, 2) -> (2, 3)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 3 moved (2, 2) -> (2, 3)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 2 moved (2, 3) -> (2, 4)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 3 moved (2, 3) -> (2, 4)[0m  
+[36m4 [34mCombat [33mCombat order: [2, 3, 8][0m  
+[36m4 [34mCombat [33mDie was rolled: 1[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Colony 8 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mPlayer 1 Colony 8 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+FlankerStrategyLevel1 won game 3!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 4) -> (2, 3)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [2, 3, 5, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [32mattacks[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [31mhas been destroyed! Reason: Player 1 Scout 6[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (3, 1) -> (3, 2)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 7 moved (2, 2) -> (2, 1)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mCombat [33mCombat order: [7, 4][0m  
+[36m4 [34mCombat [33mDie was rolled: 3[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 0 Colony 4 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 4!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 4) -> (2, 3)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [2, 3, 5, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 9[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [32mattacks[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [31mhas been destroyed! Reason: Player 1 Scout 6[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (3, 1) -> (3, 2)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 6 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 7 moved (2, 2) -> (2, 1)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mCombat [33mCombat order: [5, 6, 7, 4][0m  
+[36m4 [34mCombat [33mDie was rolled: 7[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 5 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 5[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 8[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 4[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 5 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 8[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 3[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 0 Colony 4 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 5!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 4) -> (2, 3)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [2, 3, 5, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (3, 1) -> (3, 2)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 6 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 7 moved (2, 2) -> (2, 1)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mCombat [33mCombat order: [6, 7, 4][0m  
+[36m4 [34mCombat [33mDie was rolled: 6[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 1[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 0 Colony 4 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 6!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 4) -> (2, 3)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [2, 3, 5, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [32mattacks[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [31mhas been destroyed! Reason: Player 1 Scout 6[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (3, 1) -> (3, 2)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 7 moved (2, 2) -> (2, 1)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mCombat [33mCombat order: [7, 4][0m  
+[36m4 [34mCombat [33mDie was rolled: 10[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 3[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 0 Colony 4 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 7!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 4) -> (2, 3)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [2, 3, 5, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [32mattacks[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [31mhas been destroyed! Reason: Player 1 Scout 5[0m  
+[36m2 [34mCombat [33mDie was rolled: 9[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (3, 1) -> (3, 2)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 6 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 7 moved (2, 2) -> (2, 1)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mCombat [33mCombat order: [5, 6, 7, 4][0m  
+[36m4 [34mCombat [33mDie was rolled: 6[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 5 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 9[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 1[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 0 Colony 4 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 8!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 4) -> (2, 3)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [2, 3, 5, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [32mattacks[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [31mhas been destroyed! Reason: Player 1 Scout 6[0m  
+[36m2 [34mCombat [33mDie was rolled: 9[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 9[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [35mmisses[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [32mattacks[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [31mhas been destroyed! Reason: Player 1 Scout 6[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (3, 1) -> (3, 2)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 6 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 7 moved (2, 2) -> (2, 1)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mCombat [33mCombat order: [5, 6, 7, 4][0m  
+[36m4 [34mCombat [33mDie was rolled: 6[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 5 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 4[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 3[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Colony 4 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 0 Colony 4 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 9!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 4) -> (2, 3)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [2, 3, 5, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 5 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 5 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (3, 1) -> (3, 2)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 2 moved (2, 2) -> (2, 3)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 3 moved (2, 2) -> (2, 3)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 2 moved (2, 3) -> (2, 4)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 3 moved (2, 3) -> (2, 4)[0m  
+[36m4 [34mCombat [33mCombat order: [2, 3, 8][0m  
+[36m4 [34mCombat [33mDie was rolled: 9[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Colony 8 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mDie was rolled: 7[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Colony 8 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mDie was rolled: 1[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Colony 8 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mPlayer 1 Colony 8 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+FlankerStrategyLevel1 won game 10!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 0) -> (2, 1)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [1, 2, 3, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [32mattacks[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [31mhas been destroyed! Reason: Player 1 Scout 6[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [32mattacks[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [31mhas been destroyed! Reason: Player 1 Scout 6[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (3, 1) -> (3, 2)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 6 moved (2, 2) -> (2, 3)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 7 moved (2, 2) -> (2, 3)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 6 moved (2, 3) -> (2, 4)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 7 moved (2, 3) -> (2, 4)[0m  
+[36m4 [34mCombat [33mCombat order: [6, 7, 4][0m  
+[36m4 [34mCombat [33mDie was rolled: 9[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Colony 4 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mDie was rolled: 7[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Colony 4 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mDie was rolled: 7[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Colony 4 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mDie was rolled: 6[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Colony 4 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mDie was rolled: 7[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Colony 4 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mDie was rolled: 2[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Colony 4 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mPlayer 0 Colony 4 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+FlankerStrategyLevel1 won game 11!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 0) -> (2, 1)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [1, 2, 3, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 1[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 9[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [32mattacks[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [31mhas been destroyed! Reason: Player 0 Scout 1[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 2 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 3 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (3, 1) -> (3, 2)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mCombat [33mCombat order: [1, 2, 3, 8][0m  
+[36m4 [34mCombat [33mDie was rolled: 3[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 1 [32mattacks[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 1 Colony 8 [31mhas been destroyed! Reason: Player 0 Scout 1[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 12!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 0) -> (2, 1)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [1, 2, 3, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 1[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [32mattacks[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [31mhas been destroyed! Reason: Player 0 Scout 1[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 2 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 3 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (3, 1) -> (3, 2)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mCombat [33mCombat order: [1, 2, 3, 8][0m  
+[36m4 [34mCombat [33mDie was rolled: 3[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 1 [32mattacks[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 1 Colony 8 [31mhas been destroyed! Reason: Player 0 Scout 1[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 13!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 0) -> (2, 1)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [1, 2, 3, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 2 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 3 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (3, 1) -> (3, 2)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mCombat [33mCombat order: [2, 3, 8][0m  
+[36m4 [34mCombat [33mDie was rolled: 9[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 7[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 9[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 10[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 3[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 1 Colony 8 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 14!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 0) -> (2, 1)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [1, 2, 3, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 3 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (3, 1) -> (3, 2)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mCombat [33mCombat order: [3, 8][0m  
+[36m4 [34mCombat [33mDie was rolled: 9[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 9[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 7[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 1[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 1 Colony 8 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 15!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 0) -> (2, 1)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [1, 2, 3, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 9[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [32mattacks[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [31mhas been destroyed! Reason: Player 1 Scout 6[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [32mattacks[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [31mhas been destroyed! Reason: Player 1 Scout 6[0m  
+[36m2 [34mCombat [33mDie was rolled: 1[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 3 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (3, 1) -> (3, 2)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 6 moved (2, 2) -> (2, 3)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 7 moved (2, 2) -> (2, 3)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 6 moved (2, 3) -> (2, 4)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 7 moved (2, 3) -> (2, 4)[0m  
+[36m4 [34mCombat [33mCombat order: [6, 7, 4][0m  
+[36m4 [34mCombat [33mDie was rolled: 4[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Colony 4 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mDie was rolled: 8[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Colony 4 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mDie was rolled: 3[0m  
+[36m4 [34mCombat [33mPlayer 1 Scout 6 [32mattacks[33m Player 0 Colony 4 [37mat (2, 4)[0m  
+[36m4 [34mCombat [33mPlayer 0 Colony 4 [31mhas been destroyed! Reason: Player 1 Scout 6[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+FlankerStrategyLevel1 won game 16!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 0) -> (2, 1)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [1, 2, 3, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 1[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 2 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 3 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (3, 1) -> (3, 2)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mCombat [33mCombat order: [2, 3, 8][0m  
+[36m4 [34mCombat [33mDie was rolled: 3[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 1 Colony 8 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 17!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 0) -> (2, 1)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [1, 2, 3, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 4[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 1 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 2 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 3 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (3, 1) -> (3, 2)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 1 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mCombat [33mCombat order: [1, 2, 3, 8][0m  
+[36m4 [34mCombat [33mDie was rolled: 3[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 1 [32mattacks[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 1 Colony 8 [31mhas been destroyed! Reason: Player 0 Scout 1[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 18!
+Next game...
+[36m1 [34mMovement [33m[0m  
+[36m1 [34mMovement [33m[32mPhase 0[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 1 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 2 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 0 Scout 3 moved (2, 4) -> (2, 3)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 5 moved (2, 0) -> (3, 0)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 6 moved (2, 0) -> (2, 1)[0m  
+[36m1 [34mMovement [33mPlayer 1 Scout 7 moved (2, 0) -> (2, 1)[0m  
+[36m2 [34mMovement [33m[0m  
+[36m2 [34mMovement [33m[32mPhase 0[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 1 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 2 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 0 Scout 3 moved (2, 3) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 5 moved (3, 0) -> (3, 1)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 6 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mMovement [33mPlayer 1 Scout 7 moved (2, 1) -> (2, 2)[0m  
+[36m2 [34mCombat [33mCombat order: [1, 2, 3, 6, 7][0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 8[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 3[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [32mattacks[33m Player 0 Scout 1 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 1 [31mhas been destroyed! Reason: Player 1 Scout 7[0m  
+[36m2 [34mCombat [33mDie was rolled: 7[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 9[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 6[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Scout 6 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 6 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m2 [34mCombat [33mDie was rolled: 5[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 10[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [35mmisses[33m Player 0 Scout 2 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mDie was rolled: 2[0m  
+[36m2 [34mCombat [33mPlayer 0 Scout 2 [32mattacks[33m Player 1 Scout 7 [37mat (2, 2)[0m  
+[36m2 [34mCombat [33mPlayer 1 Scout 7 [31mhas been destroyed! Reason: Player 0 Scout 2[0m  
+[36m3 [34mMovement [33m[0m  
+[36m3 [34mMovement [33m[32mPhase 0[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 2 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 0 Scout 3 moved (2, 2) -> (2, 1)[0m  
+[36m3 [34mMovement [33mPlayer 1 Scout 5 moved (3, 1) -> (3, 2)[0m  
+[36m4 [34mMovement [33m[0m  
+[36m4 [34mMovement [33m[32mPhase 0[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 2 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 0 Scout 3 moved (2, 1) -> (2, 0)[0m  
+[36m4 [34mMovement [33mPlayer 1 Scout 5 moved (3, 2) -> (3, 3)[0m  
+[36m4 [34mCombat [33mCombat order: [2, 3, 8][0m  
+[36m4 [34mCombat [33mDie was rolled: 4[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 10[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 3 [35mmisses[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 5[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 2 [35mmisses[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mDie was rolled: 3[0m  
+[36m4 [34mCombat [33mPlayer 0 Scout 3 [32mattacks[33m Player 1 Colony 8 [37mat (2, 0)[0m  
+[36m4 [34mCombat [33mPlayer 1 Colony 8 [31mhas been destroyed! Reason: Player 0 Scout 3[0m  
+[36m4 [34mCombat [33mWe have a winner!![0m  
+[36m4 [34mCombat [33mTurns taken: 4[0m  
+BerserkerStrategyLevel1 won game 19!
+Next game...
+[0.2, 0.8]
