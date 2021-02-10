@@ -23,12 +23,13 @@ class Player:
         for _ in range(3):
             self.build_unit(Scout, free=True)
 
-        if self.game.game_level > 2:
-            for _ in range(3):
-                self.build_unit(ColonyShip, free=True)
-
+        if self.game.game_level > 1:
             for _ in range(4):
                 self.build_unit(ShipYard, free=True)
+
+            if self.game.game_level > 2:
+                for _ in range(3):
+                    self.build_unit(ColonyShip, free=True)
 
         self.build_unit(Colony, free=True, unit_options={"home_colony": True})
 

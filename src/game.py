@@ -39,11 +39,11 @@ class Game:
     def add_player(self, player):
         self.players.append(player)
         player.id = len(self.players)-1
-        self.board.create()
 
     def start(self):
         for player in self.players:
             player.start()
+        self.board.create()
 
     # Run for 100 turns or until all of a player's units are dead
     def run_until_completion(self, max_turns=100):

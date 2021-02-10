@@ -19,7 +19,7 @@ except ImportError as e:
 print("Playing games...")
 
 def matchup(type1, type2):
-    wins = [0, 0]
+    wins = [0, 0, 0]
     games = 1000
     for i in range(games):
         first_player = 0 if 0 < i <= 500 else 1
@@ -39,7 +39,7 @@ def matchup(type1, type2):
         if game.run_until_completion(max_turns=100):
             wins[[type1, type2].index(type(game.winner.strat))] += 1
         else:
-            print("Tie!")
+            wins[2] += 1
     wins = [w/games for w in wins]
     return wins
 

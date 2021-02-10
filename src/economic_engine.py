@@ -42,12 +42,22 @@ class EconomicEngine:
         unit_data = self.game.get_unit_data()
         for u in purchases['units']:
             unit_type = u['type']
+            unit_pos = u['coords']
             if self.game.game_level == 2 and unit_type != 'Scout':
                 raise Exception("Can only buy Scouts in level 2 game!")
             if te['shipsize'] >= unit_data[unit_type]['shipsize_needed']:
                 units_cost += unit_data[unit_type]['cp_cost']
             else:
                 raise Exception("Player bought unit without sufficient shipsize!")
+
+            # Check if unit is being built on a colony (if it's a shipyard)
+            if u['type'] == "ShipYard":
+                if not self.game.board.contains(unit_pos, "Colony"):
+                    raise Exception("ShipYards can only be built at colonies!")
+            else:
+                # Otherwise check if it's being built on a shipyard
+                if not self.game.board.contains(unit_pos, "ShipYard"):
+                    raise Exception("Ships can only be built at shipyards!")
 
         if cp < units_cost + tech_cost:
             raise Exception("Player bought too many units/tech!")

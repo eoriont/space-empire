@@ -52,6 +52,10 @@ class Board:
         unoccupied = Colony not in [type(unit) for unit in self[pos]]
         return on_planet and unoccupied
 
+    # Return if the given position contains a certain type of ship
+    def contains(self, pos, t):
+        return self.game.unit_str_to_class(t) in [type(u) for u in self[pos]]
+
     def __getitem__(self, pos):
         if pos in self.grid:
             return self.grid[pos]
