@@ -9,7 +9,7 @@ class Colony(Unit):
     defense_strength = 0
     abbr = "CO"
     no_maintenance = True
-    no_attack = False
+    no_attack = True
     immovable = True
 
     def __init__(self, *args, home_colony=False):

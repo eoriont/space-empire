@@ -10,23 +10,26 @@ class CombatEngine:
 
     # Returns if a home colony was destroyed
     def battle(self, pos):
-        # Loop through units in the correct attack order and battle
         self.game.log("Combat order: " + str([u['id'] for u in self.generate_combat_array(pos)]))
         units = [self.state_to_unit(u) for u in self.generate_combat_array(pos)]
-        while CombatEngine.is_battle(units):
-            for attacker in units:
-                #! Hacky sack
-                if type(attacker) == Colony:
-                    continue
-                cbt_arr = self.generate_combat_array(pos, attacker.player, True)
 
+        # Battle until all units are on the same team
+        while CombatEngine.is_battle(units):
+
+            # units is in combat order, so loop through as attacker
+            for attacker in units:
+                # Units that can't attack shouldn't be considered
                 if attacker.no_attack or not attacker.alive:
                     continue
+
+                # Generate a new array since each battle will change the contents
+                cbt_arr = self.generate_combat_array(pos, attacker.player, True)
 
                 # If only the attacker is in cbt_arr, then there's no battle
                 if len(cbt_arr) <= 1 or pos not in self.get_combat_positions():
                     continue
 
+                # Attack!
                 self.game.current_player_id = attacker.player.id
 
                 defender_id = attacker.player.strat.decide_which_unit_to_attack(
@@ -42,6 +45,7 @@ class CombatEngine:
                 if self.duel(attacker, defender):
                     return True
 
+            # Reset units, since it was changed in battle
             units = [self.state_to_unit(u) for u in self.generate_combat_array(pos)]
 
     # Unit state -> unit class
@@ -56,6 +60,8 @@ class CombatEngine:
         hit_threshold = atk_str - def_str
         die_roll = self.game.die_roll()
         self.game.log("Die was rolled: " + str(die_roll))
+
+        # Checks if attack hits
         if die_roll <= hit_threshold or die_roll == 1:
             self.game.log(f"{attacker.get_name()} &2attacks&3 {defender.get_name()} &7at {attacker.pos}")
             defender.hurt(attacker.get_name())
@@ -71,7 +77,7 @@ class CombatEngine:
         if len(units) == 0:
             return False
         players = [
-            unit.player for unit in units if unit.alive and not unit.no_attack]
+            unit.player for unit in units if unit.alive]
         return players.count(players[0]) != len(players)
 
     # Resolve combat between all units
@@ -79,12 +85,18 @@ class CombatEngine:
     def combat_phase(self, current_turn):
         self.game.phase = "Combat"
         combat_arr = self.generate_combat_array()
+
+        # Each position in combat array has enemy units
         for pos in self.get_combat_positions():
             if self.battle(pos):
                 return True
+
+        # Make sure to update the board afterwards
         self.game.board.create()
 
+    # Generate a state array filled with hidden units
     def generate_combat_array(self, pos=None, player=None, combat=False):
+        # This if statement will truncate unit information based on player
         if pos is None:
             return {
                 pos: [u.generate_state(
@@ -100,13 +112,19 @@ class CombatEngine:
                   combat
                 ) for u in self.order_ships(self.game.board[pos])]
 
+    # Returns all positions where a battle should take place
     def get_combat_positions(self):
         return [pos for pos, units in self.game.board.items() if CombatEngine.is_battle(units)]
 
+    # Orders a given array of ships by attack class and player
+    #! Should later do tactics technology as well
     def order_ships(self, ships):
+        # Destroy ships that don't participate in combat
         for u in ships:
             if type(u) in [Decoy, ColonyShip]:
                 u.destroy("combat")
+
+        # This just removes those ships above ^^
         ships = [u for u in ships if u.alive]
 
         # Sort units by attack class, and by player
