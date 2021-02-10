@@ -1,5 +1,6 @@
 import sys
 import random
+import math
 sys.path.append('src')
 sys.path.append('tests')
 from game import Game
@@ -17,9 +18,10 @@ def matchup(type1, type2):
     wins = [0, 0]
     games = 20
     for i in range(games):
-        first_player = 0 if 0 < i <= 10 else 1
+        first_player = 0 if i < 10 else 1
+        log = False
         random.seed(i+1)
-        game = Game((5, 5), logging=True, rendering=False, game_level=1, die_size=10)
+        game = Game((5, 5), logging=log, rendering=False, game_level=1, die_size=10)
         p1 = Player(type1(first_player), "Player1", (2, 0), game)
         p2 = Player(type2(1-first_player), "Player2", (2, 4), game)
         if first_player == 0:
