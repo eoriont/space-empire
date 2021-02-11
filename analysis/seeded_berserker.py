@@ -19,7 +19,7 @@ def matchup(type1, type2):
     games = 20
     for i in range(games):
         first_player = 0 if i < 10 else 1
-        log = False
+        log = True
         random.seed(i+1)
         game = Game((5, 5), logging=log, rendering=False, game_level=1, die_size=10)
         p1 = Player(type1(first_player), "Player1", (2, 0), game)
