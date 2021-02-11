@@ -13,7 +13,7 @@ class Player:
         self.game = game
         self.tech = Technology(
             {'attack': 0, 'defense': 0, 'movement': 1, 'shipyard': 1, 'shipsize': 1})
-        self.cp = 0 if self.game.game_level != 2 else 30
+        self.cp = 0 if self.game.game_level != 2 else 10
 
     def start(self):
         self.build_starting_fleet()
@@ -52,9 +52,8 @@ class Player:
         starting_pos = self.starting_pos if starting_pos is None else starting_pos
         unit_name = f"P{self.id}{unit_type.abbr}{len(self.units)+1}"
 
-        #! Should probably copy the tech instead of pointer
         unit = unit_type(uid, self, unit_name, starting_pos,
-                         self.game, self.tech, **unit_options)
+                         self.game, self.tech.copy(), **unit_options)
 
         # This is just for creating the starting units
         if not free:

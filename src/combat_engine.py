@@ -63,12 +63,12 @@ class CombatEngine:
 
         # Checks if attack hits
         if die_roll <= hit_threshold or die_roll == 1:
-            self.game.log(f"{attacker.get_name()} &2attacks&3 {defender.get_name()} &7at {attacker.pos}")
+            self.game.log(f"{attacker.get_name()} &2attacks&3 {defender.get_name()} &7at {attacker.pos}, threshold: {(hit_threshold, attacker.tech['attack'], defender.tech['defense'])}")
             defender.hurt(attacker.get_name())
             if type(defender) == Colony and defender.is_home_colony:
                 return True
         else:
-            self.game.log(f"{attacker.get_name()} &5misses&3 {defender.get_name()} &7at {attacker.pos}")
+            self.game.log(f"{attacker.get_name()} &5misses&3 {defender.get_name()} &7at {attacker.pos}, threshold: {(hit_threshold, attacker.tech['attack'])}")
 
 
     # Return if all the units in the given list belong to the same player

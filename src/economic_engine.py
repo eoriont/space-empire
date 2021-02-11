@@ -63,15 +63,15 @@ class EconomicEngine:
             raise Exception("Player bought too many units/tech!")
 
     def purchase(self, purchases, player):
-        units = purchases["units"]
-        for unit in units:
-            u = player.build_unit(self.game.unit_str_to_class(unit['type']), starting_pos=unit['coords'])
-            self.game.log(f"They bought &2{u.get_name()}&3 for &5{u.cp_cost}")
-
         tech = purchases["technology"]
         for t in tech:
             p = player.buy_tech(t)
             self.game.log(f"They bought &2{t}&3 for &5{p}cp")
+
+        units = purchases["units"]
+        for unit in units:
+            u = player.build_unit(self.game.unit_str_to_class(unit['type']), starting_pos=unit['coords'])
+            self.game.log(f"They bought &2{u.get_name()}&3 for &5{u.cp_cost}")
 
     def generate_economic_state(self):
         return [{

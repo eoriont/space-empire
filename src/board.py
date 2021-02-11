@@ -56,6 +56,8 @@ class Board:
     def contains(self, pos, t):
         return self.game.unit_str_to_class(t) in [type(u) for u in self[pos]]
 
+    # def shipyard_build_capacity(self, )
+
     def __getitem__(self, pos):
         if pos in self.grid:
             return self.grid[pos]

@@ -8,6 +8,9 @@ class Technology:
         self.tech = default_tech
         self.tech.update(tech)
 
+    def copy(self):
+        return Technology(self.tech.copy())
+
     # Get tech level
     def __getitem__(self, tech_type):
         return self.tech[tech_type]
