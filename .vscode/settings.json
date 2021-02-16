@@ -4,5 +4,8 @@
   "python.linting.pylintArgs": [
     "--init-hook",
     "import sys; sys.path.append('${workspaceFolder}/src"
+  ],
+  "python.analysis.extraPaths": [
+    "./src"
   ]
 }

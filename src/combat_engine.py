@@ -1,10 +1,6 @@
-
-import random
 from unit import Decoy, ColonyShip, Colony
 
-
 class CombatEngine:
-
     def __init__(self, game):
         self.game = game
 

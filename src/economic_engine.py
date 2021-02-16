@@ -77,4 +77,4 @@ class EconomicEngine:
         return [{
             'maintenance_cost': p.get_maintenance(),
             'income': p.get_income()
-        } for player in self.game.players]
+        } for p in self.game.players]

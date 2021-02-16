@@ -1,6 +1,7 @@
 import sys
 import random
 sys.path.append('src')
+sys.path.append('test')
 try:
     from game import Game
     from unit import Scout
@@ -12,7 +13,7 @@ try:
     from strategies.lesson_strategies.level_2.movement_berserker_level_2 import MovementBerserkerLevel2
 
     from player import Player
-    from otest import do_assert, assert_bool, color_print, cstring
+    from otest import cstring
 except ImportError as e:
     print(e)
 
@@ -46,34 +47,34 @@ def matchup(type1, type2):
     wins = [w/games for w in wins]
     return wins
 
-# print(cstring("\n &5Numbers vs Movement Strategy"))
-# print(matchup(NumbersBerserkerLevel2, MovementBerserkerLevel2))
+print(cstring("\n &5Numbers vs Movement Strategy"))
+print(matchup(NumbersBerserkerLevel2, MovementBerserkerLevel2))
 
-# print(cstring("\n &5Numbers vs Attack Strategy"))
-# print(matchup(NumbersBerserkerLevel2, AttackBerserkerLevel2))
+print(cstring("\n &5Numbers vs Attack Strategy"))
+print(matchup(NumbersBerserkerLevel2, AttackBerserkerLevel2))
 
-# print(cstring("\n &5Numbers vs Defense Strategy"))
-# print(matchup(NumbersBerserkerLevel2, DefenseBerserkerLevel2))
+print(cstring("\n &5Numbers vs Defense Strategy"))
+print(matchup(NumbersBerserkerLevel2, DefenseBerserkerLevel2))
 
-# print(cstring("\n &5Numbers vs Flanker Strategy"))
-# print(matchup(NumbersBerserkerLevel2, FlankerStrategyLevel2))
+print(cstring("\n &5Numbers vs Flanker Strategy"))
+print(matchup(NumbersBerserkerLevel2, FlankerStrategyLevel2))
 
-# print(cstring("\n &5Movement vs Attack Strategy"))
-# print(matchup(MovementBerserkerLevel2, AttackBerserkerLevel2))
+print(cstring("\n &5Movement vs Attack Strategy"))
+print(matchup(MovementBerserkerLevel2, AttackBerserkerLevel2))
 
 print(cstring("\n &5Movement vs Defense Strategy"))
 print(matchup(MovementBerserkerLevel2, DefenseBerserkerLevel2))
 
-# print(cstring("\n &5Movement vs Flanker Strategy"))
-# print(matchup(MovementBerserkerLevel2, FlankerStrategyLevel2))
+print(cstring("\n &5Movement vs Flanker Strategy"))
+print(matchup(MovementBerserkerLevel2, FlankerStrategyLevel2))
 
-# print(cstring("\n &5Attack vs Defense Strategy"))
-# print(matchup(AttackBerserkerLevel2, DefenseBerserkerLevel2))
+print(cstring("\n &5Attack vs Defense Strategy"))
+print(matchup(AttackBerserkerLevel2, DefenseBerserkerLevel2))
 
-# print(cstring("\n &5Attack vs Flanker Strategy"))
-# print(matchup(AttackBerserkerLevel2, FlankerStrategyLevel2))
+print(cstring("\n &5Attack vs Flanker Strategy"))
+print(matchup(AttackBerserkerLevel2, FlankerStrategyLevel2))
 
-# print(cstring("\n &5Defense vs Flanker Strategy"))
-# print(matchup(DefenseBerserkerLevel2, FlankerStrategyLevel2))
+print(cstring("\n &5Defense vs Flanker Strategy"))
+print(matchup(DefenseBerserkerLevel2, FlankerStrategyLevel2))
 
 print(cstring("&4All matchups passed!"))
