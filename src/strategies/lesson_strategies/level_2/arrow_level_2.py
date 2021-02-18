@@ -9,7 +9,7 @@ class ArrowStrategyLevel2:
         self.formation = [0, 0]
 
         # How many units to flank on each side
-        self.thickness = 3
+        self.thickness = 1
 
     def decide_ship_movement(self, unit_index, hidden_game_state):
         enemy_home = hidden_game_state['players'][1-self.player_index]["home_coords"]
@@ -42,4 +42,9 @@ class ArrowStrategyLevel2:
 
     # Buy all possible scouts
     def decide_purchases(self, game_state):
-        return {'technology': [], 'units': [{'type': 'Scout', 'coords': game_state['players'][self.player_index]['home_coords']}] *4}
+        cp = game_state['players'][self.player_index]['cp']
+        def_cost = game_state['technology_data']['defense'][0]
+        scout_cost = game_state['unit_data']['Scout']['cp_cost']
+        return {'technology': ['defense'], 'units': [
+            {'type': 'Scout', 'coords': game_state['players'][self.player_index]['home_coords']}
+        ] * ((cp - def_cost)//scout_cost)}

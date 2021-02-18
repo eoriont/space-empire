@@ -1,12 +1,16 @@
 import sys
 import random
 sys.path.append('src')
-sys.path.append('test')
+sys.path.append('tests')
 from game import Game
 
 from strategies.lesson_strategies.level_2.numbers_berserker_level_2 import NumbersBerserkerLevel2
 from strategies.lesson_strategies.level_2.flanker_level_2 import FlankerStrategyLevel2
-from strategies.lesson_strategies.level_2.arrow_level_2 import ArrowStrategyLevel2
+from strategies.lesson_strategies.level_2.attack_berserker_level_2 import AttackBerserkerLevel2
+from strategies.lesson_strategies.level_2.defense_berserker_level_2 import DefenseBerserkerLevel2
+from strategies.lesson_strategies.level_2.movement_berserker_level_2 import MovementBerserkerLevel2
+# from strategies.lesson_strategies.level_2.arrow_level_2 import ArrowStrategyLevel2
+from strategies.lesson_strategies.level_2.shield_level_2 import ShieldStrategyLevel2 as ArrowStrategyLevel2
 
 from player import Player
 from otest import cstring
@@ -17,7 +21,7 @@ def matchup(type1, type2):
     wins = [0, 0, 0]
     games = 1000
     for i in range(games):
-        first_player = 0 if i < 500 else 1
+        first_player = 0 if i < games/2 else 1
         random.seed(i+1)
         log = i in []
         game = Game((5, 5), logging=log, rendering=False, game_level=2, die_size=10)
@@ -44,5 +48,14 @@ print(matchup(ArrowStrategyLevel2, NumbersBerserkerLevel2))
 
 print(cstring("\n &5Arrow vs Flanker Strategy"))
 print(matchup(ArrowStrategyLevel2, FlankerStrategyLevel2))
+
+print(cstring("\n &5Arrow vs Movement Strategy"))
+print(matchup(ArrowStrategyLevel2, MovementBerserkerLevel2))
+
+print(cstring("\n &5Arrow vs Attack Strategy"))
+print(matchup(ArrowStrategyLevel2, AttackBerserkerLevel2))
+
+print(cstring("\n &5Arrow vs Defense Strategy"))
+print(matchup(ArrowStrategyLevel2, DefenseBerserkerLevel2))
 
 print(cstring("&4All matchups passed!"))
