@@ -12,7 +12,13 @@ class Player:
         self.units = {}
         self.game = game
         self.tech = Technology(
-            {'attack': 0, 'defense': 0, 'movement': 1, 'shipyard': 1, 'shipsize': 1})
+            {'attack': 0,
+             'defense': 0,
+             'movement': 1,
+             'shipyard': 1,
+             'shipsize': 1,
+             'terraform': 0, # Unimplemented
+             'tactics': 0})  # Unimplemented
         self.cp = 0 if self.game.game_level != 2 else 10
 
     def start(self):

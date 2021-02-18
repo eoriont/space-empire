@@ -32,7 +32,9 @@ class Technology:
             "attack": [20, 30, 40],
             "defense": [20, 30, 40],
             "movement": [0, 20, 30, 40, 40, 40],
-            "shipyard": [0, 20, 30]
+            "shipyard": [0, 20, 30],
+            "terraform": [], # Unimplemented
+            "tactics": []    # Unimplemented
         }
 
     def get_obj_state(self):
@@ -41,7 +43,9 @@ class Technology:
             'defense': self['defense'],
             'movement': self['movement'],
             'shipsize': self["shipsize"],
-            'shipyard': self["shipyard"]
+            'shipyard': self["shipyard"],
+            'terraform': self["terraform"], # Unimplemented
+            'tactics': self['tactics']      # Unimplemented
         }
 
     def get_spaces(self):
