@@ -30,7 +30,7 @@ class Game:
         self.combat = CombatEngine(self)
         self.movement = MovementEngine(self)
         self.economy = EconomicEngine(self)
-        self.phase = ""
+        self.phase = "Beginning"
         self.round = 0
         self.winner = None
         self.current_player_id = 0
@@ -43,6 +43,7 @@ class Game:
     def start(self):
         for player in self.players:
             player.start()
+            self.log(f"{player.get_name()} uses {type(player.strat).__name__}")
         self.board.create()
 
     # Run for 100 turns or until all of a player's units are dead

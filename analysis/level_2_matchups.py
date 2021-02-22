@@ -2,20 +2,17 @@ import sys
 import random
 sys.path.append('src')
 sys.path.append('test')
-try:
-    from game import Game
-    from unit import Scout
+from game import Game
+from unit import Scout
 
-    from strategies.lesson_strategies.level_2.attack_berserker_level_2 import AttackBerserkerLevel2
-    from strategies.lesson_strategies.level_2.numbers_berserker_level_2 import NumbersBerserkerLevel2
-    from strategies.lesson_strategies.level_2.defense_berserker_level_2 import DefenseBerserkerLevel2
-    from strategies.lesson_strategies.level_2.flanker_level_2 import FlankerStrategyLevel2
-    from strategies.lesson_strategies.level_2.movement_berserker_level_2 import MovementBerserkerLevel2
+from strategies.lesson_strategies.level_2.attack_berserker_level_2 import AttackBerserkerLevel2
+from strategies.lesson_strategies.level_2.numbers_berserker_level_2 import NumbersBerserkerLevel2
+from strategies.lesson_strategies.level_2.defense_berserker_level_2 import DefenseBerserkerLevel2
+from strategies.lesson_strategies.level_2.flanker_level_2 import FlankerStrategyLevel2
+from strategies.lesson_strategies.level_2.movement_berserker_level_2 import MovementBerserkerLevel2
 
-    from player import Player
-    from otest import cstring
-except ImportError as e:
-    print(e)
+from player import Player
+from otest import cstring
 
 print("Playing games...")
 

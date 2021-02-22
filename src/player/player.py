@@ -33,7 +33,7 @@ class Player:
             for _ in range(4):
                 self.build_unit(ShipYard, free=True)
 
-            if self.game.game_level > 2:
+            if self.game.game_level > 3:
                 for _ in range(3):
                     self.build_unit(ColonyShip, free=True)
 
