@@ -24,7 +24,7 @@ class ElijahStrategyLevel2:
 
     # attack opponent's first ship in combat order
     def decide_which_unit_to_attack(self, hidden_game_state_for_combat, combat_state, coords, attacker_index):
-        return next(i for i, x in enumerate(combat_state[coords]) if self.player_index != x['player_index'])
+        return next(i for i, x in enumerate(combat_state[coords]) if self.player_index != x['player'])
 
     # Buy all possible scouts
     def decide_purchases(self, game_state):

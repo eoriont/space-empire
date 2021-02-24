@@ -35,7 +35,7 @@ class MovementEngine:
 
     # Turn unit + player id into class
     def state_to_unit(self, unit):
-        return self.game.players[unit['player_index']].units[unit['id']]
+        return self.game.players[unit['player']].units[unit['id']]
 
     def generate_movement_state(self):
         return {'round': self.game.round}

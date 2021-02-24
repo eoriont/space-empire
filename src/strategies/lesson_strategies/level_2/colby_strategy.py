@@ -9,7 +9,7 @@ class BasicStrategy:  # no movement or actual strategy, just funcitons like deci
         return self.simple_sort(hidden_game_state['players'][self.player_index]['units'])[-1]['ID']
 
     def decide_which_unit_to_attack(self, hidden_game_state_for_combat, combat_state,  coords, attacker_index):
-        return next(index for index, ship in enumerate(combat_state[coords]) if self.player_index != ship['player_index'])
+        return next(index for index, ship in enumerate(combat_state[coords]) if self.player_index != ship['player'])
 
     def decide_which_units_to_screen(self, hidden_game_state_for_combat):
         return []

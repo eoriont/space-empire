@@ -60,14 +60,14 @@ class Unit:
                 'type': type(self).__name__,
                 'hits_left': type(self).armor-self.armor,
                 'technology': self.tech.get_obj_state(),
-                'player_index': self.player.id,
+                'player': self.player.id,
             }
         else:
             return {
                 'id': self.id,
                 'coords': self.pos,
                 'type': type(self).__name__,
-                'player_index': self.player.id,
+                'player': self.player.id,
             }
 
     def get_name(self):

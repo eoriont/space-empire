@@ -46,7 +46,7 @@ class CombatEngine:
 
     # Unit state -> unit class
     def state_to_unit(self, unit):
-        return self.game.players[unit['player_index']].units[unit['id']]
+        return self.game.players[unit['player']].units[unit['id']]
 
     # A duel between an attacker and a defender
     # Returns True if a home colony is defeated
