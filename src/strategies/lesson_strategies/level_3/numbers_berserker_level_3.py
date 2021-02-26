@@ -34,5 +34,9 @@ class NumbersBerserkerLevel3:
     # Buy all possible scouts
     def decide_purchases(self, game_state):
         scout_price = game_state['unit_data']['Scout']['cp_cost']
-        cp = game_state['players'][self.player_index]['cp']
-        return {'technology': [], 'units': [{'type': 'Scout', 'coords': game_state['players'][self.player_index]['home_coords']}] * (cp//scout_price)}
+        player = game_state['players'][self.player_index]
+        cp = player['cp']
+        home_coords = game_state['players'][self.player_index]['home_coords']
+        sy_capacity = len([i for i in player['units'] if i['type'] == 'ShipYard'])
+        amt = min(sy_capacity, cp//scout_price)
+        return {'technology': [], 'units': [{'type': 'Scout', 'coords': home_coords}] * amt}
