@@ -112,8 +112,8 @@ class Game:
 
     def get_unit_data(self):
         return {
-            "Scout": {"cp_cost": Scout.cp_cost, "shipsize_needed": Scout.req_size_tech},
-            "Destroyer": {"cp_cost": Destroyer.cp_cost, "shipsize_needed": Destroyer.req_size_tech}
+            "Scout": {"cp_cost": Scout.cp_cost, "shipsize_needed": Scout.req_size_tech, "hullsize": Scout.hull_size},
+            "Destroyer": {"cp_cost": Destroyer.cp_cost, "shipsize_needed": Destroyer.req_size_tech, "hullsize": Destroyer.hull_size}
         }
 
     def unit_str_to_class(self, unit):

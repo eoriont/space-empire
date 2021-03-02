@@ -13,7 +13,7 @@ class MovementEngine:
 
     def subphase(self, sp):
         self.game.log(f"&2Phase {sp}")
-        state = self.game.generate_state()
+        state = self.game.generate_state(None, True)
         for player in state['players']:
             self.game.current_player_id = player['id']
             for i, unit in enumerate(player['units']):

@@ -6,9 +6,9 @@ sys.path.append('tests')
 sys.path.append('src/strategies/lesson_strategies/level_3')
 from game import Game
 
-from attack_berserker_level_3 import AttackBerserkerLevel3
 from numbers_berserker_level_3 import NumbersBerserkerLevel3
 from camper_level_3 import CamperLevel3
+from elijah_level_3 import ElijahLevel3
 
 from player import Player
 from otest import cstring
@@ -16,11 +16,12 @@ from otest import cstring
 print("Playing games...")
 
 def matchup(type1, type2):
+    print(cstring(f"\n &5 {type1.__name__} vs {type2.__name__}"))
     wins = [0, 0, 0]
-    games = 1000
+    games = 100
     winlog = False
     for i in range(games):
-        first_player = 0 if i < 10 else 1
+        first_player = 0 if i < games//2 else 1
         random.seed(i+1)
         log = i in []
         # log = True
@@ -48,8 +49,7 @@ def matchup(type1, type2):
     wins = [w/games for w in wins]
     return wins
 
-# print(cstring("\n &5Numbers vs Attack Strategy"))
-# print(matchup(NumbersBerserkerLevel3, AttackBerserkerLevel3))
 
-print(cstring("\n &5Numbers vs Camper Strategy"))
-print(matchup(NumbersBerserkerLevel3, CamperLevel3))
+print(matchup(NumbersBerserkerLevel3, ElijahLevel3))
+
+print(matchup(CamperLevel3, ElijahLevel3))

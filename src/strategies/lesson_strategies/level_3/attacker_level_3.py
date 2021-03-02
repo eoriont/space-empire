@@ -1,19 +1,4 @@
-class CamperLevel3:
-    '''
-    Stays at base while other person has o
-    start w/ 3
-
-    1. 3+2=5 => 5cp
-    2. 5+3=8 => 2cp
-    3. 8+2=10 => 2cp
-    4. 10+2=12 => 0cp
-    5. 12+1=13 => 2cp
-    6. 13+1=14 => 1cp
-    7. 14+1=15 => 0cp
-
-    (MAX BUYING IN A ROW IS 15)
-    '''
-
+class AttackerLevel3:
     def __init__(self, player_index):
         self.player_index = player_index
 
@@ -37,11 +22,7 @@ class CamperLevel3:
 
     # Attack first scout
     def decide_which_unit_to_attack(self, hidden_game_state_for_combat, combat_state, coords, attacker_index):
-        i = next((i for i, x in enumerate(combat_state[coords]) if self.player_index != x['player'] and x['type'] == 'ShipYard'), None)
-        if i:
-            return i
-        else:
-            return next(i for i, x in enumerate(combat_state[coords]) if self.player_index != x['player'])
+        return next(i for i, x in enumerate(combat_state[coords]) if self.player_index != x['player'])
 
     # Just kill a scout if can't afford for some reason
     def decide_removal(self, hidden_game_state):
@@ -54,5 +35,11 @@ class CamperLevel3:
         cp = player['cp']
         home_coords = game_state['players'][self.player_index]['home_coords']
         sy_capacity = len([i for i in player['units'] if i['type'] == 'ShipYard'])
+        tt = player['technology']['defense']
+        tt_price = game_state['technology_data']['defense'][tt]
+        tech = []
+        if tt < 2 and cp >= tt_price:
+            tech += ['defense']
+            cp -= tt_price
         amt = min(sy_capacity, cp//scout_price)
-        return {'technology': [], 'units': [{'type': 'Scout', 'coords': home_coords}] * amt}
+        return {'technology': tech, 'units': [{'type': 'Scout', 'coords': home_coords}] * amt}

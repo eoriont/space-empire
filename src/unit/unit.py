@@ -66,7 +66,6 @@ class Unit:
             return {
                 'id': self.id,
                 'coords': self.pos,
-                'type': type(self).__name__,
                 'player': self.player.id,
             }
 
