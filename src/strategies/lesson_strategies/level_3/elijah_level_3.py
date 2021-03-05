@@ -22,10 +22,10 @@ class ElijahLevel3:
 
     # Attack shipyards first, then scouts
     def decide_which_unit_to_attack(self, hidden_game_state_for_combat, combat_state, coords, attacker_index):
-        return sorted(
-            ((x, i) for i, x in enumerate(combat_state[coords]) if x['player'] != self.player_index),
-            key=lambda x: self.priorities.index(x[0]['type'])
-        )[0][1]
+        units = [(i, x['id']) for i, x in enumerate(combat_state[coords]) if x['player'] != self.player_index]
+        opponent_units = hidden_game_state_for_combat['players'][1-self.player_index]['units']
+        units = [(j, next(x for x in opponent_units if x['id'] == i)) for j, i in units]
+        return min(units, key=lambda x: self.priorities.index(x[1]['type']))[0]
 
     # Buy all possible scouts
     def decide_purchases(self, game_state):
