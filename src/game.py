@@ -14,7 +14,7 @@ from otest import cstring
 
 class Game:
     # Initialize with 2 players and turn starts at 0
-    def __init__(self, board_size, logging=False, rendering=False, die_mode="normal", game_level=1, die_size=6):
+    def __init__(self, board_size, logging=False, rendering=False, die_mode="normal", game_level=1, die_size=6, debug_mode=True):
         self.die_size = die_size
         self.game_level = game_level
         self.die_mode = die_mode
