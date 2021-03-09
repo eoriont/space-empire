@@ -1,6 +1,6 @@
 from planet import Planet
 import random
-from unit import Colony
+from unit import Colony, ShipYard
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 
@@ -56,7 +56,9 @@ class Board:
     def contains(self, pos, t):
         return self.game.unit_str_to_class(t) in [type(u) for u in self[pos]]
 
-    # def shipyard_build_capacity(self, )
+    def get_shipyard_capacity(self, pos):
+        return len([x for x in self[pos] if type(x) == ShipYard])
+
 
     def __getitem__(self, pos):
         if pos in self.grid:

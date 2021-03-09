@@ -40,13 +40,22 @@ class Unit:
     # Check if movement is valid and move if so
     def validate_and_move(self, translation, sp):
         # Is newpos-oldpos in bounds and allowed by tech?
-        possible_amt = self.player.tech.get_spaces()[sp]
+        possible_amt = self.tech.get_spaces()[sp]
         is_possible = sum(translation) <= possible_amt
         new_pos = self.pos_from_translation(translation)
         in_bounds = self.game.board.is_in_bounds(new_pos[0], new_pos[1])
         movable = not self.immovable
         if not (is_possible and in_bounds and movable):
-            raise Exception("Invalid move!")
+            self.game.throw("Invalid move!",
+                f"""
+&4Unit {self.id} started at &3{self.pos}
+&4Unit type can move: &3{movable}
+&4Tried to move from &3{self.pos} --> {new_pos}
+&4In bounds: &3{in_bounds}
+&4Enough movement technology: &3{is_possible}
+&4Exact returned translation: &3{translation}
+                """
+            )
         self.pos = new_pos
 
     def pos_from_translation(self, pos):

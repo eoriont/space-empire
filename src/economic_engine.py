@@ -24,54 +24,102 @@ class EconomicEngine:
             player.pay(-maintenance)
             purchases = player.strat.decide_purchases(
                 self.game.generate_state(player=player))
-            self.verify_purchases(purchases, player.cp, player.tech)
-            self.purchase(purchases, player)
+            self.verify_and_make_purchases(purchases, player)
             self.game.log(f"{player.get_name()} ends economic phase with &5{player.cp}cp")
 
 
         self.game.board.create()
 
-    def verify_purchases(self, purchases, cp, tech):
-        # Verify the purchases are within budget
-        # And player has sufficient tech
-        tech_purchases = purchases["technology"]
-        te = Technology(tech.tech.copy())
-        tech_cost = sum(te.buy_tech(t) for t in tech_purchases)
+    def verify_and_make_purchases(self, purchases, player):
+        tech = purchases["technology"]
+        tech_data = Technology.get_state()
+        for t in tech:
+            cp = player.cp
+            tech_cost = tech_data[t][player.tech[t]+1]
+            if cp < tech_cost:
+                self.game.throw(f"Can't afford unit!",
+                    f"""
+&4Player {player.id} tried to buy {t}
+&4They had &3{cp} cp&4, which is less than the required &3{tech_cost} cp&4 to buy {t}
+                    """
+                )
+            else:
+                p = player.buy_tech(t)
+                self.game.log(f"They bought &2{t}&3 for &5{p}cp")
 
-        units_cost = 0
         unit_data = self.game.get_unit_data()
+        syc = {}
         for u in purchases['units']:
+            cp = player.cp
             unit_type = u['type']
             unit_pos = u['coords']
-            if self.game.game_level == 2 and unit_type != 'Scout':
-                raise Exception("Can only buy Scouts in level 2 game!")
-            if te['shipsize'] >= unit_data[unit_type]['shipsize_needed']:
-                units_cost += unit_data[unit_type]['cp_cost']
-            else:
-                raise Exception("Player bought unit without sufficient shipsize!")
-
-            # Check if unit is being built on a colony (if it's a shipyard)
-            if u['type'] == "ShipYard":
-                if not self.game.board.contains(unit_pos, "Colony"):
-                    raise Exception("ShipYards can only be built at colonies!")
-            else:
+            unit_class = self.game.unit_str_to_class(unit_type)
+            if unit_pos not in syc:
+                syc[unit_pos] = self.game.board.get_shipyard_capacity(unit_pos)
+            if self.game.game_level in (2, 3) and unit_type != 'Scout':
+                self.game.throw("Can only buy Scouts in level 2 game!",
+                    f"""
+&4Player {player.id} tried to buy {unit_type} at {unit_pos}
+&1This is a level {self.game.game_level} game, so player can only buy Scouts!
+&4They had &3{cp} cp
+                    """
+                )
+            elif player.tech['shipsize'] < unit_data[unit_type]['shipsize_needed']:
+                self.game.throw("Player bought unit without sufficient shipsize tech!",
+                    f"""
+&4Player {player.id} tried to buy {unit_type} at {unit_pos}
+&4Their shipsize tech level is {player.tech['shipsize']}
+&4They had &3{cp} cp
+                    """
+                )
+            elif unit_type == "ShipYard" and not self.game.board.contains(unit_pos, "Colony"):
+                # Check if unit is being built on a colony (if it's a shipyard)
+                self.game.throw("ShipYards can only be built at colonies!",
+                    f"""
+&4Player {player.id} tried to buy {unit_type} at {unit_pos}
+&4They could afford it
+&1There is no detected colony at {unit_pos}.
+Here are the player's units at that position:
+{[x for x in self.game.board[unit_pos] if x.player.id == player.id]}
+Here are the other player's units that position:
+{[x for x in self.game.board[unit_pos] if x.player.id != player.id]}
+&4They had &3{cp} cp
+                    """
+                )
+            elif not self.game.board.contains(unit_pos, "ShipYard"):
                 # Otherwise check if it's being built on a shipyard
-                if not self.game.board.contains(unit_pos, "ShipYard"):
-                    raise Exception("Ships can only be built at shipyards!")
-
-        if cp < units_cost + tech_cost:
-            raise Exception("Player bought too many units/tech!")
-
-    def purchase(self, purchases, player):
-        tech = purchases["technology"]
-        for t in tech:
-            p = player.buy_tech(t)
-            self.game.log(f"They bought &2{t}&3 for &5{p}cp")
-
-        units = purchases["units"]
-        for unit in units:
-            u = player.build_unit(self.game.unit_str_to_class(unit['type']), starting_pos=unit['coords'])
-            self.game.log(f"They bought &2{u.get_name()}&3 for &5{u.cp_cost}")
+                self.game.throw(f"{unit_type} can only be built at ShipYards!",
+                    f"""
+&4Player {player.id} tried to buy {unit_type} at {unit_pos}
+&1There is no detected ShipYard at {unit_pos}.
+Here are the player's units at that position:
+{[x for x in self.game.board[unit_pos] if x.player.id == player.id]}
+Here are the other player's units that position:
+{[x for x in self.game.board[unit_pos] if x.player.id != player.id]}
+&4They had &3{cp} cp.
+                    """
+                )
+            elif syc[unit_pos] < unit_class.hull_size:
+                self.game.throw(f"Not enough shipyard capacity!",
+                    f"""
+&4Player {player.id} tried to buy {unit_type} at &3{unit_pos}
+&4There aren't enough shipyards &3({syc[unit_pos]} present)&4 to accomodate for that unit. &3({unit_class.hull_size} needed)
+&4They had &3{cp} cp.
+                    """
+                )
+            elif cp < (unit_cost := unit_data[unit_type]['cp_cost']):
+                self.game.throw(f"Can't afford unit!",
+                    f"""
+&4Player {player.id} tried to buy {unit_type} at {unit_pos}
+&4They had &3{cp} cp&4, which is less than the required &3{unit_cost} cp&4 to buy a {unit_type}
+                    """
+                )
+            else:
+                if cp < 0:
+                    print("HKLS:DLFS")
+                u = player.build_unit(self.game.unit_str_to_class(unit_type), starting_pos=unit_pos)
+                self.game.log(f"They bought &2{u.get_name()}&3 for &5{u.cp_cost}")
+                syc[unit_pos] -= u.hull_size
 
     def generate_economic_state(self):
         return [{

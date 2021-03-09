@@ -15,6 +15,7 @@ from otest import cstring
 class Game:
     # Initialize with 2 players and turn starts at 0
     def __init__(self, board_size, logging=False, rendering=False, die_mode="normal", game_level=1, die_size=6, debug_mode=True):
+        self.debug_mode = debug_mode
         self.die_size = die_size
         self.game_level = game_level
         self.die_mode = die_mode
@@ -87,6 +88,20 @@ class Game:
     def log(self, *s):
         if self.logging:
             print(cstring(f"&6{self.current_turn} &4{self.phase} &3{', '.join(str(x) for x in s)}"))
+
+    # Raise a prettier exception
+    def throw(self, error, *details):
+        if self.debug_mode:
+            print(cstring(f"""
+&1ERROR THROWN:
+&7{error}
+&1DETAILS:
+&6Turn {self.current_turn} &4Phase {self.phase}
+&7{', '.join(str(x) for x in details)}
+                """
+            ))
+            import sys
+            sys.exit(0)
 
     # # Render if rendering is enabled
     # def render(self):

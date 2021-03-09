@@ -25,7 +25,7 @@ def matchup(type1, type2):
         random.seed(i+1)
         log = i in []
         # log = True
-        game = Game((7, 7), logging=log, rendering=False, game_level=3, die_size=10)
+        game = Game((7, 7), logging=log, rendering=False, game_level=3, die_size=10,  debug_mode=False)
         p1 = Player(type1(first_player), "Player1", (3, 0), game)
         p2 = Player(type2(1-first_player), "Player2", (3, 6), game)
         if first_player == 0:
@@ -52,4 +52,4 @@ def matchup(type1, type2):
 
 print(matchup(NumbersBerserkerLevel3, ElijahLevel3))
 
-print(matchup(CamperLevel3, ElijahLevel3))
+# print(matchup(CamperLevel3, ElijahLevel3))
