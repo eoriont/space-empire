@@ -53,10 +53,7 @@ class GeorgeStrategyLevel3:
             self.flank_started= False
             self.flank_count = 0
         opponent_index = 1 - self.player_index
-        opponent = hidden_game_state['players'][opponent_index]
         unit = myself['units'][unit_index]
-        x_unit, y_unit = unit['coords']
-        x_opp, y_opp = opponent['home_coords']
         # print(unit['type'], unit['coords'], home_coords, self.flank_count, len(scouts))
         if unit['type'] == 'Scout' and self.delayed_count < 6 and tuple(unit['coords']) == home_coords:
             self.delayed_count += 1
@@ -84,3 +81,6 @@ class GeorgeStrategyLevel3:
         for combat_index, unit in enumerate(combat_order):
             if unit['player'] == opponent_index:
                 return combat_index
+
+    def decide_removal(self,game_state):
+        return -1

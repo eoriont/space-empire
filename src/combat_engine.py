@@ -8,6 +8,7 @@ class CombatEngine:
     def battle(self, pos):
         self.game.log("Combat order: " + str([u['id'] for u in self.generate_combat_array(pos)]))
         units = [self.state_to_unit(u) for u in self.generate_combat_array(pos)]
+        self.game.log("Going into battle: " + str([(type(u).__name__, u.player.id) for u in self.game.board[pos] if u.id in u.player.units]))
 
         # Battle until all units are on the same team
         while CombatEngine.is_battle(units):
@@ -36,6 +37,11 @@ class CombatEngine:
                 )
 
                 defender = self.state_to_unit(cbt_arr[defender_id])
+                if type(defender) == Colony and len([type(x) == Colony for x in units if x.player == defender.player.id]):
+                    self.game.throw("Can't attack colony while other units are present!",
+f"""
+&4Player {attacker.player.id} tried to attack the other player's colony, but other units were there!
+""")
 
                 # Duel returns if a home colony was destroyed
                 if self.duel(attacker, defender):
@@ -43,6 +49,8 @@ class CombatEngine:
 
             # Reset units, since it was changed in battle
             units = [self.state_to_unit(u) for u in self.generate_combat_array(pos)]
+
+        self.game.log("Survivors: " + str([(type(u).__name__, u.player.id) for u in self.game.board[pos] if u.id in u.player.units]))
 
     # Unit state -> unit class
     def state_to_unit(self, unit):

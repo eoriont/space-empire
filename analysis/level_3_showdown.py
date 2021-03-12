@@ -30,8 +30,8 @@ def matchup(type1, type2):
         log = i in []
         # log = True
         game = Game((7, 7), logging=log, rendering=False, game_level=3, die_size=10)
-        p1 = Player(type1(first_player), "Player1", (3, 0), game)
-        p2 = Player(type2(1-first_player), "Player2", (3, 6), game)
+        p1 = Player(type1(first_player), "Player1", (3, 6*first_player), game)
+        p2 = Player(type2(1-first_player), "Player2", (3, 6 - 6*first_player), game)
         if first_player == 0:
             game.add_player(p1)
             game.add_player(p2)
@@ -59,9 +59,9 @@ def matchup(type1, type2):
 # print(matchup(ColbyStrategyLevel3, ElijahStrategyLevel3))
 # print(matchup(ColbyStrategyLevel3, DavidStrategyLevel3))
 
-# print(matchup(GeorgeStrategyLevel3, RileyStrategyLevel3))
-# print(matchup(GeorgeStrategyLevel3, ElijahStrategyLevel3))
-# print(matchup(GeorgeStrategyLevel3, DavidStrategyLevel3))
+print(matchup(GeorgeStrategyLevel3, RileyStrategyLevel3))
+print(matchup(GeorgeStrategyLevel3, ElijahStrategyLevel3))
+print(matchup(GeorgeStrategyLevel3, DavidStrategyLevel3))
 
 # print(matchup(RileyStrategyLevel3, ElijahStrategyLevel3))
 # print(matchup(RileyStrategyLevel3, DavidStrategyLevel3))
@@ -69,7 +69,7 @@ def matchup(type1, type2):
 # print(matchup(DavidStrategyLevel3, ElijahStrategyLevel3))
 
 # print(matchup(NumbersBerserkerLevel3, ColbyStrategyLevel3))
-# print(matchup(NumbersBerserkerLevel3, GeorgeStrategyLevel3))
+print(matchup(NumbersBerserkerLevel3, GeorgeStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, RileyStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, ElijahStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, DavidStrategyLevel3))

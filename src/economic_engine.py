@@ -35,7 +35,7 @@ class EconomicEngine:
         tech_data = Technology.get_state()
         for t in tech:
             cp = player.cp
-            tech_cost = tech_data[t][player.tech[t]+1]
+            tech_cost = tech_data[t][player.tech[t]]
             if cp < tech_cost:
                 self.game.throw(f"Can't afford unit!",
                     f"""
@@ -115,8 +115,6 @@ Here are the other player's units that position:
                     """
                 )
             else:
-                if cp < 0:
-                    print("HKLS:DLFS")
                 u = player.build_unit(self.game.unit_str_to_class(unit_type), starting_pos=unit_pos)
                 self.game.log(f"They bought &2{u.get_name()}&3 for &5{u.cp_cost}")
                 syc[unit_pos] -= u.hull_size

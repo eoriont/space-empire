@@ -4,7 +4,7 @@ class ElijahStrategyLevel3:
 
     def __init__(self, player_index):
         self.player_index = player_index
-        self.priorities = ["Colony", "ShipYard", "Scout"]
+        self.priorities = ["ShipYard", "Scout", "Colony"]
 
     def decide_ship_movement(self, unit_index, hidden_game_state):
         enemy = hidden_game_state['players'][1-self.player_index]

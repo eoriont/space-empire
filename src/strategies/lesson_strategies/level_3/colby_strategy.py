@@ -1,6 +1,5 @@
 import sys
 sys.path.append('src')
-import random
 import math
 
 class BasicStrategy:  # no movement or actual strategy, just funcitons like decide_removal or decide_which_unit_to_attack
