@@ -12,6 +12,7 @@ class Unit:
 
     # Initialize the unit
     def __init__(self, uid, player, name, starting_pos, game, tech):
+        self.name = name
         self.id = uid
         self.player = player
         self.id = uid
@@ -64,7 +65,7 @@ class Unit:
     def generate_state(self, recipient_player=True, combat=False):
         if recipient_player or combat:
             return {
-                'id': self.id,
+                'num': self.name,
                 'coords': self.pos,
                 'type': type(self).__name__,
                 'hits_left': type(self).armor-self.armor,
@@ -73,7 +74,6 @@ class Unit:
             }
         else:
             return {
-                'id': self.id,
                 'coords': self.pos,
                 'player': self.player.id,
             }

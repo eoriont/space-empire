@@ -6,8 +6,8 @@ class CombatEngine:
 
     # Returns if a home colony was destroyed
     def battle(self, pos):
-        self.game.log("Combat order: " + str([u['id'] for u in self.generate_combat_array(pos)]))
-        units = [self.state_to_unit(u) for u in self.generate_combat_array(pos)]
+        self.game.log("Combat order: " + str([u['id'] for u in self.generate_combat_array()[pos]]))
+        units = [self.state_to_unit(u) for u in self.generate_combat_array()[pos]]
         self.game.log("Going into battle: " + str([(type(u).__name__, u.player.id) for u in self.game.board[pos] if u.id in u.player.units]))
 
         # Battle until all units are on the same team
@@ -20,7 +20,7 @@ class CombatEngine:
                     continue
 
                 # Generate a new array since each battle will change the contents
-                cbt_arr = self.generate_combat_array(pos, attacker.player, True)
+                cbt_arr = self.generate_combat_array()
 
                 # If only the attacker is in cbt_arr, then there's no battle
                 if len(cbt_arr) <= 1 or pos not in self.get_combat_positions():
@@ -30,8 +30,7 @@ class CombatEngine:
                 self.game.current_player_id = attacker.player.id
 
                 defender_id = attacker.player.strat.decide_which_unit_to_attack(
-                    self.game.generate_state(attacker.player, True),
-                    self.generate_combat_array(player=attacker.player, combat=True),
+                    cbt_arr,
                     pos,
                     cbt_arr.index(attacker.generate_state(False, True))
                 )
@@ -48,7 +47,7 @@ f"""
                     return True
 
             # Reset units, since it was changed in battle
-            units = [self.state_to_unit(u) for u in self.generate_combat_array(pos)]
+            units = [self.state_to_unit(u) for u in self.generate_combat_array()]
 
         self.game.log("Survivors: " + str([(type(u).__name__, u.player.id) for u in self.game.board[pos] if u.id in u.player.units]))
 
@@ -88,7 +87,6 @@ f"""
     # Returns if a home colony was destroyed
     def combat_phase(self, current_turn):
         self.game.phase = "Combat"
-        combat_arr = self.generate_combat_array()
 
         # Each position in combat array has enemy units
         for pos in self.get_combat_positions():
@@ -99,22 +97,13 @@ f"""
         self.game.board.create()
 
     # Generate a state array filled with hidden units
-    def generate_combat_array(self, pos=None, player=None, combat=False):
+    def generate_combat_array(self):
         # This if statement will truncate unit information based on player
-        if pos is None:
-            return {
-                pos: [u.generate_state(
-                    True if player is None else player.id==u.player.id,
-                    combat
-                  ) for u in self.order_ships(units)]
-                 for pos, units in self.game.board.items()
-                if CombatEngine.is_battle(units)
-            }
-        else:
-            return [u.generate_state(
-                  True if player is None else player.id==u.player.id,
-                  combat
-                ) for u in self.order_ships(self.game.board[pos])]
+        return {
+            pos: [u.generate_state(True, True) for u in self.order_ships(units)]
+             for pos, units in self.game.board.items()
+            if CombatEngine.is_battle(units)
+        }
 
     # Returns all positions where a battle should take place
     def get_combat_positions(self):

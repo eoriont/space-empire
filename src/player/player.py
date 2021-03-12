@@ -20,6 +20,7 @@ class Player:
              'terraform': 0, # Unimplemented
              'tactics': 0})  # Unimplemented
         self.cp = 0 if self.game.game_level != 2 else 10
+        self.unit_nums = {}
 
     def start(self):
         self.build_starting_fleet()
@@ -56,7 +57,10 @@ class Player:
 
         unit_options = {} if unit_options is None else unit_options
         starting_pos = self.starting_pos if starting_pos is None else starting_pos
-        unit_name = f"P{self.id}{unit_type.abbr}{len(self.units)+1}"
+        if unit_type not in self.unit_nums:
+            self.unit_nums[unit_type] = 0
+        self.unit_nums[unit_type] += 1
+        unit_name = self.unit_nums[unit_type]
 
         unit = unit_type(uid, self, unit_name, starting_pos,
                          self.game, self.tech.copy(), **unit_options)
@@ -90,11 +94,11 @@ class Player:
                 'id': self.id,
                 'units': [u.generate_state(recipient_player, combat) for u in self.get_units()],
                 'technology': self.tech.tech.copy(),
-                'home_coords': self.home_coords
+                'home_world': next(x.generate_state(recipient_player, True) for x in self.get_units() if type(x) == Colony and x.is_home_colony)
             }
         else:
             return {
                 'id': self.id,
                 'units': [u.generate_state(recipient_player, combat) for u in self.get_units()],
-                'home_coords': self.home_coords
+                'home_world': next(x.generate_state(recipient_player, True) for x in self.get_units() if type(x) == Colony and x.is_home_colony)
             }
