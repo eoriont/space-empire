@@ -10,7 +10,7 @@ from unit.battle_cruiser import BattleCruiser
 
 # Make sure Base and ShipYard are before Colony
 from unit.base import Base
-from unit.ship_yard import ShipYard
+from unit.shipyard import Shipyard
 from unit.colony import Colony
 
 # Make sure Colony is before ColonyShip

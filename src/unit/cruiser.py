@@ -1,6 +1,5 @@
 from unit import Unit
 
-
 class Cruiser(Unit):
     # Cruiser unit's stats
     cp_cost = 12
@@ -11,3 +10,4 @@ class Cruiser(Unit):
     armor = 2
     hull_size = 2
     req_size_tech = 2
+    name = "Cruiser"

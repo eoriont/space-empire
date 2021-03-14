@@ -1,5 +1,4 @@
-from unit import Unit, Colony
-
+from unit import Unit
 
 class ColonyShip(Unit):
     # ColonyShip unit's stats
@@ -13,12 +12,4 @@ class ColonyShip(Unit):
     default_tech = {'movement': 1}
     no_maintenance = True
     no_attack = True
-    #! Somehow make it not affected by technology
-    #! This shouldn't matter right now bc tests don't need it
-
-    def test_for_planet(self):
-        if self.game.board.on_unoccupied_planet(self.pos):
-            # ask player to settle
-            if self.player.strat.will_colonize_planet(self):
-                col = self.player.build_unit(Colony, self.pos)
-                self.destroy("turning into a colony")
+    name = "ColonyShip"

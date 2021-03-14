@@ -1,6 +1,5 @@
 from unit import Unit
 
-
 class Base(Unit):
     cp_cost = 12
     attack_class = "A"
@@ -11,3 +10,4 @@ class Base(Unit):
     no_maintenance = True
     immovable = True
     abbr = "Ba"
+    name = "Base"

@@ -2,7 +2,7 @@ import sys
 import random
 sys.path.append('src')
 sys.path.append('tests')
-sys.path.append('src/strategies/lesson_strategies/level_2')
+sys.path.append('src/strategies/level_2')
 from game import Game
 
 from colby_strategy import ColbyStrategyLevel2

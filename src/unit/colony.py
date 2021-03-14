@@ -1,5 +1,4 @@
-from unit import Unit, ShipYard, Base
-
+from unit import Unit
 
 class Colony(Unit):
     # Colony unit's stats
@@ -11,15 +10,4 @@ class Colony(Unit):
     no_maintenance = True
     no_attack = True
     immovable = True
-
-    def __init__(self, *args, home_colony=False):
-        super().__init__(*args)
-        self.is_home_colony = home_colony
-
-    # If destroyed, destroy any remaining shipyards and bases
-    def destroy(self, reason):
-        super().destroy(reason)
-        for unit in self.game.board[self.pos]:
-            if unit.player == self.player:
-                if type(unit) in (ShipYard, Base):
-                    unit.destroy(reason)
+    name = "Colony"

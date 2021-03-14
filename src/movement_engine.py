@@ -1,41 +1,59 @@
+from board import Board
+from state import State
+from technology import Technology
+
 class MovementEngine:
-    def __init__(self, game):
-        self.game = game
+    @staticmethod
+    def run_phase(state: dict):
+        turn = state["turn"]
+        state["phase"] = "Movement"
+        state["log"].info(f"BEGINNING OF TURN {turn} MOVEMENT PHASE")
 
-    def movement_phase(self, turn):
-        self.game.phase = "Movement"
-        self.game.log("")
-        rounds = 1 if self.game.game_level <= 2 else 3
+        rounds = 1 if state["game_level"] <= 2 else 3
+
         for subphase in range(rounds):
-            self.game.round = subphase
-            self.subphase(subphase)
-        self.game.round = None
+            state["round"] = subphase+1
+            state["log"].info(f"\n\tMovement Round {subphase+1}")
 
-    def subphase(self, sp):
-        self.game.log(f"&2Phase {sp}")
-        state = self.game.generate_state(None, True)
-        for player in state['players']:
-            self.game.current_player_id = player['id']
-            for i, unit in enumerate(player['units']):
-                if not self.game.unit_str_to_class(unit['type']).immovable:
-                    old_pos = unit['coords']
-                    p = self.state_to_player(player)
-                    translation = p.strat.decide_ship_movement(i, self.game.generate_state(player=p))
-                    unit_obj = self.state_to_unit(unit)
+            for player in state["players"].values():
+                state["current_player"]
+                for unit_id in player["units"]:
+                    unit = state["units"][unit_id]
+
+                    if unit["type"].immovable:
+                        continue
+
+                    old_pos = unit["pos"]
+                    translation = player["strategy"].decide_ship_movement(unit["type"].name, unit["num"], State.generate_hidden(state, player["id"]))
+
                     if translation != (0, 0):
-                        self.game.log(f"{unit_obj.get_name()} moved {old_pos} -> {self.pos_from_translation(old_pos, translation)}")
-                    unit_obj.validate_and_move(translation, sp)
-        self.game.board.create()
+                        new_pos = (old_pos[0] + translation[0], old_pos[1] + translation[1])
+                        state["log"].info(f"\t\t{unit['name']}: {old_pos} -> {new_pos}")
+                        MovementEngine.validate_and_move(state, unit_id, translation, subphase)
 
-    def pos_from_translation(self, p1, pos):
-        return (p1[0]+pos[0], p1[1]+pos[1])
+        state["log"].info("\n\tEnding Unit Locations\n")
+        for player in state["players"].values():
+            for unit_id in player["units"]:
+                unit = state["units"][unit_id]
+                state["log"].info(f"\t\t{unit['name']}: {unit['pos']}")
+            state["log"].info("\n")
 
-    def state_to_player(self, p):
-        return self.game.players[p['id']]
+        state["round"] = None
+        state["log"].info(f"END OF TURN {turn} MOVEMENT PHASE\n")
 
-    # Turn unit + player id into class
-    def state_to_unit(self, unit):
-        return self.game.players[unit['player']].units[unit['id']]
+    @staticmethod
+    def validate_and_move(state: dict, unit_id: int, translation: tuple, subphase: int):
+        unit = state["units"][unit_id]
+        tech_spaces = Technology.get_movement_spaces(unit["technology"], subphase)
+        is_possible = translation[0] + translation[1] <= tech_spaces
 
-    def generate_movement_state(self):
-        return {'round': self.game.round}
+        old_pos = unit["pos"]
+        new_pos = (old_pos[0] + translation[0], old_pos[1] + translation[1])
+
+        in_bounds = Board.is_in_bounds(state, new_pos)
+
+        if not (is_possible and in_bounds):
+            state["log"].throw("Invalid Move!")
+        else:
+            unit["pos"] = new_pos
+            Board.move_unit(state, unit_id, old_pos, new_pos)

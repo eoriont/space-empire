@@ -3,11 +3,10 @@ import random
 
 sys.path.append('src')
 sys.path.append('tests')
-sys.path.append('src/strategies/lesson_strategies/level_3')
+sys.path.append('src/strategies/level_3')
 
 from game import Game
 from player import Player
-from otest import cstring
 
 from colby_strategy import ColbySiegeStrategyLevel3 as ColbyStrategyLevel3
 from david_strategy import DavidStrategyLevel3
@@ -20,7 +19,7 @@ from riley_strategy import RileyStrategyLevel3
 print("Playing games...")
 
 def matchup(type1, type2):
-    print(cstring(f"\n &5 {type1.__name__} vs {type2.__name__}"))
+    print(f"\n {type1.__name__} vs {type2.__name__}")
     wins = [0, 0, 0]
     games = 100
     winlog = False
@@ -59,9 +58,9 @@ def matchup(type1, type2):
 # print(matchup(ColbyStrategyLevel3, ElijahStrategyLevel3))
 # print(matchup(ColbyStrategyLevel3, DavidStrategyLevel3))
 
-print(matchup(GeorgeStrategyLevel3, RileyStrategyLevel3))
-print(matchup(GeorgeStrategyLevel3, ElijahStrategyLevel3))
-print(matchup(GeorgeStrategyLevel3, DavidStrategyLevel3))
+# print(matchup(GeorgeStrategyLevel3, RileyStrategyLevel3))
+# print(matchup(GeorgeStrategyLevel3, ElijahStrategyLevel3))
+# print(matchup(GeorgeStrategyLevel3, DavidStrategyLevel3))
 
 # print(matchup(RileyStrategyLevel3, ElijahStrategyLevel3))
 # print(matchup(RileyStrategyLevel3, DavidStrategyLevel3))
@@ -69,7 +68,7 @@ print(matchup(GeorgeStrategyLevel3, DavidStrategyLevel3))
 # print(matchup(DavidStrategyLevel3, ElijahStrategyLevel3))
 
 # print(matchup(NumbersBerserkerLevel3, ColbyStrategyLevel3))
-print(matchup(NumbersBerserkerLevel3, GeorgeStrategyLevel3))
+# print(matchup(NumbersBerserkerLevel3, GeorgeStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, RileyStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, ElijahStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, DavidStrategyLevel3))

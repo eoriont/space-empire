@@ -1,6 +1,5 @@
 from unit import Unit
 
-
 class Battleship(Unit):
     # Battleship unit's stats
     cp_cost = 20
@@ -11,3 +10,4 @@ class Battleship(Unit):
     armor = 3
     hull_size = 3
     req_size_tech = 5
+    name = "Battleship"

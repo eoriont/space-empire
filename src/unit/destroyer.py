@@ -1,6 +1,5 @@
 from unit import Unit
 
-
 class Destroyer(Unit):
     # Destroyer unit's stats
     cp_cost = 9
@@ -11,3 +10,4 @@ class Destroyer(Unit):
     armor = 1
     hull_size = 1
     req_size_tech = 2
+    name = "Destroyer"

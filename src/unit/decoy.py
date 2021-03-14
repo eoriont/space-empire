@@ -1,7 +1,7 @@
 from unit import Unit
 
-
 class Decoy(Unit):
+    # Decoy unit's stats
     cp_cost = 1
     armor = 0
     no_maintenance = True
@@ -10,3 +10,4 @@ class Decoy(Unit):
     abbr = "De"
     attack_strength = 0
     defense_strength = 0
+    name = "Decoy"

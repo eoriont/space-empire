@@ -19,7 +19,7 @@ class Player:
              'shipsize': 1,
              'terraform': 0, # Unimplemented
              'tactics': 0})  # Unimplemented
-        self.cp = 0 if self.game.game_level != 2 else 10
+        self.cp = 0 if self.state["game_level"] != 2 else 10
         self.unit_nums = {}
 
     def start(self):
@@ -30,11 +30,11 @@ class Player:
         for _ in range(3):
             self.build_unit(Scout, free=True)
 
-        if self.game.game_level > 1:
+        if self.state["game_level"] > 1:
             for _ in range(4):
                 self.build_unit(ShipYard, free=True)
 
-            if self.game.game_level > 3:
+            if self.state["game_level"] > 3:
                 for _ in range(3):
                     self.build_unit(ColonyShip, free=True)
 

@@ -1,140 +1,111 @@
-from unit import Decoy, ColonyShip, Colony
+from math import comb
+from board import Board
+from player import Player
+from unit import Unit, ColonyShip, Decoy
+from technology import Technology
 
 class CombatEngine:
-    def __init__(self, game):
-        self.game = game
-
-    # Returns if a home colony was destroyed
-    def battle(self, pos):
-        self.game.log("Combat order: " + str([u['id'] for u in self.generate_combat_array()[pos]]))
-        units = [self.state_to_unit(u) for u in self.generate_combat_array()[pos]]
-        self.game.log("Going into battle: " + str([(type(u).__name__, u.player.id) for u in self.game.board[pos] if u.id in u.player.units]))
-
-        # Battle until all units are on the same team
-        while CombatEngine.is_battle(units):
-
-            # units is in combat order, so loop through as attacker
-            for attacker in units:
-                # Units that can't attack shouldn't be considered
-                if attacker.no_attack or not attacker.alive:
-                    continue
-
-                # Generate a new array since each battle will change the contents
-                cbt_arr = self.generate_combat_array()
-
-                # If only the attacker is in cbt_arr, then there's no battle
-                if len(cbt_arr) <= 1 or pos not in self.get_combat_positions():
-                    continue
-
-                # Attack!
-                self.game.current_player_id = attacker.player.id
-
-                defender_id = attacker.player.strat.decide_which_unit_to_attack(
-                    cbt_arr,
-                    pos,
-                    cbt_arr.index(attacker.generate_state(False, True))
-                )
-
-                defender = self.state_to_unit(cbt_arr[defender_id])
-                if type(defender) == Colony and len([type(x) == Colony for x in units if x.player == defender.player.id]):
-                    self.game.throw("Can't attack colony while other units are present!",
-f"""
-&4Player {attacker.player.id} tried to attack the other player's colony, but other units were there!
-""")
-
-                # Duel returns if a home colony was destroyed
-                if self.duel(attacker, defender):
-                    return True
-
-            # Reset units, since it was changed in battle
-            units = [self.state_to_unit(u) for u in self.generate_combat_array()]
-
-        self.game.log("Survivors: " + str([(type(u).__name__, u.player.id) for u in self.game.board[pos] if u.id in u.player.units]))
-
-    # Unit state -> unit class
-    def state_to_unit(self, unit):
-        return self.game.players[unit['player']].units[unit['id']]
-
-    # A duel between an attacker and a defender
-    # Returns True if a home colony is defeated
-    def duel(self, attacker, defender):
-        atk_str = attacker.attack_strength + attacker.tech['attack']
-        def_str = defender.defense_strength + defender.tech['defense']
-        hit_threshold = atk_str - def_str
-        die_roll = self.game.die_roll()
-        self.game.log("Die was rolled: " + str(die_roll))
-
-        # Checks if attack hits
-        if die_roll <= hit_threshold or die_roll == 1:
-            self.game.log(f"{attacker.get_name()} &2attacks&3 {defender.get_name()} &7at {attacker.pos}, threshold: {(hit_threshold, attacker.tech['attack'], defender.tech['defense'])}")
-            defender.hurt(attacker.get_name())
-            if type(defender) == Colony and defender.is_home_colony:
-                return True
-        else:
-            self.game.log(f"{attacker.get_name()} &5misses&3 {defender.get_name()} &7at {attacker.pos}, threshold: {(hit_threshold, attacker.tech['attack'])}")
-
-
-    # Return if all the units in the given list belong to the same player
     @staticmethod
-    def is_battle(units):
-        if len(units) == 0:
-            return False
-        players = [
-            unit.player for unit in units if unit.alive]
-        return players.count(players[0]) != len(players)
+    def run_phase(state: dict):
+        turn = state["turn"]
+        state["phase"] = "Combat"
+        state["log"].info(f"BEGINNING OF TURN {turn} COMBAT PHASE\n")
 
-    # Resolve combat between all units
-    # Returns if a home colony was destroyed
-    def combat_phase(self, current_turn):
-        self.game.phase = "Combat"
+        combat_positions = Board.get_combat_positions(state)
+        if len(combat_positions) > 0:
+            # Log initial combat locations
+            state["log"].info("\tCombat Locations:\n")
+            for pos in combat_positions:
+                state["log"].info("\t\t"+str(pos)+"\n")
+                for unit_id in Board.get_unit_ids(state, pos):
+                    state["log"].info("\t\t\t" + state["units"][unit_id]["name"])
+                state["log"].info("\n")
 
-        # Each position in combat array has enemy units
-        for pos in self.get_combat_positions():
-            if self.battle(pos):
-                return True
+            # Actually do the combat
+            for pos in combat_positions:
+                state["log"].info(f"\tCombat at {str(pos)}\n")
+                CombatEngine.destroy_non_combat_units(state, pos)
+                while Board.is_battle(state, pos):
+                    CombatEngine.battle(state, pos)
+        state["log"].info(f"END OF TURN {turn} COMBAT PHASE\n")
 
-        # Make sure to update the board afterwards
-        self.game.board.create()
+    @staticmethod
+    def battle(state: dict, pos: tuple):
+        unit_ids = CombatEngine.order(state, pos)
 
-    # Generate a state array filled with hidden units
-    def generate_combat_array(self):
-        # This if statement will truncate unit information based on player
+        for attacker_id in unit_ids:
+            # If the unit was killed
+            if attacker_id not in state["units"]:
+                continue
+
+            attacker = state["units"][attacker_id]
+            # If the unit can't attack
+            if attacker["type"].no_attack:
+                continue
+
+            state["current_player"] = attacker["player_id"]
+            attacking_player = state["players"][attacker["player_id"]]
+
+            #! I don't like this because it has a bunch of extra looping
+            combat_state = CombatEngine.generate_combat_state(state)
+
+            defender_type, defender_num = attacking_player["strategy"].decide_which_unit_to_attack(
+                combat_state, pos, attacker["type"], attacker["num"]
+            )
+            defender_id = Player.get_unit_by_type_num(state, attacker["player_id"], defender_type, defender_num)
+
+            killed = CombatEngine.duel(state, attacker_id, defender_id)
+            if killed is not None:
+                unit_ids.remove(killed)
+
+    @staticmethod
+    def duel(state: dict, attacker_id: int, defender_id: int):
+        attacker = state["units"][attacker_id]
+        defender = state["units"][defender_id]
+        attack_threshold = attacker["type"].attack_strength + attacker["technology"]["attack"]
+        defense_threshold = defender["type"].defense_strength + defender["technology"]["defense"]
+        hit_threshold = attack_threshold - defense_threshold
+        die_roll = state["die_roll"]()
+
+        state["log"].info(f"\t\tAttacker: {attacker['name']}")
+        state["log"].info(f"\t\tDefender: {defender['name']}")
+        state["log"].info(f"\t\tDie Roll: {die_roll}")
+
+        if die_roll <= hit_threshold or die_roll == 1:
+            state["log"].info("\t\tHit!")
+            Unit.hurt(state, attacker_id, defender_id)
+            if defender_id not in state["units"]:
+                return defender_id
+        else:
+            state["log"].info("\t\t(Miss)")
+        state["log"].info("")
+
+    @staticmethod
+    def destroy_non_combat_units(state: dict, pos: tuple):
+        for unit in Board.get_units(state, pos):
+            if unit["type"] in (Decoy, ColonyShip):
+                Unit.destroy(state, unit["id"])
+
+    @staticmethod
+    def order(state: dict, pos: tuple):
+        return [x["id"] for x in sorted(Board.get_units(state, pos),
+                key = lambda unit: (
+                    unit["type"].attack_class or 'Z',
+                    unit["player_id"]
+                )
+            )
+        ]
+
+    @staticmethod
+    def generate_combat_state(state: dict) -> dict:
         return {
-            pos: [u.generate_state(True, True) for u in self.order_ships(units)]
-             for pos, units in self.game.board.items()
-            if CombatEngine.is_battle(units)
+            pos: [
+                {
+                    "player": unit["player_id"],
+                    "type": unit["type"].name,
+                    "num": unit["num"],
+                    "hits_left": unit["type"].armor - unit["armor"],
+                    "technology": Technology.copy_unit_tech(state, unit["id"])
+                } for unit in Unit.ids_to_units(state, CombatEngine.order(state, pos))
+            ] for pos in Board.get_combat_positions(state)
         }
-
-    # Returns all positions where a battle should take place
-    def get_combat_positions(self):
-        return [pos for pos, units in self.game.board.items() if CombatEngine.is_battle(units)]
-
-    # Orders a given array of ships by attack class and player
-    #! Should later do tactics technology as well
-    def order_ships(self, ships):
-        # Destroy ships that don't participate in combat
-        for u in ships:
-            if type(u) in [Decoy, ColonyShip]:
-                u.destroy("combat")
-
-        # This just removes those ships above ^^
-        ships = [u for u in ships if u.alive]
-
-        # Sort units by attack class, and by player
-        #! This would be changed to tactics technology and attacker/defender
-        ships = sorted(ships, key=lambda x: (
-            ord(x.attack_class or 'Z'), x.player.id))
-
-        # If a player has more units than the other, screen
-        if self.game.game_level > 3:
-            # Screen Units
-            pids = [u.player.id for u in ships]
-            units_per_player = {pid: pids.count(pid) for pid in set(pids)}
-            favored_player = self.game.players[max(units_per_player, key=units_per_player.get)]
-
-            if len(set(units_per_player.values())) <= 1:
-                #! Generate a state to screen instead of this little dictionary
-                screen_units = favored_player.strat.decide_which_units_to_screen(units_per_player)
-                return [s for s in ships if s not in screen_units]
-
-        return ships

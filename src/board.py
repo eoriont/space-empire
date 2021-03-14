@@ -1,67 +1,50 @@
-from planet import Planet
-import random
-from unit import Colony, ShipYard
-import matplotlib.pyplot as plt
-from matplotlib.ticker import MultipleLocator
-
+from types import LambdaType
 
 class Board:
-    def __init__(self, game, size):
-        self.grid = {}
-        self.size = size
-        self.center = [(x-1)/2 for x in size]
-        self.game = game
-        self.planets = []
+    @staticmethod
+    def is_in_bounds(state: dict, pos: tuple) -> bool:
+        x, y = pos
+        a, b = state["board_size"]
+        return 0 <= x < a and 0 <= y < b
 
-    # Create a dictionary of all the positions with multiple units on them
-    def create(self):
-        grid = {}
-        units = [
-            unit for player in self.game.players for unit in player.get_units() if unit.alive]
-        for unit in units:
-            if unit.pos in grid.keys():
-                grid[unit.pos].append(unit)
-            else:
-                grid[unit.pos] = [unit]
-        self.grid = grid
+    @staticmethod
+    def ensure_pos(state: dict, pos: tuple) -> None:
+        if pos not in state["board_state"]:
+            state["board_state"][pos] = []
 
-    # Check if a position is within the grid
-    def is_in_bounds(self, x, y):
-        x1, y1 = self.size
-        return (x >= 0 and x < x1) and (y >= 0 and y < y1)
+    @staticmethod
+    def move_unit(state: dict, unit_id: int, old_pos: tuple, new_pos: tuple) -> None:
+        Board.ensure_pos(state, new_pos)
+        state["board_state"][old_pos].remove(unit_id)
+        state["board_state"][new_pos].append(unit_id)
 
-    # Create 8 additional randomly placed planets in addition to defaults
-    # Unless game is in simple mode, just create home colonies
-    def init_planets(self, *planets):
-        if self.game.game_level > 3:
-            planets = list(planets)
-            while len(planets) < 8:
-                planet = random.randint(
-                    0, self.size[0]-1), random.randint(0, self.size[1]-1)
-                if planet not in planets:
-                    planets.append(planet)
-        self.planets = [Planet(p) for p in planets]
+    @staticmethod
+    def remove_unit(state: dict, unit_id: int) -> None:
+        unit = state["units"][unit_id]
+        state["board_state"][unit["pos"]].remove(unit_id)
 
-    # Return list of grid positions and unit lists
-    def items(self):
-        return self.grid.items()
+    @staticmethod
+    def new_unit(state: dict, unit_id: int, pos: tuple) -> None:
+        Board.ensure_pos(state, pos)
+        state["board_state"][pos].append(unit_id)
 
-    # Return if the pos is on an unoccupied planet
-    def on_unoccupied_planet(self, pos):
-        on_planet = pos in [p.pos for p in self.planets]
-        unoccupied = Colony not in [type(unit) for unit in self[pos]]
-        return on_planet and unoccupied
+    @staticmethod
+    def get_units(state: dict, pos: tuple) -> list:
+        return [state["units"][i] for i in state["board_state"][pos]]
 
-    # Return if the given position contains a certain type of ship
-    def contains(self, pos, t):
-        return self.game.unit_str_to_class(t) in [type(u) for u in self[pos]]
+    @staticmethod
+    def get_unit_ids(state: dict, pos: tuple) -> list:
+        return state["board_state"][pos]
 
-    def get_shipyard_capacity(self, pos):
-        return len([x for x in self[pos] if type(x) == ShipYard])
+    @staticmethod
+    def filter_units(state: dict, pos: tuple, filter: LambdaType = lambda _: True, map: LambdaType = lambda x: x) -> list:
+        return [map(u) for u in Board.get_units(state, pos) if filter(u)]
 
+    @staticmethod
+    def is_battle(state: dict, pos: tuple) -> list:
+        unit_owners = Board.filter_units(state, pos, map = lambda x: x["player_id"])
+        return len(set(unit_owners)) > 1
 
-    def __getitem__(self, pos):
-        if pos in self.grid:
-            return self.grid[pos]
-        else:
-            return []
+    @staticmethod
+    def get_combat_positions(state: dict) -> list:
+        return [pos for pos in state["board_state"].keys() if Board.is_battle(state, pos)]

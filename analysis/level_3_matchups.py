@@ -3,7 +3,7 @@ import random
 
 sys.path.append('src')
 sys.path.append('tests')
-sys.path.append('src/strategies/lesson_strategies/level_3')
+sys.path.append('src/strategies/level_3')
 from game import Game
 
 from numbers_berserker_level_3 import NumbersBerserkerLevel3
