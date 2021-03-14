@@ -1,4 +1,4 @@
-from unit import Colony
+from unit import Unit, from_type
 from player import Player
 
 class State:
@@ -25,14 +25,14 @@ class State:
             return {
                 "homeworld": State.single_unit_state(Player.get_homeworld(state, player_id), hidden),
                 "units": [State.single_unit_state(unit, hidden) for unit in Player.get_units(state, player_id)
-                    if Player.from_id(state, player_id)["homeworld"] != unit["id"]]
+                    if Player.from_id(state, player_id)["homeworld"] != Unit.get_id(unit)]
             }
         else:
             return {
                 "cp": Player.from_id(state, player_id)["cp"],
                 "homeworld": State.single_unit_state(Player.get_homeworld(state, player_id), hidden),
                 "units": [State.single_unit_state(unit, hidden) for unit in Player.get_units(state, player_id)
-                    if Player.from_id(state, player_id)["homeworld"] != unit["id"]]
+                    if Player.from_id(state, player_id)["homeworld"] != Unit.get_id(unit)]
             }
 
     @staticmethod
@@ -40,23 +40,18 @@ class State:
         if hidden:
             return {
                 "coords": unit["pos"],
+                "player": unit["player_id"],
                 "num": unit["num"],
             }
         else:
             return {
                 "coords": unit["pos"],
-                "type": State.unit_type_state(unit),
+                "type": unit["type"],
+                "player": unit["player_id"],
                 "num": unit["num"],
-                "hits_left": unit["type"].armor - unit["armor"],
+                "hits_left": from_type(unit["type"]).armor - unit["armor"],
                 "technology": unit["technology"].copy()
             }
-
-    @staticmethod
-    def unit_type_state(unit: dict) -> str:
-        if unit["type"] == Colony and unit["is_home_colony"]:
-            return "Homeworld"
-        else:
-            return unit["type"].name
 
     @staticmethod
     def unit_data() -> dict:

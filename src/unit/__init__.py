@@ -7,11 +7,23 @@ from unit.destroyer import Destroyer
 from unit.decoy import Decoy
 from unit.cruiser import Cruiser
 from unit.battle_cruiser import BattleCruiser
-
-# Make sure Base and ShipYard are before Colony
 from unit.base import Base
 from unit.shipyard import Shipyard
 from unit.colony import Colony
-
-# Make sure Colony is before ColonyShip
 from unit.colony_ship import ColonyShip
+from unit.homeworld import Homeworld
+
+def from_type(unit_type: str):
+    return {
+        "Scout": Scout,
+        "Dreadnaught": Dreadnaught,
+        "Destroyer": Destroyer,
+        "Decoy": Decoy,
+        "Cruiser": Cruiser,
+        "BattleCruiser": BattleCruiser,
+        "Base": Base,
+        "Shipyard": Shipyard,
+        "Colony": Colony,
+        "ColonyShip": ColonyShip,
+        "Homeworld": Homeworld
+    }[unit_type]

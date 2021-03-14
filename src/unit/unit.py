@@ -9,42 +9,41 @@ class Unit:
     no_attack = False
     attack_class = None
     immovable = False
+    attack_class = "Z"
 
     @staticmethod
     def init(state: dict, unit_type: "Unit", player_id: int, num: int, pos: tuple, extra_data: dict = None) -> int:
         if extra_data is None:
             extra_data = {}
-        id = state["next_id"]()
+        id = (player_id, unit_type.name, num)
         state["units"][id] = {
-            "type": unit_type,
+            "type": unit_type.name,
             "player_id": player_id,
             "num": num,
             "pos": pos,
-            "id": id,
             "name": f"Player {player_id} {unit_type.name} {num}",
             "technology": Technology.copy_player_tech(state, player_id),
             "armor": unit_type.armor,
             **extra_data
         }
 
-        # So we don't need to declare that every colony isn't home
-        if unit_type.name == "Colony" and "is_home_colony" not in extra_data:
-            state["units"][id]["is_home_colony"] = False
+        # Each player only has 1 homeworld
+        if unit_type.name == "Homeworld":
             state["units"][id]["name"] = f"Player {player_id} Homeworld"
 
         Board.new_unit(state, id, pos)
         return id
 
     @staticmethod
-    def hurt(state: dict, attacker_id: int, defender_id: int) -> None:
+    def hurt(state: dict, attacker_id: tuple, defender_id: tuple) -> None:
         attacker = state["units"][attacker_id]
         defender = state["units"][defender_id]
 
         defender["armor"] -= 1
         if defender["armor"] <= 0:
-            state["log"].info(f"{defender['name']} was destroyed\n")
+            state["log"].info(f"\t\t{defender['name']} was destroyed\n")
 
-            if defender["type"].name == "Colony" and defender["is_home_colony"]:
+            if defender["type"] == "Homeworld":
                 state["winner"] = attacker["player_id"]
 
             Unit.destroy(state, defender_id)
@@ -53,8 +52,10 @@ class Unit:
                 raise WinException("We have a winner! Exit now...")
 
     @staticmethod
-    def destroy(state: dict, unit_id: int) -> None:
-        Board.remove_unit(state, unit_id)
+    def destroy(state: dict, unit_id: tuple) -> None:
+        unit = Unit.from_id(state, unit_id)
+        Board.remove_unit(state, unit)
+        state["players"][unit["player_id"]]["units"].remove(unit_id)
         del state["units"][unit_id]
 
     @staticmethod
@@ -62,5 +63,9 @@ class Unit:
         return [state["units"][id] for id in unit_ids]
 
     @staticmethod
-    def from_id(state: dict, unit_id: int) -> dict:
+    def from_id(state: dict, unit_id: tuple) -> dict:
         return state["units"][unit_id]
+
+    @staticmethod
+    def get_id(unit: dict) -> tuple:
+        return unit["player_id"], unit["type"], unit["num"]

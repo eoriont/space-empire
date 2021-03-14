@@ -1,5 +1,6 @@
 from technology import Technology
 from unit import Unit, Scout, Shipyard, ColonyShip, Colony
+from unit.homeworld import Homeworld
 
 class Player:
     @staticmethod
@@ -30,7 +31,7 @@ class Player:
             if state["game_level"] > 3:
                 for i in range(3):
                     created_ids.append(Unit.init(state, ColonyShip, player_id, i+1, home_coords))
-        player["homeworld"] = Unit.init(state, Colony, player_id, 1, home_coords, {"is_home_colony": True})
+        player["homeworld"] = Unit.init(state, Homeworld, player_id, 1, home_coords)
         created_ids.append(player["homeworld"])
 
     @staticmethod
@@ -44,7 +45,3 @@ class Player:
     @staticmethod
     def get_homeworld(state: dict, player_id: int) -> dict:
         return Unit.from_id(state, Player.from_id(state, player_id)["homeworld"])
-
-    @staticmethod
-    def get_unit_by_type_num(state: dict, player_id: int, type: str, num: int) -> int:
-        return next(unit for unit in Player.get_units(state, player_id) if unit["type"].name == type and unit["num"] == num)["id"]

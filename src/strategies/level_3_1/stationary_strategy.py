@@ -1,3 +1,4 @@
+
 class StationaryStrategy:
 
     def __init__(self, player_number):
@@ -12,8 +13,8 @@ class StationaryStrategy:
         for unit in combat_state[coords]:
             if unit['player'] != self.player_number:
                 if unit['type'] not in ['Homeworld', 'Colony']:
-                    return (unit['type'], unit['num'])
+                    return (unit['player'], unit['type'], unit['num'])
 
         for unit in combat_state[coords]:
             if unit['player'] != self.player_number:
-                return (unit['type'], unit['num'])
+                return (unit['player'], unit['type'], unit['num'])

@@ -19,12 +19,11 @@ class Board:
         state["board_state"][new_pos].append(unit_id)
 
     @staticmethod
-    def remove_unit(state: dict, unit_id: int) -> None:
-        unit = state["units"][unit_id]
-        state["board_state"][unit["pos"]].remove(unit_id)
+    def remove_unit(state: dict, unit: dict) -> None:
+        state["board_state"][unit["pos"]].remove((unit["player_id"], unit["type"], unit["num"]))
 
     @staticmethod
-    def new_unit(state: dict, unit_id: int, pos: tuple) -> None:
+    def new_unit(state: dict, unit_id: tuple, pos: tuple) -> None:
         Board.ensure_pos(state, pos)
         state["board_state"][pos].append(unit_id)
 

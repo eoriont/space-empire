@@ -1,7 +1,6 @@
 from math import comb
 from board import Board
-from player import Player
-from unit import Unit, ColonyShip, Decoy
+from unit import Unit, from_type
 from technology import Technology
 
 class CombatEngine:
@@ -17,8 +16,9 @@ class CombatEngine:
             state["log"].info("\tCombat Locations:\n")
             for pos in combat_positions:
                 state["log"].info("\t\t"+str(pos)+"\n")
-                for unit_id in Board.get_unit_ids(state, pos):
-                    state["log"].info("\t\t\t" + state["units"][unit_id]["name"])
+                #! Do something smart to cache the order for later
+                for unit_id in CombatEngine.order(state, pos):
+                    state["log"].info("\t\t\t" + Unit.from_id(state, unit_id)["name"])
                 state["log"].info("\n")
 
             # Actually do the combat
@@ -40,19 +40,22 @@ class CombatEngine:
 
             attacker = state["units"][attacker_id]
             # If the unit can't attack
-            if attacker["type"].no_attack:
+            if from_type(attacker["type"]).no_attack:
                 continue
 
             state["current_player"] = attacker["player_id"]
             attacking_player = state["players"][attacker["player_id"]]
 
+            #! This could be more efficient
+            if not Board.is_battle(state, pos):
+                break
+
             #! I don't like this because it has a bunch of extra looping
             combat_state = CombatEngine.generate_combat_state(state)
 
-            defender_type, defender_num = attacking_player["strategy"].decide_which_unit_to_attack(
+            defender_id = attacking_player["strategy"].decide_which_unit_to_attack(
                 combat_state, pos, attacker["type"], attacker["num"]
             )
-            defender_id = Player.get_unit_by_type_num(state, attacker["player_id"], defender_type, defender_num)
 
             killed = CombatEngine.duel(state, attacker_id, defender_id)
             if killed is not None:
@@ -62,8 +65,8 @@ class CombatEngine:
     def duel(state: dict, attacker_id: int, defender_id: int):
         attacker = state["units"][attacker_id]
         defender = state["units"][defender_id]
-        attack_threshold = attacker["type"].attack_strength + attacker["technology"]["attack"]
-        defense_threshold = defender["type"].defense_strength + defender["technology"]["defense"]
+        attack_threshold = from_type(attacker["type"]).attack_strength + attacker["technology"]["attack"]
+        defense_threshold = from_type(defender["type"]).defense_strength + defender["technology"]["defense"]
         hit_threshold = attack_threshold - defense_threshold
         die_roll = state["die_roll"]()
 
@@ -71,7 +74,7 @@ class CombatEngine:
         state["log"].info(f"\t\tDefender: {defender['name']}")
         state["log"].info(f"\t\tDie Roll: {die_roll}")
 
-        if die_roll <= hit_threshold or die_roll == 1:
+        if die_roll >= hit_threshold or die_roll == 1:
             state["log"].info("\t\tHit!")
             Unit.hurt(state, attacker_id, defender_id)
             if defender_id not in state["units"]:
@@ -83,29 +86,30 @@ class CombatEngine:
     @staticmethod
     def destroy_non_combat_units(state: dict, pos: tuple):
         for unit in Board.get_units(state, pos):
-            if unit["type"] in (Decoy, ColonyShip):
-                Unit.destroy(state, unit["id"])
+            if unit["type"] in ("Decoy", "ColonyShip"):
+                Unit.destroy(state, Unit.get_id(unit))
 
     @staticmethod
     def order(state: dict, pos: tuple):
-        return [x["id"] for x in sorted(Board.get_units(state, pos),
+        return [Unit.get_id(x) for x in sorted(Board.get_units(state, pos),
                 key = lambda unit: (
-                    unit["type"].attack_class or 'Z',
-                    unit["player_id"]
+                    from_type(unit["type"]).attack_class or 'Z',
+                    unit["num"]
                 )
             )
         ]
 
+    # Should move this to State module
     @staticmethod
     def generate_combat_state(state: dict) -> dict:
         return {
             pos: [
                 {
                     "player": unit["player_id"],
-                    "type": unit["type"].name,
+                    "type": unit["type"],
                     "num": unit["num"],
-                    "hits_left": unit["type"].armor - unit["armor"],
-                    "technology": Technology.copy_unit_tech(state, unit["id"])
+                    "hits_left": from_type(unit["type"]).armor - unit["armor"],
+                    "technology": Technology.copy_unit_tech(state, Unit.get_id(unit))
                 } for unit in Unit.ids_to_units(state, CombatEngine.order(state, pos))
             ] for pos in Board.get_combat_positions(state)
         }
