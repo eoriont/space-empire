@@ -12,9 +12,7 @@ class Unit:
     attack_class = "Z"
 
     @staticmethod
-    def init(state: dict, unit_type: "Unit", player_id: int, num: int, pos: tuple, extra_data: dict = None) -> int:
-        if extra_data is None:
-            extra_data = {}
+    def init(state: dict, unit_type: "Unit", player_id: int, num: int, pos: tuple) -> int:
         id = (player_id, unit_type.name, num)
         state["units"][id] = {
             "type": unit_type.name,
@@ -24,7 +22,7 @@ class Unit:
             "name": f"Player {player_id} {unit_type.name} {num}",
             "technology": Technology.copy_player_tech(state, player_id),
             "armor": unit_type.armor,
-            **extra_data
+            "last_turn_moved": 0,
         }
 
         # Each player only has 1 homeworld

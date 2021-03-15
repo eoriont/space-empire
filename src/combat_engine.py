@@ -19,7 +19,7 @@ class CombatEngine:
                 #! Do something smart to cache the order for later
                 for unit_id in CombatEngine.order(state, pos):
                     state["log"].info("\t\t\t" + Unit.from_id(state, unit_id)["name"])
-                state["log"].info("\n")
+                state["log"].info("")
 
             # Actually do the combat
             for pos in combat_positions:
@@ -94,6 +94,7 @@ class CombatEngine:
         return [Unit.get_id(x) for x in sorted(Board.get_units(state, pos),
                 key = lambda unit: (
                     from_type(unit["type"]).attack_class or 'Z',
+                    unit["last_turn_moved"],
                     unit["num"]
                 )
             )

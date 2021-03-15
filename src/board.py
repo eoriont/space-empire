@@ -13,10 +13,13 @@ class Board:
             state["board_state"][pos] = []
 
     @staticmethod
-    def move_unit(state: dict, unit_id: int, old_pos: tuple, new_pos: tuple) -> None:
+    def move_unit(state: dict, unit_id: tuple, old_pos: tuple, new_pos: tuple) -> None:
         Board.ensure_pos(state, new_pos)
         state["board_state"][old_pos].remove(unit_id)
         state["board_state"][new_pos].append(unit_id)
+
+        # This makes a new number for every movement subphase and every player
+        state["units"][unit_id]["last_turn_moved"] = (state["round"]-1)*(state["turn"]*6)+(state["current_player"]-1)
 
     @staticmethod
     def remove_unit(state: dict, unit: dict) -> None:

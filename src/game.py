@@ -56,11 +56,8 @@ class Game:
             self.state["turn"] += 1
 
         if self.state["winner"]:
-            self.state["log"].info("We have a winner!!")
-            self.state["log"].info(f"Turns taken: {self.state['turn']}")
             return True
         else:
-            self.state["log"].info("Nobody won!")
             return False
 
     def die_roll(self):

@@ -91,36 +91,30 @@ BEGINNING OF TURN 2 COMBAT PHASE
 			Player 2 Shipyard 3
 			Player 2 Shipyard 4
 			Player 2 Scout 1
-			Player 1 Scout 1
 			Player 2 Scout 2
-			Player 1 Scout 2
 			Player 2 Scout 3
+			Player 1 Scout 1
+			Player 1 Scout 2
 			Player 1 Scout 3
 			Player 2 Homeworld
-
 
 	Combat at (3, 6)
 
 		Attacker: Player 2 Shipyard 1
 		Defender: Player 1 Scout 1
-		Die Roll: 2
-		(Miss)
-
-		Attacker: Player 2 Shipyard 2
-		Defender: Player 1 Scout 1
-		Die Roll: 9
+		Die Roll: 7
 		Hit!
 		Player 1 Scout 1 was destroyed
 
-		Attacker: Player 2 Shipyard 3
+		Attacker: Player 2 Shipyard 2
 		Defender: Player 1 Scout 2
 		Die Roll: 8
 		Hit!
 		Player 1 Scout 2 was destroyed
 
-		Attacker: Player 2 Shipyard 4
+		Attacker: Player 2 Shipyard 3
 		Defender: Player 1 Scout 3
-		Die Roll: 3
+		Die Roll: 8
 		Hit!
 		Player 1 Scout 3 was destroyed
 
@@ -219,4 +213,3 @@ BEGINNING OF TURN 5 COMBAT PHASE
 
 END OF TURN 5 COMBAT PHASE
 
-Nobody won!

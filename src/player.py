@@ -1,6 +1,5 @@
 from technology import Technology
-from unit import Unit, Scout, Shipyard, ColonyShip, Colony
-from unit.homeworld import Homeworld
+from unit import Unit, Scout, Shipyard, ColonyShip, Homeworld
 
 class Player:
     @staticmethod

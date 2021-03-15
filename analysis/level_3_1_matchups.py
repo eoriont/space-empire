@@ -8,7 +8,7 @@ from game import Game
 from berserker_strategy import BerserkerStrategy
 from stationary_strategy import StationaryStrategy
 
-random.seed(1)
+random.seed(5)
 
 game = Game((7, 7), stdout="logs/3_1.txt", game_level=3)
 game.start([BerserkerStrategy, StationaryStrategy])
