@@ -1,4 +1,3 @@
-from math import comb
 from board import Board
 from unit import Unit, from_type
 from technology import Technology
@@ -23,10 +22,19 @@ class CombatEngine:
 
             # Actually do the combat
             for pos in combat_positions:
-                state["log"].info(f"\tCombat at {str(pos)}\n")
+                state["log"].info(f"\tCombat at {str(pos)}\n ")
                 CombatEngine.destroy_non_combat_units(state, pos)
                 while Board.is_battle(state, pos):
                     CombatEngine.battle(state, pos)
+
+            # Log survivors
+            state["log"].info("\tSurvivors:\n")
+            for pos in combat_positions:
+                state["log"].info("\t\t"+str(pos)+"\n")
+                for unit_id in CombatEngine.order(state, pos):
+                    state["log"].info("\t\t\t" + Unit.from_id(state, unit_id)["name"])
+                state["log"].info("")
+
         state["log"].info(f"END OF TURN {turn} COMBAT PHASE\n")
 
     @staticmethod
@@ -72,9 +80,10 @@ class CombatEngine:
 
         state["log"].info(f"\t\tAttacker: {attacker['name']}")
         state["log"].info(f"\t\tDefender: {defender['name']}")
+        state["log"].info(f"\t\tHighest Roll for Hit: {hit_threshold}")
         state["log"].info(f"\t\tDie Roll: {die_roll}")
 
-        if die_roll >= hit_threshold or die_roll == 1:
+        if die_roll <= hit_threshold or die_roll == 1:
             state["log"].info("\t\tHit!")
             Unit.hurt(state, attacker_id, defender_id)
             if defender_id not in state["units"]:
@@ -98,6 +107,7 @@ class CombatEngine:
                     unit["num"]
                 )
             )
+            if x["type"] != "Homeworld"
         ]
 
     # Should move this to State module

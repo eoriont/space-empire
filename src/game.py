@@ -55,6 +55,7 @@ class Game:
 
             self.state["turn"] += 1
 
+        self.state["log"].save()
         if self.state["winner"]:
             return True
         else:
