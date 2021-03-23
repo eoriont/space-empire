@@ -1,5 +1,6 @@
 from unit import Unit, from_type
 from player import Player
+from log import Log
 
 class State:
     @staticmethod
@@ -82,3 +83,89 @@ class State:
                 'shipyard': [0, 20, 30]
             }
         }
+
+    @staticmethod
+    def from_standard(state: dict, strategies: list) -> dict:
+        players = {
+            k: {
+                "cp": p["cp"],
+                "id": k,
+                "strategy": strategies[k-1](k),
+                "technology": p["technology"],
+                "homeworld": (k, "Homeworld", 1),
+                "unit_nums": {},
+                "units": [
+                    (k, u["type"], u["num"]) for u in p["units"]
+                ]
+            } for k, p in state["players"].items()
+        }
+        units = {
+            (pid, u["type"], u["num"]): {
+                "type": u["type"],
+                "player_id": pid,
+                "num": u["num"],
+                "pos": u["coords"],
+                "name": f"Player {pid} {u['type']} {u['num']}",
+                "technology": u["technology"],
+                "armor": u["hits_left"],
+                "last_turn_moved": 0,
+                "maintenance_cost": from_type(u["type"]).maintenance,
+            } for pid, p in state["players"].items() for u in p["units"]
+        }
+        for pid, p in state["players"].items():
+            units[(pid, "Homeworld", 1)] = {
+                "pos": p["homeworld"]["coords"],
+                "type": "Homeworld",
+                "armor": p["homeworld"]["hits_left"],
+                "player_id": pid,
+                "turn_created": 1,
+                "num": 1,
+                "technology": {}
+            }
+        board_state = {}
+        for uid, u in units.items():
+            unit_nums = players[uid[0]]["unit_nums"]
+            if uid[1] not in unit_nums:
+                unit_nums[uid[1]] = 0
+            unit_nums[uid[1]] += 1
+            pos = u["pos"]
+            if pos not in board_state:
+                board_state[pos] = []
+            board_state[pos].append(uid)
+
+        return {
+            "players": players,
+            "units": units,
+            "board_size": state["board_size"],
+            "game_level": 3,
+            "winner": None,
+            "turn": state["turn"],
+            "phase": state["phase"],
+            "round": state["round"],
+            "board_state": board_state,
+            "log": Log(True, True),
+            "current_player": state["current_player"]
+        }
+
+    @staticmethod
+    def compare_native_states(state1, state2):
+
+        for p in state1["players"].values():
+            p["units"].sort()
+            del p["strategy"]
+
+        for val in state1["board_state"].values():
+            val.sort()
+
+        del state1["log"]
+
+        for p in state2["players"].values():
+            p["units"].sort()
+            del p["strategy"]
+
+        for val in state2["board_state"].values():
+            val.sort()
+
+        del state2["log"]
+
+        return state1 == state2

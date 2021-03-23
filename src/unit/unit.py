@@ -10,9 +10,15 @@ class Unit:
     attack_class = None
     immovable = False
     attack_class = "Z"
+    maintenance = 0
 
     @staticmethod
-    def init(state: dict, unit_type: "Unit", player_id: int, num: int, pos: tuple) -> int:
+    def init(state: dict, unit_type: "Unit", player_id: int, pos: tuple) -> int:
+        unit_nums = state["players"][player_id]["unit_nums"]
+        if unit_type.name not in unit_nums:
+            unit_nums[unit_type.name] = 0
+        unit_nums[unit_type.name] += 1
+        num = unit_nums[unit_type.name]
         id = (player_id, unit_type.name, num)
         state["units"][id] = {
             "type": unit_type.name,
@@ -23,11 +29,17 @@ class Unit:
             "technology": Technology.copy_player_tech(state, player_id),
             "armor": unit_type.armor,
             "last_turn_moved": 0,
+            "maintenance_cost": 0 if unit_type.no_maintenance else unit_type.hull_size
         }
 
         # Each player only has 1 homeworld
         if unit_type.name == "Homeworld":
             state["units"][id]["name"] = f"Player {player_id} Homeworld"
+            state["units"][id]["cp_capacity"] = 20
+
+        # Each colony pays a certain amount
+        if unit_type.name == "Colony":
+            state["units"][id]["cp_capacity"] = 3
 
         Board.new_unit(state, id, pos)
         return id

@@ -20,17 +20,17 @@ class Player:
         player = Player.from_id(state, player_id)
         home_coords = player["home_coords"]
         created_ids = player["units"]
-        for i in range(3):
-            created_ids.append(Unit.init(state, Scout, player_id, i+1, home_coords))
+        for _ in range(3):
+            created_ids.append(Unit.init(state, Scout, player_id, home_coords))
 
         if state["game_level"] > 1:
-            for i in range(4):
-                created_ids.append(Unit.init(state, Shipyard, player_id, i+1, home_coords))
+            for _ in range(4):
+                created_ids.append(Unit.init(state, Shipyard, player_id, home_coords))
 
             if state["game_level"] > 3:
-                for i in range(3):
-                    created_ids.append(Unit.init(state, ColonyShip, player_id, i+1, home_coords))
-        player["homeworld"] = Unit.init(state, Homeworld, player_id, 1, home_coords)
+                for _ in range(3):
+                    created_ids.append(Unit.init(state, ColonyShip, player_id, home_coords))
+        player["homeworld"] = Unit.init(state, Homeworld, player_id, home_coords)
         created_ids.append(player["homeworld"])
 
     @staticmethod
@@ -44,3 +44,12 @@ class Player:
     @staticmethod
     def get_homeworld(state: dict, player_id: int) -> dict:
         return Unit.from_id(state, Player.from_id(state, player_id)["homeworld"])
+
+    @staticmethod
+    def get_income(state: dict, player_id: int) -> int:
+        return sum(u["cp_capacity"] for u in Player.get_units(state, player_id)
+                                    if u["type"] in ("Colony", "Homeworld"))
+
+    @staticmethod
+    def get_maintenance(state: dict, player_id: int) -> int:
+        return sum(u["maintenance_cost"] for u in Player.get_units(state, player_id))

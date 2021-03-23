@@ -32,14 +32,17 @@ class Board:
 
     @staticmethod
     def get_units(state: dict, pos: tuple) -> list:
+        Board.ensure_pos(state, pos)
         return [state["units"][i] for i in state["board_state"][pos]]
 
     @staticmethod
     def get_unit_ids(state: dict, pos: tuple) -> list:
+        Board.ensure_pos(state, pos)
         return state["board_state"][pos]
 
     @staticmethod
     def filter_units(state: dict, pos: tuple, filter: LambdaType = lambda _: True, map: LambdaType = lambda x: x) -> list:
+        Board.ensure_pos(state, pos)
         return [map(u) for u in Board.get_units(state, pos) if filter(u)]
 
     @staticmethod
@@ -50,3 +53,12 @@ class Board:
     @staticmethod
     def get_combat_positions(state: dict) -> list:
         return [pos for pos in state["board_state"].keys() if Board.is_battle(state, pos)]
+
+    @staticmethod
+    def pos_contains(state: dict, pos: tuple, unit_type: str):
+        return any(Board.filter_units(state, pos, filter = lambda x: x["type"] == unit_type, map = lambda x: True))
+
+    @staticmethod
+    def get_shipyard_capacity(state: dict, pos: tuple):
+        #! This doesn't account for shipyard technology
+        return len(Board.filter_units(state, pos, filter = lambda x: x["type"] == "Shipyard"))

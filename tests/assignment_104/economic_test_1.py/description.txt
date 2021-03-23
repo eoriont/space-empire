@@ -1,0 +1,16 @@
+Game Level: 3
+
+=================================================
+
+Test: Each player starts with 32 cp, then:
+
+Player 1 buys attack technology and a scout, and has to pay 3 cp for maintenance on
+their existing 3 scouts
+
+Player 2 buys defense technology and 2 scouts, since they have no maintenance to pay.
+
+=================================================
+
+Outcome:
+
+The players are able to buy everything that they want, since they can afford it.

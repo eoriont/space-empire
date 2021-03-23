@@ -31,3 +31,15 @@ class Technology:
             "terraform": 0,
             "tactics": 0
         }
+
+    @staticmethod
+    def get_prices():
+        return {
+            "shipsize": [0, 10, 15, 20, 25, 30],
+            "attack": [20, 30, 40],
+            "defense": [20, 30, 40],
+            "movement": [0, 20, 30, 40, 40, 40],
+            "shipyard": [0, 20, 30],
+            "terraform": [], # Unimplemented
+            "tactics": []    # Unimplemented
+        }

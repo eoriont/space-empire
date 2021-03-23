@@ -19,11 +19,9 @@ class Game:
             "die_mode": die_mode,
             "game_level": game_level,
             "die_size": die_size,
-            "debug_mode": debug_mode,
             "current_id": 0,
             "log": Log(stdout, debug_mode),
             "last_die": 0,
-            "next_id": self.next_id,
             "die_roll": self.die_roll,
             "current_player": None
         }
@@ -70,11 +68,6 @@ class Game:
         elif self.state["die_mode"] == "descend":
             self.state["last_die"] -= 1
             return (self.state["last_die"] % self.state["die_size"]) + 1
-
-    # Theoretically this should just be a nonrepeating value
-    def next_id(self):
-        self.state["current_id"] += 1
-        return self.state["current_id"]
 
     def get_winner(self):
         if self.state["winner"] != None:
