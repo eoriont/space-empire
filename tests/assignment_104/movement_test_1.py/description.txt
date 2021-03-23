@@ -1,0 +1,2 @@
+Test: Both players move all ships to the left for 1 movement phase
+Outcome: All ships at either (0,0) or (0,6) at the end of the movement phase	

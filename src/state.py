@@ -149,23 +149,35 @@ class State:
 
     @staticmethod
     def compare_native_states(state1, state2):
-
         for p in state1["players"].values():
             p["units"].sort()
-            del p["strategy"]
+            p["strategy"] = type(p["strategy"]).__name__
 
         for val in state1["board_state"].values():
             val.sort()
+
+        for u in state1["units"].values():
+            if "last_turn_moved" in u:
+                del u["last_turn_moved"]
 
         del state1["log"]
 
         for p in state2["players"].values():
             p["units"].sort()
-            del p["strategy"]
+            p["strategy"] = type(p["strategy"]).__name__
 
         for val in state2["board_state"].values():
             val.sort()
 
+        for u in state2["units"].values():
+            if "last_turn_moved" in u:
+                del u["last_turn_moved"]
+
         del state2["log"]
+
+        # Useful for debugging:
+        # from pprint import pprint
+        # pprint(state1)
+        # pprint(state2)
 
         return state1 == state2

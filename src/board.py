@@ -62,3 +62,9 @@ class Board:
     def get_shipyard_capacity(state: dict, pos: tuple):
         #! This doesn't account for shipyard technology
         return len(Board.filter_units(state, pos, filter = lambda x: x["type"] == "Shipyard"))
+
+    @staticmethod
+    def clean(state: dict) -> None:
+        for pos in list(state["board_state"].keys()):
+            if len(state["board_state"][pos]) == 0:
+                del state["board_state"][pos]

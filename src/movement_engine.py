@@ -39,6 +39,8 @@ class MovementEngine:
                 state["log"].info(f"\t\t{unit['name']}: {unit['pos']}")
             state["log"].info("")
 
+        Board.clean(state)
+
         state["round"] = None
         state["log"].info(f"END OF TURN {turn} MOVEMENT PHASE\n")
 
